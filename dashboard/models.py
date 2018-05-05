@@ -36,6 +36,8 @@ class DeviceModels(models.Model):
     current_consumption = models.IntegerField()
     mfg = models.ForeignKey(Manufacturer, on_delete=models.DO_NOTHING)
     model_number = models.CharField(max_length=50)
+    # Todo Serial Number should be removed from DeviceMode,
+    #  as serial number is not associated with a model, but for each unit
     serial_number = models.CharField(max_length=50)
 
     def __str__(self):

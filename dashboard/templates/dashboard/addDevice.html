@@ -21,6 +21,15 @@
         </div>
     </div>
     <br>
-
+ <hr>
+    <br>
+    <h1>Devices In Catalogue</h1>
+    {% for address in existing_addresses %}
+        <div class="card bg-light" style="width: 35rem; border-radius: 15px">
+            <h5>Name: {{ address.street }}</h5>
+            <h5>Model Number: {{ address.zip }}</h5>
+        </div>
+        <br>
+    {% endfor %}
 {% endblock content %}r
 

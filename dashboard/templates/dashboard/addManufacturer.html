@@ -13,20 +13,22 @@
         </fieldset>
         <div class="form-group">
             <center>
-                <button class="btn btn-outline-info" type="submit">Register</button>
+                <button class="btn btn-outline-info" type="submit">Add</button>
             </center>
         </div>
     </form>
 
-    <br>
 
+    <hr>
+    <br>
     <h1>Existing Manufacturers</h1>
+
 
     {% for manufacturers in existing_manufacturers %}
         <div class="card bg-light" style="width: 35rem; border-radius: 15px">
-            <h2>Name:     {{ manufacturers.name }}</h2>
-            <h4>Address:  {{ manufacturers.address.street }}</h4>
-            <h5>Phone:    {{ manufacturers.phone_number }}</h5>
+            <h2>Name: {{ manufacturers.name }}</h2>
+            <h4>Address: {{ manufacturers.address.street }}</h4>
+            <h5>Phone: {{ manufacturers.phone_number }}</h5>
             <h5>Certified:{{ manufacturers.is_certified }}</h5>
         </div>
         <br>

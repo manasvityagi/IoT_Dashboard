@@ -13,11 +13,19 @@
         </fieldset>
         <div class="form-group">
             <center>
-                <button class="btn btn-outline-info" type="submit">Register</button>
+                <button class="btn btn-outline-info" type="submit">Add</button>
             </center>
         </div>
     </form>
-
+    <hr>
     <br>
+    <h1>Existing Manufacturers</h1>
+    {% for address in existing_addresses %}
+        <div class="card bg-light" style="width: 35rem; border-radius: 15px">
+            <h5>Street: {{ address.street }}</h5>
+            <h5>Zip: {{ address.zip }}</h5>
+        </div>
+        <br>
+    {% endfor %}
 {% endblock content %}
 
