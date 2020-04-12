@@ -1,6 +1,5 @@
 IoT Dashboard for devices in a Premises  :
 ----------------------------------------------------
-<br>
 
 ## A User can logon to his home's page and see useful information about his smart devices, in some cases he can control the device.
 
