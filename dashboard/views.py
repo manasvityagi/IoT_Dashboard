@@ -3,5 +3,9 @@ from django.shortcuts import render
 
 
 # Create your views here.
-def home(request):
-    return HttpResponse("<h1>Dashboard Home</h1>")
+def info(request):
+    return HttpResponse("<h1>Dashboard Home Info</h1>")
+
+
+def not_found(request):
+    return HttpResponse("<h1>No Such Path! Lost ?</h1>")

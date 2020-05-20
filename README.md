@@ -55,7 +55,7 @@ Following Devices are supported
  Since most smart devices, like Smart bulb, Energy Meter have different
 protocols and message structure. In Real market, we need smart hub like 
 alexa or google home (or even better) common agreed standards to access the
- requisite data for this application. In this application We have assumed 
+ requisite data for this application. In this application W have assumed 
  a convenient format for the information interchange.
 
 :four_leaf_clover:
