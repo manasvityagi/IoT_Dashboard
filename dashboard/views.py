@@ -22,7 +22,8 @@ things = [
 # Create your views here.
 def info(request):
     context = {
-        'things': things
+        'things': things,
+        'title': 'My Devices'
     }
     return render(request, 'dashboard/home.html', context)
 
