@@ -1,17 +1,61 @@
 {% extends "dashboard/base.html" %}
 {% block content %}
-    {% for thing in things %}
-        <div class="card" style="width: 22rem;">
-            <img src="https://i.imgur.com/SAnmzn0.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title"> Device Name: {{ thing.name }}</h5>
-                <p class="card-text"> Lifetime used: {{ thing.lifetime_used }}</p>
-                <p class="card-text"> Lifetime Max: {{ thing.max_lifetime }}</p>
-                <p class="card-text"> Date manufactured: {{ thing.mfg_date }}</p>
-                <p class="card-text"> Last Serviced: {{ thing.last_cleaned }}</p>
-                <a href="#" class="btn btn-primary">See Details</a>
-            </div>
+
+    {% for row in things %}
+        <div class="row">
+            {% for item in row %}
+                <div class="col-md-4">
+                    <div class="card" style="width: 17rem;border-radius: 15px">
+                        <img src="https://i.imgur.com/SAnmzn0.png" class="card-img-top" alt="..."
+                             style="width: 95%">
+                        <div class="card-body">
+                            <h5 class="card-title"> Device Name: {{ item.name }}</h5>
+                            <p class="card-text"> Lifetime used: {{ item.lifetime_used }}</p>
+                            <p class="card-text"> Lifetime Max: {{ item.max_lifetime }}</p>
+                            <p class="card-text"> Date manufactured: {{ item.mfg_date }}</p>
+                            <p class="card-text"> Last Serviced: {{ item.last_cleaned }}</p>
+                            <a href="#" class="btn btn-primary">See Details</a>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            {% endfor %}
         </div>
-        <br>
     {% endfor %}
+
+
+    {#    {% for thing in things %}#}
+    {#        <div class="card" style="width: 22rem;">#}
+    {#            <div class="row align-items-stretch justify-content-start card-deck">#}
+    {#                <img src="https://i.imgur.com/SAnmzn0.png" class="card-img-top" alt="...">#}
+    {#                <div class="card-body">#}
+    {#                    <h5 class="card-title"> Device Name: {{ thing.name }}</h5>#}
+    {#                    <p class="card-text"> Lifetime used: {{ thing.lifetime_used }}</p>#}
+    {#                    <p class="card-text"> Lifetime Max: {{ thing.max_lifetime }}</p>#}
+    {#                    <p class="card-text"> Date manufactured: {{ thing.mfg_date }}</p>#}
+    {#                    <p class="card-text"> Last Serviced: {{ thing.last_cleaned }}</p>#}
+    {#                    <a href="#" class="btn btn-primary">See Details</a>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#        <br>#}
+    {##}
+    {##}
+    {#        <div class="col-sm-4 ">z#}
+    {#            <div class="card-columns-fluid">#}
+    {#                <div class="card  bg-light" style="width: 22rem; ">#}
+    {#                    <img src="https://i.imgur.com/SAnmzn0.png" class="card-img-top" alt="...">#}
+    {#                    <div class="card-body">#}
+    {#                        <h5 class="card-title"> Device Name: {{ thing.name }}</h5>#}
+    {#                        <p class="card-text"> Lifetime used: {{ thing.lifetime_used }}</p>#}
+    {#                        <p class="card-text"> Lifetime Max: {{ thing.max_lifetime }}</p>#}
+    {#                        <p class="card-text"> Date manufactured: {{ thing.mfg_date }}</p>#}
+    {#                        <p class="card-text"> Last Serviced: {{ thing.last_cleaned }}</p>#}
+    {#                        <a href="#" class="btn btn-primary">See Details</a>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    {% endfor %}#}
 {% endblock content %}
+
