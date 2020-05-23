@@ -3,8 +3,10 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 class Things(models.Model):
-    name = models.CharField(max_length=150)
+    description = models.CharField(max_length=150,default='my coffee machine')
+    device_type = models.CharField(max_length=40,default='coffee machine')
     installed_home_id = models.IntegerField()
+    image_path = models.CharField(max_length=100,default='coffee machine image path')
     #installed_home_id = models.ForeignKey(Home, on_delete=models.CASCADE)
     manufacturer_id = models.CharField(max_length=50)
     manufacturing_date = models.DateField()
@@ -22,6 +24,9 @@ class Things(models.Model):
     value_stream_id =  models.IntegerField()
     # TODO use Point field data type from GeoDjango
     location = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.description
 
 
 # power_rating varchar
