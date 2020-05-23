@@ -7,7 +7,7 @@ things = [
         'lifetime_used': 152,
         'mfg_date': '04/12/2018',
         'last_cleaned': '04/05/2020',
-        'max_lifetime': 1555
+        'max_lifetime': 4999
     },
     {
         'name': 'Vacuum Cleaner',
@@ -88,7 +88,7 @@ def info(request):
         'things': things,
         'title': 'My Devices'
     }
-    return render(request, 'dashboard/home.html', context)
+    return render(request, 'dashboard/deviceCard.html', context)
 
 
 def not_found(request):

@@ -22,7 +22,6 @@ Table homes as H{
 
 
 Table things as T{
-
   id long [pk]
   name varchar
   manufacturer_id varchar [ref:> M.id]
@@ -38,6 +37,7 @@ Table things as T{
   geo_location location
   value_stream_id long [unique, ref: - VS.id]
   installed_home int [ref: > H.id]
+
 
 }
 
