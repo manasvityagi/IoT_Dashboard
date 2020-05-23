@@ -38,14 +38,12 @@ Table things as T{
   value_stream_id long [unique, ref: - VS.id]
   installed_home int [ref: > H.id]
 
-
 }
 
 
 Table manufacturer as M {
   id long [pk]
   name varchar
-  country_code varchar
   address_id int [ref: - A.id]
   lead_time varchar
 }
@@ -67,7 +65,9 @@ Table value_stream as VS{
   vs_description varchar
   property_name numeric
   property_description varchar
+  value numeric
   ts datetime
+  quality varchar
 
 }
 

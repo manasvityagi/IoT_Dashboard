@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import Things
 
 things = [
     {
@@ -88,6 +89,7 @@ def info(request):
         'things': things,
         'title': 'My Devices'
     }
+    t1 = Things(description="Coffee Machine in Kitchen", )
     return render(request, 'dashboard/deviceCard.html', context)
 
 
