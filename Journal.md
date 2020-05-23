@@ -16,7 +16,10 @@ Before starting I felt the need of frontend devlopment knowledge,
      
      
 ===
-
+23/05
+Before Login and Logout feature I am working on Bootstrap. Tried Bootstrap studio, I feel it is 
+not that great, so plaincss file editing is better. Used some examples from Bootstrap site.
+I also wantend to make a grid of cards. Which is what I am working on at the moment.
 -[ ] Make Login/Logout Feature
 
      Started at : 20/05/2020 10:29 PM
