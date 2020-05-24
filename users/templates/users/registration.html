@@ -1,0 +1,31 @@
+{% extends "dashboard/base.html" %}
+{% block content %}
+    <br><br><br><br>
+
+        <div class="col-md-6">
+            <div class="card  bg-light" style="width: 50rem; border-radius: 15px">
+                <center><h1>Register yourself</h1></center>
+                <div class="content-section">
+                    <form method="post">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="fieldBox mb-4"></legend>
+                            {{ form.as_p }}
+                        </fieldset>
+                        <div class="form-group">
+                            <center>
+                                <button class="btn btn-outline-info" type="submit">Register</button>
+                            </center>
+                        </div>
+                    </form>
+                    <center>
+                        <div class="border-top pt-3">
+                            Registered Already? Great, head up this way <a class="ml-2" href="#">Login</a>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock content %}

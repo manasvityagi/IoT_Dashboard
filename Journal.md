@@ -18,8 +18,16 @@ Before starting I felt the need of frontend devlopment knowledge,
 ===
 23/05
 Before Login and Logout feature I am working on Bootstrap. Tried Bootstrap studio, I feel it is 
-not that great, so plaincss file editing is better. Used some examples from Bootstrap site.
+not that great, so plain css file editing is better. Used some examples from Bootstrap site.
 I also wantend to make a grid of cards. Which is what I am working on at the moment.
+
+24/05 OK, so I need to make signup view/functionality before,  login or logout.
+Problem 1: Somehow, I am able to register the same user twice, even though I have put registration_form.is_valid() condition
+Problem 2: When I try to debug (For problem 1), I am getting following error 
+(apparantly, I can't put image in markdown, can link to local filesystem, but on github, that would be a problem)
+Error Message"django.core.exceptions.ImproperlyConfigured: Requested setting INSTALLED_APPS, but settings are not configured"
+
+
 -[ ] Make Login/Logout Feature
 
      Started at : 20/05/2020 10:29 PM
