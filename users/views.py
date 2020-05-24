@@ -11,6 +11,7 @@ def registration(request):
         registration_form = UserCreationForm(request.POST)
         if registration_form.is_valid():
             print('And its a valid one')
+            registration_form.save()
             username = registration_form.cleaned_data.get('username')
             messages.success(request, 'Congratulations! User Registered')
             return redirect('dashboard-info')
