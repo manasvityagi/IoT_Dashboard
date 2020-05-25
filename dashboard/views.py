@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
+from .models import Things
 from IoT_Dashboard import settings
 from .models import Things
 
@@ -86,11 +86,11 @@ things = [
 
 
 # Create your views here.
-def info(request):
+def home_view(request):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGOUT_REDIRECT_URL, request.path))
     context = {
-        'things': things,
+        'things': Things.objects.all(),
         'title': 'My Devices'
     }
     t1 = Things(description="Coffee Machine in Kitchen", )

@@ -56,15 +56,22 @@ professional version of Pycharm, but turns out most of the features that I use a
 
 
 
--[ ] Make Login/Logout Feature
+-[x] Make Login/Logout Feature
+
 
      Started at : 20/05/2020 10:29 PM
      Estimated Time: 90
-     Finished at: 
-     Remarks: 
+     Finished at: 26/05/2020
+     Remarks: Took way too long, not because it was difficult, but because, I did not planned in between steps. Plus
+     I was too slow.
+    
           
 ===
-
+     Inconvenience: The background page some times loads, and doesnt the other times. I guess it may be because the
+     source file is being protected from being used as CDN.
+     Tried to host the image on Google Drive, and then use it as CDN, but did not worked. Plus I am not too happy about the choice of image as well.
+     Currenlty Imgur is working fine, but I need to use S3 at later point.
+     Also, Must remember to attribute the photgrapher of the image [Photo by NeONBRAND on Unsplash]
 -[ ] Make models in Django
 
      
