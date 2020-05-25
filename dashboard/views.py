@@ -97,8 +97,8 @@ def info(request):
     return render(request, 'dashboard/deviceCard.html', context)
 
 
-def add_thing(request):
-
+# def add_thing(request):
+#
 
 
 def not_found(request):
