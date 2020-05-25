@@ -25,3 +25,7 @@ def registration(request):
     }
 
     return render(request,'users/registration.html', context)
+
+
+def logout(request):
+    logout(request)
