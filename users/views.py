@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages # for flash messages
-from django.contrib.auth.forms import UserCreationForm
+from .myform import CustomRegistrationForm
 
 
 # Create your views here.
@@ -8,7 +8,7 @@ def registration(request):
 
     if(request.method == 'POST'):
         print('Its a post')
-        registration_form = UserCreationForm(request.POST)
+        registration_form = CustomRegistrationForm(request.POST)
         if registration_form.is_valid():
             print('And its a valid one')
             registration_form.save()
@@ -16,7 +16,7 @@ def registration(request):
             messages.success(request, 'Congratulations! User Registered')
             return redirect('dashboard-info')
     else:
-        registration_form = UserCreationForm()
+        registration_form = CustomRegistrationForm()
 
 
     context = {

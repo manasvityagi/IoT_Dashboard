@@ -36,11 +36,25 @@ Requested setting INSTALLED_APPS, but settings are not configured"
 Solution to Problem 2: I had selected a particular view, for debugging, which does not runs the 'manage.py', which is responsible
 for configuring the setting, particularly this extended line in the error message
 
+Solution to Problem 1: I assumed that is_valid function will check for validity. It does, but not if you have have already saved the form.
+I missed the .form_save() fx and hence I was able to 'register' with same username twice. 
 ```
 '*You must either define the environment variable DJANGO_SETTINGS_MODULE...*
 ```
 
 manage.py sets this env var.
+
+
+problem 3 and its solution: In case, a custom registration form is required. We need to override the default
+contrib form. I assumed that, the name that appears in the form has to given in meta class.
+The reality is, that Django makes up the word itself. For example house_id will show up as House id.
+Problem 4: I overloaded a function, instead of a class when I wanted to make a  custome form. That was silly.
+
+Spend too much time, theming the IDE. Plus considered about switching to VS Code, in case I get used to
+professional version of Pycharm, but turns out most of the features that I use are in community version as well.
+
+
+
 
 -[ ] Make Login/Logout Feature
 

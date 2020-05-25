@@ -28,6 +28,7 @@ class Things(models.Model):
     # TODO use Point field data type from GeoDjango
     location = models.CharField(max_length=50)
 
+
     def __str__(self):
         return self.description
 
