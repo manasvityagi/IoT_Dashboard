@@ -124,7 +124,7 @@ STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'dashboard-info'
+LOGIN_REDIRECT_URL = 'dashboard-home'
 
 LOGIN_URL = 'login'
 
