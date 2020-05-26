@@ -105,6 +105,9 @@ def add_device(request):
     new_device.save()
 
 
+def about(request):
+    return render(request, 'dashboard/about.html')
+
 
 def not_found(request):
     return HttpResponse("<h1>No Such Path! Lost ?</h1>")

@@ -109,6 +109,8 @@ I opened the file in notepad and save as, and then chose utf-8 encoding, and it 
 discord useful, because, I initially put the value of secret key in quotes, 
 but something made me recall the conversation on discord regarding AWS key, so I avoided that mistake.
      
+Moved away from is_authenticated and then redirect, to decorators, since they are more concise, and easy to understand (not the actual mechanism of decorators,
+which seems a bit of mystery). But it the disadvantage is that the redirect URL is not visible in the same file.
      
      Estimated Time:
      Finished at:
