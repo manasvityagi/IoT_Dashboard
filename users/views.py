@@ -4,11 +4,13 @@ from .myform import CustomRegistrationForm
 import sendgrid
 import os
 from sendgrid.helpers.mail import *
+from decouple import config
 
 
 # Create your views here.
 def send_email(email_add):
-    sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
+    sg = sendgrid.SendGridAPIClient(config('SENDGRID_API_KEY'))
+    #sg = sendgrid.SendGridAPIClient('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')
     from_email = Email("manas@thingsboard.com")
     to_email = To(email_add)
     subject = "Your are registered!"
@@ -21,7 +23,7 @@ def send_email(email_add):
 
 
 def registration(request):
-    print(os.environ.get('SENDGRID_API_KEY'))
+
     if(request.method == 'POST'):
         print('Its a post')
         registration_form = CustomRegistrationForm(request.POST)

@@ -19,7 +19,7 @@ Emphasis 23/05
 
 Before Login and Logout feature I am working on Bootstrap. Tried Bootstrap studio, I feel it is 
 not that great, so plain css file editing is better. Used some examples from Bootstrap site.
-I also wantend to make a grid of cards. Which is what I am working on at the moment.
+I also wanted to make a grid of cards. Which is what I am working on at the moment.
 
 24/05 OK, so I need to make signup view/functionality before,  login or logout.
 
@@ -81,6 +81,34 @@ professional version of Pycharm, but turns out most of the features that I use a
      
      Also, I think in order to use celery, and sendgrid. I need to reopen user registration feature.
      So I am working on that now. Removed from done to in progress.
+     
+     Send grid is working, but I am not sure how to set the env variables for the secret key, in such a way, that it works
+     on heroku as well. I can set the envvars in .bashrc file and run the file before the project starts. But, when I will
+     push the code to github, that file should NOT be included. Hence I updated the .gitignore. Trying to make it work.
+     There must be a way.
+     
+     
+     Problem 5: Tried to solve the above problem by using pyhton decouple, as soon as I get the variable, set by .env file
+     using config('SECRET_KEY') I get an exception
+     
+      print(config('SENDGRID_API_KEY'))
+      
+        File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\decouple.py", line 124, in __init__
+    for line in file_:
+    
+  File "C:\Python38\lib\codecs.py", line 322, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+
+Solution to Problem 5: It was encoded as utf-16, changed it to utf-8.
+OK, so this was something, I never noticed, i.e. the encoding of the file(it matters!).
+I did not paid any special attention to the encoding when I created the .env file, it was in utf-16(?) format.
+I referred stackoverflow, infact the error itself says that. "utf-8' codec can't decode ". 
+I opened the file in notepad and save as, and then chose utf-8 encoding, and it worked! Also, here I found the discussion on
+discord useful, because, I initially put the value of secret key in quotes, 
+but something made me recall the conversation on discord regarding AWS key, so I avoided that mistake.
+     
+     
      Estimated Time:
      Finished at:
      Remarks:

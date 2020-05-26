@@ -1,3 +1,4 @@
+from decouple import config
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Things
@@ -87,7 +88,8 @@ things = [
 
 # Create your views here.
 def home_view(request):
-
+    SECRET_KEY = config('SENDGRID_API_KEY')
+    print(SECRET_KEY)
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGOUT_REDIRECT_URL, request.path))
     context = {
