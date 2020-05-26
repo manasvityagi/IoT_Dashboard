@@ -87,6 +87,7 @@ things = [
 
 # Create your views here.
 def home_view(request):
+
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGOUT_REDIRECT_URL, request.path))
     context = {
@@ -97,8 +98,10 @@ def home_view(request):
     return render(request, 'dashboard/deviceCard.html', context)
 
 
-# def add_thing(request):
-#
+def add_device(request):
+    new_device =  Things(request.POST)
+    new_device.save()
+
 
 
 def not_found(request):

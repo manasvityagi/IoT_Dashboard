@@ -1,8 +1,6 @@
 ##DEV JOURNAL
 
 
-
-
 Before starting I felt the need of frontend developement knowledge,
  Hence did majority of chapters of freecodecamp's frontend development stream
 
@@ -72,42 +70,20 @@ professional version of Pycharm, but turns out most of the features that I use a
      Tried to host the image on Google Drive, and then use it as CDN, but did not worked. Plus I am not too happy about the choice of image as well.
      Currenlty Imgur is working fine, but I need to use S3 at later point.
      Also, Must remember to attribute the photgrapher of the image [Photo by NeONBRAND on Unsplash]
--[ ] Make models in Django
+
+-[ ] Add Device Page
 
      
-     Started at : 
-     Estimated Time: 20 mins
-     Finished at:
-     Remarks:
-
--[ ] Make UI Wire-frame /  Sketch
-
+     Started at : 2:15 PM
+     Want to first format the date in DD MM YYY on the device card page.
+     Looked up document at https://docs.djangoproject.com/en/3.0/ref/templates/builtins/#date
+     and the the format in the tenplate |"d M, Y" Does not seems to work. It works now, was a typo.
      
-     Started at : 
+     Also, I think in order to use celery, and sendgrid. I need to reopen user registration feature.
+     So I am working on that now. Removed from done to in progress.
      Estimated Time:
      Finished at:
      Remarks:
-
--[ ] Make Templates
-
-    
-     Started at : 
-     Estimated Time:
-     Finished at:
-     Remarks:
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <br>
