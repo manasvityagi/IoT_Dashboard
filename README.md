@@ -1,6 +1,6 @@
 IoT Dashboard for devices in a Premises  :
 ----------------------------------------------------
-###Problem It Solves
+### Problem It Solves
 Offers single point of management of 'on premise' smart devices.
 
 ##### A User can logon to his home's dashboard and see useful info about smart devices installed on premise.
@@ -52,19 +52,21 @@ Following Devices are supported
     - Time to change dust bag
 
 
-###Entity Relationship diagram
+## Entity Relationship diagram
 
 <img src="https://i.imgur.com/205T6KZ.png">
 <br>
 
-###Note
+## Note
+
  Since most smart devices, like Smart bulb, Energy Meter have different
 protocols and message structure. In Real market, we need smart hub like 
 alexa or google home (or even better) common agreed standards to access the
  requisite data for this application. In this application W have assumed 
  a convenient format for the information interchange.
 
-###How server side rendering(SSR) works?
+## How server side rendering(SSR) works?
+
 In this architecture, the Markup or the template, along with dynamic functionalities are constructed by the server.
 Post construction the document is sent to the client in its entirety. While the opposite is client side rendering(CSR), In which
 the page or a document is constructed by the client with the help of some scripting mechanism, for example Javscript famework 
