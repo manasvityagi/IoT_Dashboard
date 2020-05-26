@@ -49,7 +49,8 @@ The reality is, that Django makes up the word itself. For example house_id will 
 Problem 4: I overloaded a function, instead of a class when I wanted to make a  custome form. That was silly.
 
 Spend too much time, theming the IDE. Plus considered about switching to VS Code, in case I get used to
-professional version of Pycharm, but turns out most of the features that I use are in community version as well.
+professional version of Pycharm, but turns out most of the features that I use are in community version as well. 
+In reality, I am investing on learning the shortcuts, which are available in the community version as well.
 
 
 
@@ -103,7 +104,7 @@ UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid 
 Solution to Problem 5: It was encoded as utf-16, changed it to utf-8.
 OK, so this was something, I never noticed, i.e. the encoding of the file(it matters!).
 I did not paid any special attention to the encoding when I created the .env file, it was in utf-16(?) format.
-I referred stackoverflow, infact the error itself says that. "utf-8' codec can't decode ". 
+I referred stackoverflow, infact the error ITSELF says that. "utf-8' codec can't decode ". 
 I opened the file in notepad and save as, and then chose utf-8 encoding, and it worked! Also, here I found the discussion on
 discord useful, because, I initially put the value of secret key in quotes, 
 but something made me recall the conversation on discord regarding AWS key, so I avoided that mistake.

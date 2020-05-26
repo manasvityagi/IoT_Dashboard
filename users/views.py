@@ -1,25 +1,12 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages # for flash messages
+
+from .async_tasks import send_email
 from .myform import CustomRegistrationForm
-import sendgrid
-import os
-from sendgrid.helpers.mail import *
-from decouple import config
 
 
-# Create your views here.
-def send_email(email_add):
-    sg = sendgrid.SendGridAPIClient(config('SENDGRID_API_KEY'))
-    #sg = sendgrid.SendGridAPIClient('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')
-    from_email = Email("manas@thingsboard.com")
-    to_email = To(email_add)
-    subject = "Your are registered!"
-    content = Content("text/plain", "You are onboarded, Now login and enjoy a simpler life!")
-    mail = Mail(from_email, to_email, subject, content)
-    response = sg.client.mail.send.post(request_body=mail.get())
-    print(response.status_code)
-    print(response.body)
-    print(response.headers)
+
 
 
 def registration(request):
@@ -33,7 +20,7 @@ def registration(request):
             username = registration_form.cleaned_data.get('username')
             messages.success(request, f'You are officially registered, {username}!')
             send_email(registration_form.cleaned_data.get('email'))
-            return redirect('dashboard-info')
+            return redirect('dashboard-home')
     else:
         registration_form = CustomRegistrationForm()
 
@@ -46,5 +33,6 @@ def registration(request):
     return render(request,'users/registration.html', context)
 
 
-def logout(request):
-    logout(request)
+def profile(request):
+
+    return render(request, 'users/profile.html')

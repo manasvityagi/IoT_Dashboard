@@ -1,8 +1,7 @@
 from decouple import config
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .models import Things
-from IoT_Dashboard import settings
 from .models import Things
 
 things = [
@@ -86,18 +85,19 @@ things = [
 ]
 
 
-# Create your views here.
+@login_required
 def home_view(request):
-    SECRET_KEY = config('SENDGRID_API_KEY')
-    print(SECRET_KEY)
-    if not request.user.is_authenticated:
-        return redirect('%s?next=%s' % (settings.LOGOUT_REDIRECT_URL, request.path))
+
+    # if not request.user.is_authenticated:
+    #     return redirect('%s?next=%s' % (settings.LOGOUT_REDIRECT_URL, request.path))
+
     context = {
         'things': Things.objects.all(),
         'title': 'My Devices'
     }
     t1 = Things(description="Coffee Machine in Kitchen", )
     return render(request, 'dashboard/deviceCard.html', context)
+
 
 
 def add_device(request):

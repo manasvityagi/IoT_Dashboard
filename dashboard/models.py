@@ -19,6 +19,7 @@ class Things(models.Model):
     # in hours
     life_expectancy = models.IntegerField()
     life_used = models.IntegerField()
+
     # watt hour
     power_rating = models.IntegerField()
     alertable = models.BooleanField()
