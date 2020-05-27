@@ -8,7 +8,7 @@ class Things(models.Model):
     description = models.CharField(max_length=150,default='my coffee machine')
     device_type = models.CharField(max_length=40,default='coffee machine')
     installed_home_id = models.IntegerField()
-    owner =  models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     image_path = models.ImageField()
     #installed_home_id = models.ForeignKey(Home, on_delete=models.CASCADE)
     manufacturer_id = models.CharField(max_length=50)
@@ -19,7 +19,6 @@ class Things(models.Model):
     # in hours
     life_expectancy = models.IntegerField()
     life_used = models.IntegerField()
-
     # watt hour
     power_rating = models.IntegerField()
     alertable = models.BooleanField()
@@ -70,7 +69,7 @@ class address(models.Model):
     street = models.CharField(max_length=150,default='3]]8 Whitney Street')
     zip = models.CharField(max_length=10,default='06001')
     country_code =  models.CharField(max_length=10,default='64')
-    location = models.CharField(max_length=50,default='(-36.9040558,174.7046399)')
+    location = models.CharField(max_length=50, default='(-36.9040558,174.7046399)')
 
     def __str__(self):
         return self.description

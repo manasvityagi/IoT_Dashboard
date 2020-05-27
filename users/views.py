@@ -35,6 +35,6 @@ def registration(request):
 
 
 @login_required
-def profile(request):
+def owner_profile(request):
 
     return render(request, 'users/profile.html')

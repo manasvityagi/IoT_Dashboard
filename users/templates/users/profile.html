@@ -2,9 +2,15 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <br><br><br><br>
-    <div class="col-md-4">
+    <div class="content-section">
         <div class="card  bg-light" style="width: 45rem; border-radius: 15px">
-            <h1>Name: {{ user.username }}</h1>
+            <div class="media">
+                <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+                <div class="media-body">
+                    <h2 class="media-body">{{ user.username }}</h2>
+                    <p class="text-secondary">{{ user.email}} </p>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock content %}
