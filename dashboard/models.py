@@ -9,7 +9,7 @@ class Things(models.Model):
     device_type = models.CharField(max_length=40,default='coffee machine')
     installed_home_id = models.IntegerField()
     owner =  models.ForeignKey(User, on_delete=models.CASCADE)
-    image_path = models.CharField(max_length=100,default='coffee machine image path')
+    image_path = models.ImageField()
     #installed_home_id = models.ForeignKey(Home, on_delete=models.CASCADE)
     manufacturer_id = models.CharField(max_length=50)
     manufacturing_date = models.DateField()

@@ -2,6 +2,8 @@ from decouple import config
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+
+from .forms import add_device_form
 from .models import Things
 
 things = [
@@ -101,8 +103,22 @@ def home_view(request):
 
 
 def add_device(request):
-    new_device =  Things(request.POST)
-    new_device.save()
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = add_device_form(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponse('Congrats, Your new device is ready!')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = add_device_form()
+
+    return render(request, 'dashboard/addDevice.html', {'form': form})
 
 
 def about(request):

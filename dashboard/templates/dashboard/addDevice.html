@@ -1,31 +1,22 @@
 {% extends "dashboard/base.html" %}
 {% block content %}
     <br><br><br><br>
-    {% for thing in things %}
-        {% if forloop.first %}
-            <div class="row">
-        {% endif %}
+
     <div class="col-md-4">
         <div class="card  bg-light" style="width: 18rem; border-radius: 25px">
-           <center> <img src="https://i.imgur.com/SAnmzn0.png"  class="card-img-top" alt="..." style="height: 66%; width: 66%;"></center>
-            <div class="card-body">
-                <h5 class="card-title"> Device : {{ thing.device_type }}</h5>
-                <p class="card-text"> Description: {{ thing.description }}</p>
-                <p class="card-text"> Max Life: {{ thing.life_expectancy }}</p>
-                <p class="card-text"> Used: {{ thing.life_used }}</p>
-                <p class="card-text"> Date manufactured: {{ thing.manufacturing_date|date:"d M, Y" }}</p>
 
-                <a href="#" class="btn btn-primary" >See Details</a>
-            </div>
+            <form action="/your-name/" method="post">
+                <label for="device_type">Device Type: </label>
+                <input id="device_type" type="text" name="device_type" value="{{ current_name }}">
+                <input type="submit" value="OK">
+            </form>
+
         </div>
     </div>
-    {% if forloop.counter|divisibleby:3 %}</div>
-        <br>
-        <div class="row">
-    {% endif %}
-    {% if forloop.last %}</div>{% endif %}
 
-    {% endfor %}
+    <br>
+    <div class="row">
+
 
 {% endblock content %}
 
