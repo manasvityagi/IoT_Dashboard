@@ -12,9 +12,9 @@ Before starting I felt the need of frontend development knowledge,
      Remarks: Took way too long. And it still may need modification
      as I move along
 
+​    
 
-=====
-Emphasis 23/05
+**23/05**
 
 Before Login and Logout feature I am working on Bootstrap. Tried Bootstrap studio, I feel it is 
 not that great, so plain CSS file editing is better. Used some examples from Bootstrap site.
@@ -127,7 +127,7 @@ Problem 6: Forgot to add form.save() after validation. Hence could not locate th
 
      Started at : 18:59
      Estimated Time: 30 mins
-     Finished at:
+     Finished at: 21:24 PM
      Remarks: Also, migrate the data using dumpdata command
 
 <br>
@@ -177,11 +177,50 @@ class Address(models.Model):
 
 Not sure If this is right thing to do. Most probably not, because, I am not aware about the side effects.
 
+use  python manage.py migrate --run-syncdb to check the connection is fine
+
+Error
+
+```
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+```
+
+Solution
+
+```
+pip install psycopg2
+```
+
+Another issue, 
+
+```
+TypeError: Field 'id' expected a number but got <Address: 38 Windsor>.
+```
+
+Solution: deleted all the migrations, took a backup, of course, and ran migrations again. done. Now I am running on postgres .
+
+Well, I forgot to migrate the actual data, so the job is not done.
 
 
 
+UTF-8 Error again-changed to UTF-8, as earlier.
 
+loadata json command **error**:
 
+```
+django.db.utils.IntegrityError: Problem installing fixture 'W:\workspace\WebDev_DS\django\IoT_Dashboard\db.json': Could not load contenttypes.ContentType(pk=1): duplicate key value violates unique constraint "django_content_
+type_app_label_model_76bd3d3b_uniq"
+DETAIL:  Key (app_label, model)=(admin, logentry) already exists.
+```
+
+**solution**: use python manage.py shell
+
+```
+ >>>from django.contrib.contenttypes.models import ContentType
+ >>>ContentType.objects.all().delete()
+```
+
+ITS DONE!
 
 ------
 
@@ -197,7 +236,9 @@ Not sure If this is right thing to do. Most probably not, because, I am not awar
      Finished at:
      Remarks:
 
-=========
+------
+
+
 Create User -> Using Registration Forms
 
 Create Manufacturer -> Only Admin Can Do this
