@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 
-
 from celery import Celery
 
 # set the default Django settings module for the 'celery' program.
@@ -10,6 +9,7 @@ from decouple import config
 from sendgrid import *
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
+
 #
 # app = Celery('proj')
 #
@@ -35,6 +35,8 @@ def send_email(email_add):
     print(response.status_code)
     print(response.body)
     print(response.headers)
+
+
 
 #
 # @app.task(bind=True)

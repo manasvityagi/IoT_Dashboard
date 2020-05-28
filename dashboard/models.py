@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.deconstruct import deconstructible
 
@@ -14,13 +15,34 @@ class Address(models.Model):
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=150, default='generic manufacturer')
-    address = models.ForeignKey(Address, on_delete=models.DO_NOTHING)
+    # One Manufacturer can have one address, and one address can have only one manufacturer
+    address = models.OneToOneField(Address, on_delete=models.SET_DEFAULT)
+    is_certified = models.BooleanField
+    phone_number = models.CharField(max_length=14, default='0000')
+
+    def __str__(self):
+        return str(self.name)
+
+
+# You can only create a Thing from DevicesAvailable
+class DeviceModels(models.Model):
+    name = models.CharField(max_length=50, default='generic device')
+    max_life = models.PositiveIntegerField()
+    warranty_days = models.PositiveIntegerField()
+    image = models.ImageField()
+    energy_rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    safety_rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    current_consumption = models.IntegerField()
+    mfg = models.ForeignKey(Manufacturer, on_delete=models.DO_NOTHING)
+    model_number = models.CharField(max_length=50)
+    serial_number = models.CharField(max_length=50)
 
     def __str__(self):
         return str(self.name)
 
 
 class Home(models.Model):
+    # many to one relationship, since many houses can belong to a single owner
     owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     address = models.ForeignKey(Address, on_delete=models.CASCADE, default=Address())
 
@@ -28,37 +50,12 @@ class Home(models.Model):
         return str(self.owner)
 
 
-class Things(models.Model):
-    description = models.CharField(max_length=150, default='my coffee machine')
-    device_type = models.CharField(max_length=40, default='coffee machine')
-    installed_home_id = models.IntegerField()
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField()
-    # installed_home_id = models.ForeignKey(Home, on_delete=models.CASCADE)
-    mfg = models.ForeignKey(Manufacturer, on_delete=models.DO_NOTHING, null=True)
-    # manufacturer_id = models.CharField(max_length=50)
-    manufacturing_date = models.DateField()
-    expiry_date = models.DateField()
-    model_number = models.CharField(max_length=50)
-    serial_number = models.CharField(max_length=50)
-    # in hours
-    life_expectancy = models.IntegerField()
-    life_used = models.IntegerField()
-    # watt hour
-    power_rating = models.IntegerField()
-    alertable = models.BooleanField()
-    trend_applicable = models.BooleanField()
-    value_stream_id = models.IntegerField()
-    # TODO use Point field data type from GeoDjango
-    # for more accurate or acceptable solution for geographic data type
-    location = models.CharField(max_length=50)
-
-    def __str__(self):
-        return str(self.description)
-
-
-class DeviceTypes(models.Model):
-    name = models.CharField(max_length=50, default='generic device')
+class ServiceProvider(models.Model):
+    name = models.CharField(max_length=150, default='generic manufacturer')
+    # One Manufacturer can have one address, and one address can have only one manufacturer
+    address = models.OneToOneField(Address, on_delete=models.SET_DEFAULT)
+    phone_number = models.CharField(max_length=14, default='0000')
+    type_of_device_handled = models.ManyToManyField(DeviceModels)
 
     def __str__(self):
         return str(self.name)
@@ -70,17 +67,45 @@ class ValueStream(models.Model):
     property_name = models.CharField(max_length=150, default='property name')
     value = models.FloatField(default=0.0)
     ts = models.DateTimeField()
-    quality = models.CharField(max_length=10, default='GOOD')
+
+
+class Thing(models.Model):
+    description = models.CharField(max_length=150, default='my smart coffee machine')
+    # Many to one, because, many devices can have one model type
+    device_model_info = models.ForeignKey(DeviceModels, on_delete=models.DO_NOTHING)
+    # many to one relationship, since many houses can belong to a single owner
+    # on deletion of the Home, Thing should be destroyed
+    installed_home_id = models.ManyToManyField(Home, on_delete=models.CASCADE)
+    purchase_date = models.DateField()
+    # in hours
+    life_used = models.IntegerField()
+    # one value stream id will contain same device's data
+    value_stream_id = models.ManyToManyField(ValueStream, on_delete=models.DO_NOTHING)
+
+    # TODO use Point field data type from GeoDjango
 
     def __str__(self):
         return str(self.description)
+
+
+class ServiceDetails(models.Model):
+    thing = models.OneToOneField(Thing, on_delete=models.CASCADE)
+    owner_email = models.EmailField()
+    service
+
+
+# when a new device is added, email is sent to all subscriber's
+class SubscribersList(models.Model):
+    name = models.CharField(max_length=150, default='my coffee machine')
+    email = models.EmailField()
+
+    def __str__(self):
+        return str(self.name + " " + self.email)
 
 # t1 = Things(description = "Kitchen Coffee Machine", device_type="coffee_machine", installed_home_id=1, image_path="",manufacturer_id=2,manufacturing_date=date.today(),
 #             life_used=56,life_expectancy=850,power_rating=500,trend_applicable=True,value_stream_id=2,expiry_date=date.today(), alertable=True)
 # t2 = Things(description = "Kitchen Coffee Machine", device_type="coffee_machine", installed_home_id=1, image_path="",manufacturer_id=2,manufacturing_date=date.today(),
 #             life_used=56,life_expectancy=850,power_rating=500,trend_applicable=True,value_stream_id=2,expiry_date=date.today(), alertable=True)
-
-
 # t3 = Things(description = "Dads Road Bike", device_type="bike", installed_home_id=2, image_path="",manufacturer_id=3,manufacturing_date=date.today(),
 #             life_used=5,life_expectancy=4500,power_rating=0,trend_applicable=True,value_stream_id=2,expiry_date=date.today(), alertable=True)
 

@@ -91,10 +91,6 @@ things = [
 @login_required
 def home_view(request):
 
-    # if not request.user.is_authenticated:
-    #     return redirect('%s?next=%s' % (settings.LOGOUT_REDIRECT_URL, request.path))
-    send_email('manasvi.tyagi@gmail.com')
-    print('Done!')
     context = {
         'things': Things.objects.all(),
         'title': 'My Devices'
