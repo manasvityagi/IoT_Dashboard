@@ -224,7 +224,21 @@ ITS DONE!
 
 ------
 
+## 
 
+-[ ] Remodeling
+
+
+     Started at : 2 a hours
+     Estimated Time: 6 hours
+     Finished at:
+     Remarks:
+
+wanted to create a shortcut for git add ., commit and push, like in class. But found a npm package git-upload, npm install git-update.
+
+Usage: gitu COMMIT MSG
+
+Create User -> Using Registration Forms
 
 ## Journal entry  template
 
