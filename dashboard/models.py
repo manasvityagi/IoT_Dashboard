@@ -1,10 +1,12 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.deconstruct import deconstructible
 
 
+@deconstructible
 class Address(models.Model):
-    street = models.CharField(max_length=150, default='38 Whitney Street')
-    zip = models.CharField(max_length=10, default='06001')
+    street = models.CharField(max_length=150, default="38 Windsor")
+    zip = models.CharField(max_length=10, default="06001")
 
     def __str__(self):
         return str(self.street)
@@ -12,18 +14,18 @@ class Address(models.Model):
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=150, default='generic manufacturer')
-    address = models.ForeignKey(Address, on_delete=models.CASCADE)
+    address = models.ForeignKey(Address, on_delete=models.DO_NOTHING)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Home(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     address = models.ForeignKey(Address, on_delete=models.CASCADE, default=Address())
 
     def __str__(self):
-        return self.name
+        return str(self.owner)
 
 
 class Things(models.Model):
@@ -33,8 +35,7 @@ class Things(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField()
     # installed_home_id = models.ForeignKey(Home, on_delete=models.CASCADE)
-    mfg = models.ForeignKey(Manufacturer, on_delete=models.DO_NOTHING,
-                            default=Manufacturer("Generic Manufacturer", Address()))
+    mfg = models.ForeignKey(Manufacturer, on_delete=models.DO_NOTHING, null=True)
     # manufacturer_id = models.CharField(max_length=50)
     manufacturing_date = models.DateField()
     expiry_date = models.DateField()
@@ -53,14 +54,14 @@ class Things(models.Model):
     location = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.description
+        return str(self.description)
 
 
 class DeviceTypes(models.Model):
     name = models.CharField(max_length=50, default='generic device')
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 # a time series database model
@@ -72,7 +73,7 @@ class ValueStream(models.Model):
     quality = models.CharField(max_length=10, default='GOOD')
 
     def __str__(self):
-        return self.description
+        return str(self.description)
 
 # t1 = Things(description = "Kitchen Coffee Machine", device_type="coffee_machine", installed_home_id=1, image_path="",manufacturer_id=2,manufacturing_date=date.today(),
 #             life_used=56,life_expectancy=850,power_rating=500,trend_applicable=True,value_stream_id=2,expiry_date=date.today(), alertable=True)
