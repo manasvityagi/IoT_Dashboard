@@ -1,7 +1,7 @@
 {% extends "dashboard/base.html" %}
 {% block content %}
     <br><br><br><br>
-    {% for thing in things %}
+    {% for thing in things %}g
         {% if forloop.first %}
             <div class="row">
         {% endif %}
@@ -9,11 +9,11 @@
         <div class="card  bg-light" style="width: 18rem; border-radius: 25px">
            <center> <img src="https://i.imgur.com/SAnmzn0.png"  class="card-img-top" alt="..." style="height: 66%; width: 66%;"></center>
             <div class="card-body">
-                <h5 class="card-title"> Device : {{ thing.device_type }}</h5>
+                <h5 class="card-title"> Device : {{ thing.device_model_info.name }}</h5>
                 <p class="card-text"> Description: {{ thing.description }}</p>
-                <p class="card-text"> Max Life: {{ thing.life_expectancy }}</p>
+                <p class="card-text"> Max Life: {{ thing.device_model_info.max_life }}</p>
                 <p class="card-text"> Used: {{ thing.life_used }}</p>
-                <p class="card-text"> Date manufactured: {{ thing.manufacturing_date|date:"d M, Y" }}</p>
+                <p class="card-text"> Date manufactured: {{ thing.purchase_date|date:"d M, Y" }}</p>
 
                 <a href="#" class="btn btn-primary" >See Details</a>
             </div>

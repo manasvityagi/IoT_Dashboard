@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 
 from users.async_tasks import send_email
 from .forms import add_device_form
-from .models import Things
+from .models import Thing
 
 things = [
     {
@@ -92,10 +92,10 @@ things = [
 def home_view(request):
 
     context = {
-        'things': Things.objects.all(),
+        'things': Thing.objects.all(),
         'title': 'My Devices'
     }
-    t1 = Things(description="Coffee Machine in Kitchen", )
+    t1 = Thing(description="Coffee Machine in Kitchen", )
     return render(request, 'dashboard/deviceCard.html', context)
 
 

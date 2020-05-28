@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils.timezone import now
 from django.utils.deconstruct import deconstructible
 
 
@@ -16,7 +17,7 @@ class Address(models.Model):
 class Manufacturer(models.Model):
     name = models.CharField(max_length=150, default='generic manufacturer')
     # One Manufacturer can have one address, and one address can have only one manufacturer
-    address = models.OneToOneField(Address, on_delete=models.SET_DEFAULT)
+    address = models.OneToOneField(Address, on_delete=models.DO_NOTHING)
     is_certified = models.BooleanField
     phone_number = models.CharField(max_length=14, default='0000')
 
@@ -53,9 +54,22 @@ class Home(models.Model):
 class ServiceProvider(models.Model):
     name = models.CharField(max_length=150, default='generic manufacturer')
     # One Manufacturer can have one address, and one address can have only one manufacturer
-    address = models.OneToOneField(Address, on_delete=models.SET_DEFAULT)
+    address = models.OneToOneField(Address, on_delete=models.DO_NOTHING)
     phone_number = models.CharField(max_length=14, default='0000')
     type_of_device_handled = models.ManyToManyField(DeviceModels)
+
+    def __str__(self):
+        return str(self.name)
+
+
+class Seller(models.Model):
+    name = models.CharField(max_length=150, default='generic seller')
+    # One Seller can have many addresses, but one address can only belong to one seller
+    # Hence one to many relationship, deletion of the address should Ideally be protected when one of the seller
+    # is already in business
+    address = models.OneToOneField(Address, on_delete=models.PROTECT)
+    phone_number = models.CharField(max_length=14, default='0000')
+    type_of_device_sold = models.ManyToManyField(DeviceModels)
 
     def __str__(self):
         return str(self.name)
@@ -64,9 +78,9 @@ class ServiceProvider(models.Model):
 # a time series database model
 class ValueStream(models.Model):
     description = models.CharField(max_length=150, default='value stream description')
-    property_name = models.CharField(max_length=150, default='property name')
+    property_name = models.CharField(max_length=25, default='default roperty name')
     value = models.FloatField(default=0.0)
-    ts = models.DateTimeField()
+    ts = models.DateTimeField(auto_now_add=True)
 
 
 class Thing(models.Model):
@@ -75,12 +89,12 @@ class Thing(models.Model):
     device_model_info = models.ForeignKey(DeviceModels, on_delete=models.DO_NOTHING)
     # many to one relationship, since many houses can belong to a single owner
     # on deletion of the Home, Thing should be destroyed
-    installed_home_id = models.ManyToManyField(Home, on_delete=models.CASCADE)
+    installed_home_id = models.ManyToManyField(Home)
     purchase_date = models.DateField()
-    # in hours
+    # in hours, incase you bought it second hand, or replaced with used item
     life_used = models.IntegerField()
     # one value stream id will contain same device's data
-    value_stream_id = models.ManyToManyField(ValueStream, on_delete=models.DO_NOTHING)
+    value_stream_id = models.ManyToManyField(ValueStream)
 
     # TODO use Point field data type from GeoDjango
 
@@ -91,7 +105,7 @@ class Thing(models.Model):
 class ServiceDetails(models.Model):
     thing = models.OneToOneField(Thing, on_delete=models.CASCADE)
     owner_email = models.EmailField()
-    service
+    service_provider = models.ForeignKey(ServiceProvider, on_delete=models.CASCADE)
 
 
 # when a new device is added, email is sent to all subscriber's

@@ -1,3 +1,5 @@
+
+
 ## DEV JOURNAL
 
 Before starting I felt the need of frontend development knowledge,
@@ -243,6 +245,8 @@ Create User -> Using Registration Forms
 ## Journal entry  template
 
 -[ ] What needs to be done
+
+Problem & Solution 12: Strange issue while correcting an issue with the template. Even after correction, the same error occurred, turns out, in private mode, same issue does not occurs. Must be some caching going on.
 
 
      Started at : 

@@ -2,7 +2,7 @@ from django import forms
 
 from django.contrib.auth.models import User
 
-from dashboard.models import Things
+from dashboard.models import Thing
 
 
 class add_device_form(forms.ModelForm):
@@ -11,5 +11,6 @@ class add_device_form(forms.ModelForm):
     #
 
     class Meta:
-        model = Things
-        fields = ('device_type', 'description', 'life_expectancy', 'life_used', 'image')
+        model = Thing
+        fields = ('device_model_info', 'description'
+                  , 'installed_home_id', 'purchase_date','life_used')
