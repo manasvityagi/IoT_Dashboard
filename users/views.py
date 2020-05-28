@@ -1,18 +1,16 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from django.contrib import messages # for flash messages
+from django.contrib import messages  # for flash messages
+from django.views import View
+from django.views.generic import CreateView
 
 from .async_tasks import send_email
 from .myform import CustomRegistrationForm
 
 
-
-
-
 def registration(request):
-
-    if(request.method == 'POST'):
+    if request.method == 'POST':
         print('Its a post')
         registration_form = CustomRegistrationForm(request.POST)
         if registration_form.is_valid():
@@ -25,16 +23,19 @@ def registration(request):
     else:
         registration_form = CustomRegistrationForm()
 
-
     context = {
         'title': 'Sign up',
         'form': registration_form
     }
 
-    return render(request,'users/registration.html', context)
+    return render(request, 'users/registration.html', context)
 
 
 @login_required
 def owner_profile(request):
-
     return render(request, 'users/profile.html')
+
+
+class OwnerView(CreateView):
+    def get(self, request):
+        return render(request, 'users/profile.html')

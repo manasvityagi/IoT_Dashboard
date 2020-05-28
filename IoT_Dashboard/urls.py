@@ -15,6 +15,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from users import views as user_views
@@ -22,11 +23,11 @@ from dashboard import views as dashboard_view
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/', user_views.registration, name="signup"),
-    path('profile/', user_views.owner_profile, name="profile"),
+    # class based views with login required
+    path('profile/', login_required(user_views.OwnerView.as_view()), name="profile"),
     path('about/', dashboard_view.about, name="about"),
     path('add_device/', dashboard_view.add_device, name="add_device"),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name="login"),

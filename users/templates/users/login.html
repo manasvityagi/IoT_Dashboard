@@ -44,11 +44,12 @@
             <div class="col-md-2">
                 <div class="card  bg-light" style="width: 25rem; border-radius: 15px">
                     <center><h1>Sign in</h1></center>
+                    <br>
                     <div class="content-section">
                         <form method="post">
                             {% csrf_token %}
                             <fieldset class="form-group">
-                                <legend class="fieldBox mb-6"></legend>
+                                <legend class="fieldBox mb-8"></legend>
                                 {{ form|crispy }}
 
                             </fieldset>
@@ -56,6 +57,8 @@
                                 <center>
                                     <button class="btn btn-outline-info" type="submit">Login</button>
                                 </center>
+                                <br>
+                                <br>
                             </div>
                         </form>
                         <center>

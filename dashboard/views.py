@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from users.async_tasks import send_email
-from .forms import add_device_form
+from .forms import add_device
 from .models import Thing
 
 things = [
@@ -101,7 +101,7 @@ def home_view(request):
 def add_device(request):
     if request.method == 'POST':
 
-        form = add_device_form(request.POST)
+        form = add_device(request.POST)
         # check whether it's valid:
         if form.is_valid():
             form.save()
@@ -109,7 +109,7 @@ def add_device(request):
 
     # if a GET (or other method) create a blank form
     else:
-        form = add_device_form()
+        form = add_device()
 
     return render(request, 'dashboard/addDevice.html', {'form': form})
 
