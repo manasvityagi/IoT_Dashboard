@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from users.async_tasks import send_email
 from .forms import add_device_form
 from .models import Things
 
@@ -92,7 +93,8 @@ def home_view(request):
 
     # if not request.user.is_authenticated:
     #     return redirect('%s?next=%s' % (settings.LOGOUT_REDIRECT_URL, request.path))
-
+    send_email('manasvi.tyagi@gmail.com')
+    print('Done!')
     context = {
         'things': Things.objects.all(),
         'title': 'My Devices'
