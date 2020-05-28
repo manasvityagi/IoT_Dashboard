@@ -90,30 +90,24 @@ things = [
 
 @login_required
 def home_view(request):
-
     context = {
-        'things': Thing.objects.all(),
+        'things': things,
         'title': 'My Devices'
     }
-    t1 = Thing(description="Coffee Machine in Kitchen", )
+
     return render(request, 'dashboard/deviceCard.html', context)
 
 
-
 def add_device(request):
-    # if this is a POST request we need to process the form data
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
+
         form = add_device_form(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
             form.save()
             return HttpResponse('Congrats, Your new device is ready!')
 
-    # if a GET (or any other method) we'll create a blank form
+    # if a GET (or other method) create a blank form
     else:
         form = add_device_form()
 

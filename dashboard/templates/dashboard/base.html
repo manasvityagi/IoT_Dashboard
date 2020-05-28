@@ -35,19 +35,20 @@
             <li><a href="{% url 'about' %}"><i class="fas fa-address-card"></i>About</a></li>
             <li><a href="#"><i class="fas fa-store"></i>Device Market</a></li>
             {% if user.is_superuser %}
+                <br>
                 {#                <li><a href="{% url 'add_device_type' %}"><i class="fas fa-industry"></i>Add Device Type</a></li>#}
                 {#                <li><a href="{% url 'add_manufacturer' %}"><i class="fas fa-industry"></i>Add Manufacturer</a></li>#}
                 {#                <li><a href="{% url 'add_seller' %}"><i class="fas fa-store"></i>Add Seller</a></li>#}
                 {#                <li><a href="{% url 'add_service_provider' %}"><i class="fas fa-industry"></i>Add Service Provider</a>#}
-                <h3><i class="fas fa-user-plus"></i>Admin Tasks</h3>
-                <li><a href="#"><i class="fab fa-creative-commons-share"></i>Add Device Type</a></li>
+                <h2 style="text-align:left;"><i class="fas fa-bolt"></i> Admin</h2>
+                <li><a href="#"><i class="fas fa-plus"></i>Add Device to Catalog</a></li>
                 <li><a href="#"><i class="fas fa-industry"></i>Add Manufacturer</a></li>
                 <li><a href="#"><i class="fas fa-store"></i>Add Seller</a></li>
                 <li><a href="#"><i class="fas fa-tools"></i>Add Service Provider</a>
 
                 </li>
             {% endif %}
-            <p>Hello, admin.</p>
+
         </ul>
     </div>
 </div>

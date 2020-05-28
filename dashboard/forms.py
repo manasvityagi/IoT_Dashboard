@@ -12,5 +12,5 @@ class add_device_form(forms.ModelForm):
 
     class Meta:
         model = Thing
-        fields = ('device_model_info', 'description'
-                  , 'installed_home_id', 'purchase_date','life_used')
+       # fields = ('description',)
+        fields = ('description', )
