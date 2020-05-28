@@ -154,16 +154,40 @@ TypeError: __str__ returned non-string (type NoneType)
 
 Although all my models are returning string! 
 
-ok, so apparently, casting using, str(), makes the problem go away, BUT, new error
+ok, so apparently, casting using, str(), makes the problem go away, **BUT**, new error
 
 `ValueError: Cannot serialize: <Address: None>
 There are some values Django cannot serialize into migration files.
 `
 
+This error occurs, when we have a method in a model class according to
 
-<br>
+https://stackoverflow.com/questions/32016191/django-1-7-migration-cannot-serialize-a-class-method
 
-##Format
+and the solution is to add a decorator @deconstructible , I do not have a methid in this class, why does this error occurred?.
+
+```python
+class Address(models.Model):
+    street = models.CharField(max_length=150, blank=True, null=True)
+    zip = models.CharField(max_length=10, default="06001")
+
+    def __str__(self):
+        return str(self.street)
+```
+
+Not sure If this is right thing to do. Most probably not, because, I am not aware about the side effects.
+
+
+
+
+
+
+
+------
+
+
+
+## Journal entry  template
 
 -[ ] What needs to be done
 
