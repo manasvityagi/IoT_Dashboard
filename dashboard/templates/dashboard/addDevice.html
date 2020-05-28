@@ -1,26 +1,40 @@
 {% extends "dashboard/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
     <br><br><br><br>
 
     <div class="col-md-4">
         <div class="card  bg-light" style="width: 18rem; border-radius: 25px">
-            <form action="/your-name/" method="post">
-                <label for="device_type">Device Type: </label>
-                <input id="device_type" type="text" name="device_type">
+            {#            <form action="/your-name/" method="post">#}
+            {#                <label for="device_type">Device Type: </label>#}
+            {#                <input id="device_type" type="text" name="device_type">#}
+            {##}
+            {#                 <label for="description">Description: </label`>#}
+            {#                <input id="description" type="text" name="description">#}
+            {##}
+            {#                 <label for="image_path">Image: </label>#}
+            {#                <input id="image_path" type="text" name="image_path" >#}
+            {##}
+            {#                 <label for="device_type">Device Type: </label>#}
+            {#                <input id="device_type" type="text" name="device_type" >#}
+            {##}
+            {#                 <label for="device_type">Device Type: </label>#}
+            {#                <input id="device_type" type="text" name="device_type" >#}
+            <form method="post">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="fieldBox mb-4"></legend>
+                    {{ form|crispy }}
 
-                 <label for="description">Description: </label`>
-                <input id="description" type="text" name="description">
+                </fieldset>
+                <div class="form-group">
+                    <center>
+                        <button class="btn btn-outline-info" type="submit">Register</button>
+                    </center>
+                </div>
+            </form>
 
-                 <label for="image_path">Image: </label>
-                <input id="image_path" type="text" name="image_path" >
-
-                 <label for="device_type">Device Type: </label>
-                <input id="device_type" type="text" name="device_type" >
-
-                 <label for="device_type">Device Type: </label>
-                <input id="device_type" type="text" name="device_type" >
-
-                <input type="submit" value="OK">
+            <input type="submit" value="OK">
             </form>
         </div>
     </div>

@@ -112,6 +112,7 @@ def add_device(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
+            form.save()
             return HttpResponse('Congrats, Your new device is ready!')
 
     # if a GET (or any other method) we'll create a blank form

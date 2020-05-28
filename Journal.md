@@ -111,14 +111,27 @@ but something made me recall the conversation on discord regarding AWS key, so I
      
 Moved away from is_authenticated and then redirect, to decorators, since they are more concise, and easy to understand (not the actual mechanism of decorators,
 which seems a bit of mystery). But it the disadvantage is that the redirect URL is not visible in the same file.
+
+Problem 6: Forgot to add form.save() after validation. Hence could not locate the database entry.
      
-     Estimated Time:
-     Finished at:
+     Estimated Time: 2 hours
+     Finished at: Actually took whole working day, because of intermediate steps. 
      Remarks:
 
+<br>
 
+-[ ] Configure Postgres
+
+     
+     Started at : 18:59
+     Estimated Time: 30 mins
+     Finished at:
+     Remarks: Also, migrate the data using dumpdata command
+     
 <br>
-<br>
+Problem 7: While Migrating I get the following error.
+
+TypeError: __str__ returned non-string (type Address)
 <br>
 
 ##Format
@@ -131,5 +144,12 @@ which seems a bit of mystery). But it the disadvantage is that the redirect URL 
      Finished at:
      Remarks:
      
+=========
+Create User -> Using Registration Forms
 
-  
+Create Manufacturer -> Only Admin Can Do this
+
+Create Device Types -> Only Admin Can Do this
+
+Add Device -> From The List of Device Types
+
