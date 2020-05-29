@@ -258,6 +258,10 @@ Solution: 18:20 PM, after 2 hours of despair. Dropping the table, delete the mig
 
 Forgot to add {% load crispy_forms_tags %} at the start, the error is not helpful, but it mentions crispy casually.
 
+
+
+Problem X: I spent some time fixing a problem that was not a problem, django was invalidating a form, because of duplicate value on pk.
+
 Usage: gitu COMMIT MSG
 
 Create User -> Using Registration Forms

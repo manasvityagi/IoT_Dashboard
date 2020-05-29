@@ -14,8 +14,8 @@ class add_device(forms.ModelForm):
     class Meta:
         model = Thing
         # fields = ('description',)
-        fields = ('description','device_model_info','installed_home_id',
-                  'purchase_date','life_used',)
+        fields = ('description', 'device_model_info', 'installed_home_id',
+                  'purchase_date', 'life_used',)
 
 
 class add_address(forms.ModelForm):
@@ -32,21 +32,21 @@ class add_manufacturer(forms.ModelForm):
 
 class add_device_models(forms.ModelForm):
     class Meta:
-        model = ServiceProvider
+        model = DeviceModels
         fields = ('name', 'max_life', 'warranty_days', 'image', 'energy_rating',
-                  'safety_rating', 'current_consumption',
-                  'mfg', 'model_number', 'serial_number',)
+                  'safety_rating', 'current_consumption', 'mfg',
+                  'model_number', 'serial_number',)
 
 
 class add_home(forms.ModelForm):
     class Meta:
-        model = Seller
+        model = Home
         fields = ('owner', 'address',)
 
 
 class add_service_provider(forms.ModelForm):
     class Meta:
-        model = Seller
+        model = ServiceProvider
         fields = ('name', 'address', 'phone_number', 'type_of_device_handled',)
 
 
@@ -58,5 +58,5 @@ class add_seller(forms.ModelForm):
 
 class add_address(forms.ModelForm):
     class Meta:
-        model = ServiceProvider
+        model = Address
         fields = ('street', 'zip',)

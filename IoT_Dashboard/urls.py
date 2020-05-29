@@ -14,6 +14,7 @@ urlpatterns = [
     path('profile/', login_required(user_views.OwnerView.as_view()), name="profile"),
     path('about/', dashboard_view.about, name="about"),
     path('add_device/', dashboard_view.add_device, name="add_device"),
+    path('add_address/', login_required(dashboard_view.AddAddressView.as_view()), name="add_address"),
     path('add_manufacturer/', login_required(dashboard_view.AddManufacturerView.as_view()), name="add_manufacturer"),
     # path('add_address/', login_required(dashboard_view.AddAddressView.as_View()), name="add_address"),
     # path('add_device_model/', login_required(dashboard_view.AddDeviceModel.as_View()), name="add_device_model"),

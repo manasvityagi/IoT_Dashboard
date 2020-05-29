@@ -6,7 +6,7 @@ from django.views import View
 from django.views.generic import CreateView
 
 from users.async_tasks import send_email
-from .forms import add_device, add_manufacturer
+from .forms import add_device, add_manufacturer, add_address
 from .models import Thing, Manufacturer, Address
 
 things = [
@@ -151,16 +151,16 @@ class AddManufacturerView(CreateView):
 class AddAddressView(CreateView):
     def get(self, request):
         existing_addresses = Address.objects.all()
-        form = add_manufacturer(request.POST)
+        form = add_address(request.POST)
         context = {
             'form': form,
-            'existing_manufacturers': existing_addresses
+            'existing_addresses': existing_addresses
         }
-        return render(request, 'dashboard/addManufacturer.html', context)
+        return render(request, 'dashboard/addAddress.html', context)
 
     def post(self, request):
-        form = add_manufacturer(request.POST)
+        form = add_address(request.POST)
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            return HttpResponse('New Manufacturer Added!')
+            return HttpResponse('New Address Added!')
