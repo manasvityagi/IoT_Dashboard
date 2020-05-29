@@ -18,7 +18,7 @@ class Manufacturer(models.Model):
     name = models.CharField(max_length=150, default='generic manufacturer')
     # One Manufacturer can have one address, and one address can have only one manufacturer
     address = models.OneToOneField(Address, on_delete=models.DO_NOTHING)
-    is_certified = models.BooleanField
+    is_certified = models.BooleanField(default=True)
     phone_number = models.CharField(max_length=14, default='0000')
 
     def __str__(self):

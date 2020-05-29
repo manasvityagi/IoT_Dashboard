@@ -12,20 +12,15 @@ class add_device(forms.ModelForm):
 
     class Meta:
         model = Thing
-       # fields = ('description',)
-        fields = ('description', )
+        # fields = ('description',)
+        fields = ('description',)
 
 
+class add_manufacturer(forms.ModelForm):
+    class Meta:
+        model = Manufacturer
+        fields = ('name', 'address', 'phone_number', 'is_certified',)
 
-# class add_manufacturer(forms.ModelForm):
-#     # description = forms.CharField(label='Description', max_length=100)
-#     # device_type = forms.CharField(label='Device Type', max_length=100)
-#     #
-#
-#     class Meta:
-#         model = Manufacturer
-#         fields = ('description', )
-#
 #
 # class add_seller(forms.ModelForm):
 #
@@ -39,4 +34,3 @@ class add_device(forms.ModelForm):
 #     class Meta:
 #         model = Thing
 #         fields = ('description', )
-

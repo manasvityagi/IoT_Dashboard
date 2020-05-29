@@ -2,10 +2,12 @@ from decouple import config
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.views import View
+from django.views.generic import CreateView
 
 from users.async_tasks import send_email
-from .forms import add_device
-from .models import Thing
+from .forms import add_device, add_manufacturer
+from .models import Thing, Manufacturer
 
 things = [
     {
@@ -120,3 +122,22 @@ def about(request):
 
 def not_found(request):
     return HttpResponse("<h1>No Such Path! Lost ?</h1>")
+
+
+class AddManufacturerView(CreateView):
+    def get(self, request):
+        existing_manufacturers = Manufacturer.objects.all()
+        form = add_manufacturer(request.POST)
+        context = {
+            'form': form,
+            'existing_manufacturers': existing_manufacturers
+        }
+        return render(request, 'dashboard/addManufacturer.html', context)
+
+    def post(self, request):
+        form = AddManufacturerView(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            return HttpResponse('New Manufacturer Added!')
+
