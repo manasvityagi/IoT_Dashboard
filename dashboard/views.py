@@ -148,9 +148,6 @@ class AddManufacturerView(CreateView):
             return HttpResponse('Invalid Form, Probably the manufacturer already exists')
 
 
-
-
-
 class AddAddressView(CreateView):
     def get(self, request):
         existing_addresses = Address.objects.all()
@@ -167,4 +164,3 @@ class AddAddressView(CreateView):
         if form.is_valid():
             form.save()
             return HttpResponse('New Manufacturer Added!')
-
