@@ -19,19 +19,6 @@ class add_device(forms.ModelForm):
 class add_manufacturer(forms.ModelForm):
     class Meta:
         model = Manufacturer
-        fields = ('name', 'address', 'phone_number', 'is_certified',)
-        #fields = ('name', 'phone_number', 'is_certified',)
+        fields = ('name', 'address', 'is_certified', 'phone_number',)
 
-#
-# class add_seller(forms.ModelForm):
-#
-#     class Meta:
-#         model = Thing
-#         fields = ('description', )
-#
-#
-# class add_service_provider(forms.ModelForm):
-#
-#     class Meta:
-#         model = Thing
-#         fields = ('description', )
+

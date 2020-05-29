@@ -7,7 +7,7 @@ from django.views.generic import CreateView
 
 from users.async_tasks import send_email
 from .forms import add_device, add_manufacturer
-from .models import Thing, Manufacturer
+from .models import Thing, Manufacturer, Address
 
 things = [
     {
@@ -125,12 +125,39 @@ def not_found(request):
 
 
 class AddManufacturerView(CreateView):
+
     def get(self, request):
         existing_manufacturers = Manufacturer.objects.all()
         form = add_manufacturer(request.POST)
         context = {
             'form': form,
             'existing_manufacturers': existing_manufacturers
+        }
+        return render(request, 'dashboard/addManufacturer.html', context)
+
+    def post(self, request):
+        form = add_manufacturer(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            form.non_field_errors()
+            return HttpResponse('New Manufacturer Added!')
+        else:
+            form.non_field_errors()
+            field_errors = [(field.label, field.errors) for field in form]
+            return HttpResponse('Invalid Form, Probably the manufacturer already exists')
+
+
+
+
+
+class AddAddressView(CreateView):
+    def get(self, request):
+        existing_addresses = Address.objects.all()
+        form = add_manufacturer(request.POST)
+        context = {
+            'form': form,
+            'existing_manufacturers': existing_addresses
         }
         return render(request, 'dashboard/addManufacturer.html', context)
 

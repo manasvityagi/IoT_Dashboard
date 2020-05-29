@@ -254,7 +254,9 @@ LINE 1: ...ufacturer"."id", "dashboard_manufacturer"."name", "dashboard...
 
 There is no reference to column dashboard_manufacturer. Address_id . And django is supposed to create this column itself.!!
 
-Solution: 18:20 PM, after 4 hours of despair. Dropping the table, delete the migrations, and then again make migrations seems to work. 
+Solution: 18:20 PM, after 2 hours of despair. Dropping the table, delete the migrations, and then again make migrations seems to work. 
+
+Forgot to add {% load crispy_forms_tags %} at the start, the error is not helpful, but it mentions crispy casually.
 
 Usage: gitu COMMIT MSG
 
