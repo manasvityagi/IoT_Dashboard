@@ -20,6 +20,7 @@ class add_manufacturer(forms.ModelForm):
     class Meta:
         model = Manufacturer
         fields = ('name', 'address', 'phone_number', 'is_certified',)
+        #fields = ('name', 'phone_number', 'is_certified',)
 
 #
 # class add_seller(forms.ModelForm):

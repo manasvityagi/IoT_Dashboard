@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from .models import Thing
+from .models import *
 
 
 # Register your models here.
@@ -13,3 +13,8 @@ class CustomAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Thing, CustomAdmin)
+admin.site.register(Manufacturer)
+admin.site.register(Address)
+admin.site.register(Home)
+admin.site.register(DeviceModels)
+admin.site.register(ValueStream)

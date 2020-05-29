@@ -238,6 +238,24 @@ ITS DONE!
 
 wanted to create a shortcut for git add ., commit and push, like in class. But found a npm package git-upload, npm install git-update.
 
+
+
+WTH!! Changing the model was a big mistake. Should have just stuck to whatever I was thinking, and should not have though of improvingfeatures.
+
+migrations are not working. for example
+
+```
+  File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.ProgrammingError: column dashboard_manufacturer.address_id does not exist
+LINE 1: ...ufacturer"."id", "dashboard_manufacturer"."name", "dashboard...
+                                                             ^
+```
+
+There is no reference to column dashboard_manufacturer. Address_id . And django is supposed to create this column itself.!!
+
+Solution: 18:20 PM, after 4 hours of despair. Dropping the table, delete the migrations, and then again make migrations seems to work. 
+
 Usage: gitu COMMIT MSG
 
 Create User -> Using Registration Forms

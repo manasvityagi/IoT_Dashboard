@@ -135,7 +135,7 @@ class AddManufacturerView(CreateView):
         return render(request, 'dashboard/addManufacturer.html', context)
 
     def post(self, request):
-        form = AddManufacturerView(request.POST)
+        form = add_manufacturer(request.POST)
         # check whether it's valid:
         if form.is_valid():
             form.save()

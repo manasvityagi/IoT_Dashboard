@@ -2,7 +2,6 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <br>
-    <div class="card  bg-light" style="width: rem; border-radius: 25px">
     <h1>Add New Manufacturer</h1>
     <br>
     <form method="post">
@@ -18,12 +17,12 @@
             </center>
         </div>
     </form>
-    </div>
+
     <br>
     <h1>Existing Manufacturers</h1>
     {% for manufacturers in existing_manufacturers %}
         <h2>Name: {{ manufacturers.name }}</h2>
-        <h3>{{ manufacturers.address }}</h3>
+        <h3>{{ manufacturers.address.street }}</h3>
         <h3>{{ manufacturers.phone_number }}</h3>
         <h3>{{ manufacturers.is_certified }}</h3>
     {% endfor %}
