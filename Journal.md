@@ -347,6 +347,42 @@ To https://git.heroku.com/thingboard.git
 error: failed to push some refs to 'https://git.heroku.com/thingboard.git'
 ```
 
+Solution: In the settings.py file add 
+
+```
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+```
+
+Problem next: on accessing the site, i get error that i need to see the logs via
+
+```
+ heroku logs --tail
+```
+
+I get the following logs 
+
+```
+2020-05-30T14:57:58.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
+2020-05-30T14:58:37.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/c802be5a-6c0c-4e32-9005-0e0d33cf40a1/activity/builds/c3d4cda6-f521-4904-98f3-107162d15c23
+2020-05-30T15:11:18.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
+2020-05-30T15:11:55.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/c802be5a-6c0c-4e32-9005-0e0d33cf40a1/activity/builds/529d7920-718b-4221-94b9-a4f82ed22d64
+2020-05-30T15:14:41.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
+2020-05-30T15:15:19.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/c802be5a-6c0c-4e32-9005-0e0d33cf40a1/activity/builds/e608a6d5-fcbf-4ed4-8c18-1b71841452c6
+2020-05-30T15:18:04.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
+2020-05-30T15:18:41.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/c802be5a-6c0c-4e32-9005-0e0d33cf40a1/activity/builds/fd790663-54b0-46d6-bb70-f1b77965cc4e
+2020-05-30T15:19:43.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.568578+00:00 app[api]: Attach DATABASE (@ref:postgresql-slippery-34466) by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.568578+00:00 app[api]: Running release v3 commands by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.583207+00:00 app[api]: Release v4 created by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.583207+00:00 app[api]: @ref:postgresql-slippery-34466 completed provisioning, setting DATABASE_URL. by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.845937+00:00 app[api]: Release v5 created by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.845937+00:00 app[api]: Deploy a5c407e4 by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:45.000000+00:00 app[api]: Build succeeded
+2020-05-30T15:21:04.909254+00:00 heroku[router]: at=error code=H14 desc="No web processes running" method=GET path="/" host=thingboard.herokuapp.com request_id=89bbbdbe-d3cd-4765-b315-c4d1d4d54a20 fwd="101.100.128.204" dyno= connect= service= status=503 bytes= protocol=https
+2020-05-30T15:21:06.239655+00:00 heroku[router]: at=error code=H14 desc="No web processes running" method=GET path="/favicon.ico" host=thingboard.herokuapp.com request_id=67b67c3e-4404-4db0-b806-3ab0ea39af8e fwd="101.100.128.204" dyno= connect= service= status=503 bytes= protocol=https
+```
+
+I did not configured postgres, so that was expected
 
 
 

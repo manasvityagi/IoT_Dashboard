@@ -1,0 +1,1 @@
+web: gunicorn IoT_Dashboard.wsgi
