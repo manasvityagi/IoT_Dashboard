@@ -110,7 +110,7 @@ class ServiceDetails(models.Model):
     service_provider = models.ForeignKey(ServiceProvider, on_delete=models.CASCADE)
 
 
-# when a new device is added, email is sent to all subscriber's
+# when a new device is added to the marketplace, email is sent to all subscriber's
 class SubscribersList(models.Model):
     name = models.CharField(max_length=150, default='my coffee machine')
     email = models.EmailField()
