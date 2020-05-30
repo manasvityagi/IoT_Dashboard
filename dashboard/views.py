@@ -92,30 +92,52 @@ things = [
 ]
 
 
+# function based view
 @login_required
 def home_view(request):
+    logged_in_user = request.user
+    x = Home.objects.filter(owner=logged_in_user)
     context = {
-        'things': things,
+        'things': Thing.objects.filter(installed_home_id__owner=logged_in_user),
         'title': 'My Devices'
     }
-
+    Thing.objects.all()
     return render(request, 'dashboard/deviceCard.html', context)
 
 
-def add_device(request):
-    if request.method == 'POST':
+class AddDeviceView(CreateView):
 
+    def get(self, request):
+        existing_installed_devices = Thing.objects.all()
+        form = add_device(request.POST)
+        context = {
+            'form': form,
+            'existing_installed_devices': existing_installed_devices
+        }
+        return render(request, 'dashboard/addDevice.html', context)
+
+    def post(self, request):
         form = add_device(request.POST)
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            return HttpResponse('Congrats, Your new device is ready!')
+            return HttpResponse('New Device Installed!')
 
-    # if a GET (or other method) create a blank form
-    else:
-        form = add_device()
 
-    return render(request, 'dashboard/addDevice.html', {'form': form})
+
+# def AddDeviceView(request):
+#     if request.method == 'POST':
+#         form = add_device(request.POST)
+#         # check whether it's valid:
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponse('Congrats, Your new device is ready!')
+#
+#     # if a GET (or other method) create a blank form
+#     else:
+#         form = add_device()
+
+#    return render(request, 'dashboard/addDevice.html', {'form': form})
 
 
 def about(request):
@@ -126,6 +148,7 @@ def not_found(request):
     return HttpResponse("<h1>No Such Path! Lost ?</h1>")
 
 
+# class based views from here on
 class AddAddressView(CreateView):
     def get(self, request):
         existing_addresses = Address.objects.all()
@@ -176,7 +199,7 @@ class AddDeviceModelsView(CreateView):
         form = add_device_models(request.POST or None)
         context = {
             'form': form,
-            'existing_device_models': add_device_models
+            'existing_device_models': existing_device_models
         }
         return render(request, 'dashboard/addDeviceModel.html', context)
 

@@ -6,16 +6,16 @@
             <div class="row">
         {% endif %}
     <div class="col-md-4">
-        <div class="card  bg-light" style="width: 18rem; border-radius: 25px">
-           <center> <img src="https://i.imgur.com/SAnmzn0.png"  class="card-img-top" alt="..." style="height: 66%; width: 66%;"></center>
+        <div class="card  bg-light shadow p-3 mb-5 bg-white rounded" style="width: 18rem; border-radius: 25px">
+            <center><img src="https://i.imgur.com/SAnmzn0.png" class="card-img-top shadow p-3 mb-5 bg-white rounded"
+                         alt="..." style="height: 66%; width: 66%;"></center>
             <div class="card-body">
                 <h5 class="card-title"> Device : {{ thing.device_model_info.name }}</h5>
                 <p class="card-text"> Description: {{ thing.description }}</p>
                 <p class="card-text"> Max Life: {{ thing.device_model_info.max_life }}</p>
                 <p class="card-text"> Used: {{ thing.life_used }}</p>
                 <p class="card-text"> Date manufactured: {{ thing.purchase_date|date:"d M, Y" }}</p>
-
-                <a href="#" class="btn btn-primary" >See Details</a>
+                <center><a href="#" class="btn btn-primary">See Details</a></center>
             </div>
         </div>
     </div>

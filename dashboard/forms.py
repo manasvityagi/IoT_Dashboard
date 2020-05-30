@@ -1,9 +1,13 @@
 from django import forms
-from django.forms import inlineformset_factory
+from django.forms import inlineformset_factory, DateField, Textarea
 
 from django.contrib.auth.models import User
 
 from dashboard.models import *
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 
 class add_address(forms.ModelForm):
@@ -16,12 +20,19 @@ class add_device(forms.ModelForm):
     # description = forms.CharField(label='Description', max_length=100)
     # device_type = forms.CharField(label='Device Type', max_length=100)
     #
+    date_of_purchase = forms.DateField(widget=DateInput)
 
     class Meta:
         model = Thing
         # fields = ('description',)
         fields = ('description', 'device_model_info', 'installed_home_id',
                   'purchase_date', 'life_used',)
+
+        widgets = {
+            'purchase_date': forms.DateInput(format='%m/%d/%Y',
+                                             attrs={'class': 'form-control', 'placeholder': 'Select a date',
+                                                    'type': 'date'}),
+        }
 
 
 class add_address(forms.ModelForm):

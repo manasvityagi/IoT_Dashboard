@@ -292,13 +292,33 @@ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 Side Note: It seems the darkness of the cell in my git contribution graph seems to be relative. Earlier I got a very dark green on 5 commits, but now 5 is light green. May be I am wrong. https://github.com/isaacs/github/issues/627
 
+-----------------
+
+
+
+-[ ] Change The Date input on UI to datepicker
+
+It can be done via overriding the widget, in case of ModelForms, it is slightly different
+
+https://docs.djangoproject.com/en/dev/topics/forms/modelforms/#overriding-the-default-fields   &
+
+https://stackoverflow.com/questions/49440853/django-2-0-modelform-datefield-not-displaying-as-a-widget
+
+
+     Started at : 00:39 PM
+     Estimated Time: 30 mins
+     Finished at: 2:31 AM
+     Remarks: 
+
+---------------------
+
 
 
 ## Journal entry  template
 
 -[ ] What needs to be done
 
-Problem & Solution 12: Strange issue while correcting an issue with the template. Even after correction, the same error occurred, turns out, in private mode, same issue does not occurs. Must be some caching going on.
+
 
 
      Started at : 

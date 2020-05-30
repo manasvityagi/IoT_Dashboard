@@ -50,7 +50,7 @@ class Home(models.Model):
     address = models.ForeignKey(Address, on_delete=models.CASCADE, default=Address())
 
     def __str__(self):
-        return str(self.owner)
+        return str(self.address)
 
 
 class ServiceProvider(models.Model):

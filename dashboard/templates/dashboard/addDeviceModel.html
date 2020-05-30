@@ -17,7 +17,21 @@
             </center>
         </div>
     </form>
-
+    <hr>
     <br>
+    <h1>Existing Device Models in Catalogue</h1>
+    {% for device_models in existing_device_models %}
+        <div class="card  bg-light shadow p-3 mb-5 bg-white rounded" style="width: 28rem; border-radius: 25px">
+            <br>
+            <center><img src="{{ device_models.image.url }}" class=" card-img-top" alt="..." style="height: 75%; width:
+            75%;">
+            </center>
+            <div class="card-body">
+                <h4>Product Name: {{ device_models.name }}</h4>
+                <h5>Warranty in Days: {{ device_models.warranty_days }}</h5>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
 {% endblock content %}
 
