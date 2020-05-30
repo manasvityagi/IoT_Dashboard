@@ -6,6 +6,12 @@ from django.contrib.auth.models import User
 from dashboard.models import *
 
 
+class add_address(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = ('street', 'zip',)
+
+
 class add_device(forms.ModelForm):
     # description = forms.CharField(label='Description', max_length=100)
     # device_type = forms.CharField(label='Device Type', max_length=100)
@@ -54,9 +60,3 @@ class add_seller(forms.ModelForm):
     class Meta:
         model = Seller
         fields = ('name', 'address', 'phone_number', 'type_of_device_sold',)
-
-
-class add_address(forms.ModelForm):
-    class Meta:
-        model = Address
-        fields = ('street', 'zip',)

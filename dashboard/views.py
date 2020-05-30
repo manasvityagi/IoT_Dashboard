@@ -6,8 +6,10 @@ from django.views import View
 from django.views.generic import CreateView
 
 from users.async_tasks import send_email
-from .forms import add_device, add_manufacturer, add_address
-from .models import Thing, Manufacturer, Address
+from .forms import *
+from .models import *
+
+# Todo, should be better If I add the views in logical order, for better readability
 
 things = [
     {
@@ -124,6 +126,24 @@ def not_found(request):
     return HttpResponse("<h1>No Such Path! Lost ?</h1>")
 
 
+class AddAddressView(CreateView):
+    def get(self, request):
+        existing_addresses = Address.objects.all()
+        form = add_address(request.POST)
+        context = {
+            'form': form,
+            'existing_addresses': existing_addresses
+        }
+        return render(request, 'dashboard/addAddress.html', context)
+
+    def post(self, request):
+        form = add_address(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            return HttpResponse('New Address Added!')
+
+
 class AddManufacturerView(CreateView):
 
     def get(self, request):
@@ -145,22 +165,106 @@ class AddManufacturerView(CreateView):
         else:
             form.non_field_errors()
             field_errors = [(field.label, field.errors) for field in form]
-            return HttpResponse('Invalid Form, Probably the manufacturer already exists')
+            errors = str(field_errors)
+            return HttpResponse('Invalid Form, Reason -> ' + errors)
 
 
-class AddAddressView(CreateView):
+class AddDeviceModelsView(CreateView):
+
     def get(self, request):
-        existing_addresses = Address.objects.all()
-        form = add_address(request.POST)
+        existing_device_models = DeviceModels.objects.all()
+        form = add_device_models(request.POST)
         context = {
             'form': form,
-            'existing_addresses': existing_addresses
+            'existing_device_models': add_device_models
         }
-        return render(request, 'dashboard/addAddress.html', context)
+        return render(request, 'dashboard/addDeviceModel.html', context)
 
     def post(self, request):
-        form = add_address(request.POST)
+        form = add_device_models(request.POST)
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            return HttpResponse('New Address Added!')
+            form.non_field_errors()
+            return HttpResponse('New Device Model Added to Catalogue, now you can add them to your !')
+        else:
+            form.non_field_errors()
+            field_errors = [(field.label, field.errors) for field in form]
+            errors = str(field_errors)
+            # TODO should display specific error in formatted manner
+            return HttpResponse('Invalid Form, Reason -> ' + errors)
+
+
+class AddHomeView(CreateView):
+    def get(self, request):
+        existing_homes = Home.objects.all()
+        form = add_home(request.POST)
+        context = {
+            'form': form,
+            'existing_homes': existing_homes
+        }
+        return render(request, 'dashboard/addHome.html', context)
+
+    def post(self, request):
+        form = add_home(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            form.non_field_errors()
+            return HttpResponse('New Home Added!')
+        else:
+            form.non_field_errors()
+            field_errors = [(field.label, field.errors) for field in form]
+            errors = str(field_errors)
+            # TODO should display specific error in formatted manner
+            return HttpResponse('Invalid Form, Reason -> ' + errors)
+
+
+class AddServiceProviderView(CreateView):
+    def get(self, request):
+        existing_provider = ServiceProvider.objects.all()
+        form = add_service_provider(request.POST)
+        context = {
+            'form': form,
+            'existing_provider': existing_provider
+        }
+        return render(request, 'dashboard/addServiceProvider.html', context)
+
+    def post(self, request):
+        form = add_service_provider(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            form.non_field_errors()
+            return HttpResponse('New Service Provider Added!')
+        else:
+            form.non_field_errors()
+            field_errors = [(field.label, field.errors) for field in form]
+            errors = str(field_errors)
+            # TODO should display specific error in formatted manner
+            return HttpResponse('Invalid Form, Reason -> ' + errors)
+
+
+class AddSellerView(CreateView):
+    def get(self, request):
+        existing_seller = ServiceProvider.objects.all()
+        form = add_seller(request.POST)
+        context = {
+            'form': form,
+            'existing_seller': existing_seller
+        }
+        return render(request, 'dashboard/addSeller.html', context)
+
+    def post(self, request):
+        form = add_seller(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            form.non_field_errors()
+            return HttpResponse('New Seller Added!')
+        else:
+            form.non_field_errors()
+            field_errors = [(field.label, field.errors) for field in form]
+            errors = str(field_errors)
+            # TODO should display specific error in formatted manner
+            return HttpResponse('Invalid Form, Reason -> ' + errors)
