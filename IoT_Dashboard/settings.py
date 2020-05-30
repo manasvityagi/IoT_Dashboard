@@ -13,18 +13,21 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from decouple import Config
+from django.contrib import staticfiles
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ai0g^ot$m1d_leodg0_v%fescpt(a4+-fficz=p7&ky5&#@5e$'
+SECRET_KEY = Config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['thingboard.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'thingboard.herokuapp.com']
 
 # Application definition
 
@@ -135,5 +138,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGOUT_REDIRECT_URL = 'login'
 
-
-
+# AWS_ACCESS_KEY_ID = Config('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = Config('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = Config('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = 'AKIA3P7JVJJBE6BUB6MQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'thingboard-bucket'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+# DEFAULT_FILE_STORAGE = Config('DEFAULT_FILE_STORAGE')
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
