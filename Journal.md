@@ -409,8 +409,6 @@ Setup S3
 
 Commented out line does not works
 
-
-
 ```
 # AWS_ACCESS_KEY_ID = Config('AWS_ACCESS_KEY_ID')
 # AWS_SECRET_ACCESS_KEY = Config('AWS_SECRET_ACCESS_KEY')
