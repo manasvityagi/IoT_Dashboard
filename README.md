@@ -15,6 +15,7 @@ Following Features are planned
 - On clicking the Device Card, Some additional info, such as trend should be visible
 - Send Notification when the lifetime of the 'thing' is about to end.
 
+
 ---------------------------------
 Following Devices are supported 
 ---------------------------------
