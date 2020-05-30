@@ -30,7 +30,7 @@ class DeviceModels(models.Model):
     name = models.CharField(max_length=50, default='generic device')
     max_life = models.PositiveIntegerField()
     warranty_days = models.PositiveIntegerField()
-    image = models.ImageField(default='default.jpg', upload_to='device_catalogue')
+    image = models.ImageField(default='default.jpg', upload_to='device_catalogue', null=True, blank=True)
     energy_rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     safety_rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     current_consumption = models.IntegerField()

@@ -93,9 +93,9 @@ In reality, I am investing on learning the shortcuts, which are available in the
 
 
 ​     
-     Problem 5: Tried to solve the above problem by using pyhton decouple, as soon as I get the variable, set by .env file
-     using config('SECRET_KEY') I get an exception
-     
+​     Problem 5: Tried to solve the above problem by using pyhton decouple, as soon as I get the variable, set by .env file
+​     using config('SECRET_KEY') I get an exception
+​     
       print(config('SENDGRID_API_KEY'))
       
         File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\decouple.py", line 124, in __init__
@@ -261,6 +261,40 @@ Forgot to add {% load crispy_forms_tags %} at the start, the error is not helpfu
 
 
 Problem X: I spent some time fixing a problem that was not a problem, django was invalidating a form, because of duplicate value on pk.
+
+30/05/2020 6:48 PM : Wanted to show a clear message to a user why their form was rejected. In a way it is shown, but not formatted.
+
+Problem: When uploading a picture I get this error
+
+```
+'Image', ['This field is required.']
+```
+
+Solution: I did not put default image in there and also missed upload_to param, additionally i also added enc_typ in the template(but I did not verified its effect)
+
+Additionally, there was an issue with me copying wring section from the django documentation
+
+from the page https://docs.djangoproject.com/en/3.0/howto/static-files/ . I was supposed to get this
+
+```
+urlpatterns = [
+    # ... the rest of your URLconf goes here ...
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
+
+but instead I copied the static file section in settings.py
+
+```
+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+```
+
+
+
+I provided a valid image while uploading via form, though.
+
+
+
+
 
 Usage: gitu COMMIT MSG
 
