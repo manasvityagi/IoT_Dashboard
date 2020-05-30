@@ -24,7 +24,7 @@ SECRET_KEY = 'ai0g^ot$m1d_leodg0_v%fescpt(a4+-fficz=p7&ky5&#@5e$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['thingboard.herokuapp.com']
 
 # Application definition
 
