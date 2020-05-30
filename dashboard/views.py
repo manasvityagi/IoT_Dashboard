@@ -173,7 +173,7 @@ class AddDeviceModelsView(CreateView):
 
     def get(self, request):
         existing_device_models = DeviceModels.objects.all()
-        form = add_device_models(request.POST)
+        form = add_device_models(request.POST or None)
         context = {
             'form': form,
             'existing_device_models': add_device_models
@@ -181,7 +181,7 @@ class AddDeviceModelsView(CreateView):
         return render(request, 'dashboard/addDeviceModel.html', context)
 
     def post(self, request):
-        form = add_device_models(request.POST)
+        form = add_device_models(request.POST or None)
         # check whether it's valid:
         if form.is_valid():
             form.save()
