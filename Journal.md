@@ -312,6 +312,42 @@ https://stackoverflow.com/questions/49440853/django-2-0-modelform-datefield-not-
 
 ---------------------
 
+-[ ] Deployement to heroku  31/05/2020
+
+
+
+
+     Started at : 31/05/2020 03:15 AM
+     Estimated Time: 180 mins
+     Finished at: 
+     Remarks: 
+
+Problem  X:
+
+```
+emote: -----> $ python manage.py collectstatic --noinput
+remote:        Traceback (most recent call last):
+remote:          File "manage.py", line 21, in <module>
+.
+
+.
+
+
+
+remote:        https://devcenter.heroku.com/articles/django-assets
+remote:  !     Push rejected, failed to compile Python app.
+remote:
+remote:  !     Push failed
+remote: Verifying deploy...
+remote:
+remote: !       Push rejected to thingboard.
+remote:
+To https://git.heroku.com/thingboard.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://git.heroku.com/thingboard.git'
+```
+
+
 
 
 ## Journal entry  template
