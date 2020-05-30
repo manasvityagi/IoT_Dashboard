@@ -238,7 +238,9 @@ ITS DONE!
 
 wanted to create a shortcut for git add ., commit and push, like in class. But found a npm package git-upload, npm install git-update.
 
+Usage: gitu COMMIT MSG
 
+Create User -> Using Registration Forms
 
 WTH!! Changing the model was a big mistake. Should have just stuck to whatever I was thinking, and should not have though of improvingfeatures.
 
@@ -264,7 +266,7 @@ Problem X: I spent some time fixing a problem that was not a problem, django was
 
 30/05/2020 6:48 PM : Wanted to show a clear message to a user why their form was rejected. In a way it is shown, but not formatted.
 
-Problem: When uploading a picture I get this error
+Problem: When uploading a picture I get this error, I provided a valid image while uploading via form, though.
 
 ```
 'Image', ['This field is required.']
@@ -288,17 +290,9 @@ but instead I copied the static file section in settings.py
 static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 ```
 
+Side Note: It seems the darkness of the cell in my git contribution graph seems to be relative. Earlier I got a very dark green on 5 commits, but now 5 is light green. May be I am wrong. https://github.com/isaacs/github/issues/627
 
 
-I provided a valid image while uploading via form, though.
-
-
-
-
-
-Usage: gitu COMMIT MSG
-
-Create User -> Using Registration Forms
 
 ## Journal entry  template
 
