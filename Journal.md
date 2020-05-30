@@ -96,8 +96,8 @@ In reality, I am investing on learning the shortcuts, which are available in the
 ​     Problem 5: Tried to solve the above problem by using pyhton decouple, as soon as I get the variable, set by .env file
 ​     using config('SECRET_KEY') I get an exception
 ​     
-      print(config('SENDGRID_API_KEY'))
-      
+​      print(config('SENDGRID_API_KEY'))
+​      
         File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\decouple.py", line 124, in __init__
     for line in file_:
 
@@ -405,7 +405,24 @@ Setup S3
     </CORSRule>
 </CORSConfiguration>
 
+31/06/2020 6:04 AM : So after struggling for about 2 hours. The problem is that python decouple is not working somehow for AWS keys!!
 
+Commented out line does not works
+
+
+
+```
+# AWS_ACCESS_KEY_ID = Config('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = Config('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = Config('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = 'AKIA3P7JVJJBEXXXXXXXX'
+AWS_SECRET_ACCESS_KEY = 'i0F4vr7ENwg82JFFVJJBEXXXXXXX'
+AWS_STORAGE_BUCKET_NAME = 'thingboard-bucket'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+# DEFAULT_FILE_STORAGE = Config('DEFAULT_FILE_STORAGE')
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+```
 
 ## Journal entry  template
 
