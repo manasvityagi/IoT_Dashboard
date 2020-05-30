@@ -361,7 +361,7 @@ Problem next: on accessing the site, i get error that i need to see the logs via
 
 I get the following logs 
 
-```
+```verilog
 2020-05-30T14:57:58.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
 2020-05-30T14:58:37.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/c802be5a-6c0c-4e32-9005-0e0d33cf40a1/activity/builds/c3d4cda6-f521-4904-98f3-107162d15c23
 2020-05-30T15:11:18.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
@@ -382,7 +382,28 @@ I get the following logs
 2020-05-30T15:21:06.239655+00:00 heroku[router]: at=error code=H14 desc="No web processes running" method=GET path="/favicon.ico" host=thingboard.herokuapp.com request_id=67b67c3e-4404-4db0-b806-3ab0ea39af8e fwd="101.100.128.204" dyno= connect= service= status=503 bytes= protocol=https
 ```
 
-I did not configured postgres, so that was expected
+I did not configured postgres, so that was expected.
+
+Solution: Add a  Procfile in the project root.
+
+Problem Next: The {Page is all messed up. Probably because the static files contain the css, and I need to host it somewhere.
+
+
+
+-------------
+
+Setup S3
+
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+   <CORSRule>
+        <AllowedOrigin>*</AllowedOrigin>
+        <AllowedMethod>GET</AllowedMethod>
+        <AllowedMethod>POST</AllowedMethod>
+        <AllowedMethod>PUT</AllowedMethod>
+        <AllowedHeader>*</AllowedHeader>
+    </CORSRule>
+</CORSConfiguration>
 
 
 
