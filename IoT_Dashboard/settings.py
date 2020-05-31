@@ -13,6 +13,20 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import django_heroku
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+
+sentry_sdk.init(
+    dsn="https://ac79066fe3fa4a879f56f0e5b6eaf2a3@o399169.ingest.sentry.io/5255899",
+    integrations=[DjangoIntegration()],
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
+)
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from decouple import Config
 from django.contrib import staticfiles
