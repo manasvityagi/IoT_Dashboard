@@ -6,8 +6,6 @@ from django.contrib.auth.models import User
 from dashboard.models import *
 
 
-
-
 class add_address(forms.ModelForm):
     class Meta:
         model = Address

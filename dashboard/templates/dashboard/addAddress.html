@@ -14,12 +14,13 @@
         <div class="form-group">
             <center>
                 <button class="btn btn-outline-info" type="submit">Add</button>
+                <br>
             </center>
         </div>
     </form>
     <hr>
     <br>
-    <h1>Existing Manufacturers</h1>
+    <h1>Existing Dates</h1>
     {% for address in existing_addresses %}
         <div class="card bg-light" style="width: 35rem; border-radius: 15px">
             <h5>Street: {{ address.street }}</h5>
