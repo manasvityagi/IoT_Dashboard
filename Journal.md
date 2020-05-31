@@ -33,11 +33,13 @@ Problem 2: When I try to debug (For problem 1), I am getting following error
 Error Messagedjango.core.exceptions.ImproperlyConfigured: 
 Requested setting INSTALLED_APPS, but settings are not configured"
 ```
+
 Solution to Problem 2: I had selected a particular view, for debugging, which does not runs the 'manage.py', which is responsible
 for configuring the setting, particularly this extended line in the error message
 
 Solution to Problem 1: I assumed that is_valid function will check for validity. It does, but not if you have have already saved the form.
 I missed the .form_save() fx and hence I was able to 'register' with same username twice. 
+
 ```
 '*You must either define the environment variable DJANGO_SETTINGS_MODULE...*
 ```
@@ -96,10 +98,10 @@ In reality, I am investing on learning the shortcuts, which are available in the
 ​     Problem 5: Tried to solve the above problem by using pyhton decouple, as soon as I get the variable, set by .env file
 ​     using config('SECRET_KEY') I get an exception
 ​     
-      print(config('SENDGRID_API_KEY'))
-      
-        File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\decouple.py", line 124, in __init__
-    for line in file_:
+​      print(config('SENDGRID_API_KEY'))
+​      
+​        File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\decouple.py", line 124, in __init__
+​    for line in file_:
 
 `  File "C:\Python38\lib\codecs.py", line 322, in decode
     (result, consumed) = self._buffer_decode(data, self.errors, final)
@@ -118,6 +120,7 @@ which seems a bit of mystery). But it the disadvantage is that the redirect URL 
 
 Problem 6: Forgot to add form.save() after validation. Hence could not locate the database entry.
      
+
      Estimated Time: 2 hours
      Finished at: Actually took whole working day, because of intermediate steps. 
      Remarks:
@@ -312,6 +315,204 @@ https://stackoverflow.com/questions/49440853/django-2-0-modelform-datefield-not-
 
 ---------------------
 
+-[ ] Deployement to heroku  31/05/2020
+
+
+
+
+     Started at : 31/05/2020 03:15 AM
+     Estimated Time: 180 mins
+     Finished at: 
+     Remarks: 
+
+Problem  X:
+
+```
+remote: -----> $ python manage.py collectstatic --noinput
+remote:        Traceback (most recent call last):
+remote:          File "manage.py", line 21, in <module>
+.
+
+.
+
+
+
+remote:        https://devcenter.heroku.com/articles/django-assets
+remote:  !     Push rejected, failed to compile Python app.
+remote:
+remote:  !     Push failed
+remote: Verifying deploy...
+remote:
+remote: !       Push rejected to thingboard.
+remote:
+To https://git.heroku.com/thingboard.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://git.heroku.com/thingboard.git'
+```
+
+Solution: In the settings.py file add 
+
+```
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+```
+
+Problem next: on accessing the site, i get error that i need to see the logs via
+
+```
+ heroku logs --tail
+```
+
+I get the following logs 
+
+```verilog
+2020-05-30T14:57:58.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
+2020-05-30T14:58:37.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/c802be5a-6c0c-4e32-9005-0e0d33cf40a1/activity/builds/c3d4cda6-f521-4904-98f3-107162d15c23
+2020-05-30T15:11:18.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
+2020-05-30T15:11:55.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/c802be5a-6c0c-4e32-9005-0e0d33cf40a1/activity/builds/529d7920-718b-4221-94b9-a4f82ed22d64
+2020-05-30T15:14:41.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
+2020-05-30T15:15:19.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/c802be5a-6c0c-4e32-9005-0e0d33cf40a1/activity/builds/e608a6d5-fcbf-4ed4-8c18-1b71841452c6
+2020-05-30T15:18:04.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
+2020-05-30T15:18:41.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/c802be5a-6c0c-4e32-9005-0e0d33cf40a1/activity/builds/fd790663-54b0-46d6-bb70-f1b77965cc4e
+2020-05-30T15:19:43.000000+00:00 app[api]: Build started by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.568578+00:00 app[api]: Attach DATABASE (@ref:postgresql-slippery-34466) by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.568578+00:00 app[api]: Running release v3 commands by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.583207+00:00 app[api]: Release v4 created by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.583207+00:00 app[api]: @ref:postgresql-slippery-34466 completed provisioning, setting DATABASE_URL. by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.845937+00:00 app[api]: Release v5 created by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:35.845937+00:00 app[api]: Deploy a5c407e4 by user manasvi.tyagi@gmail.com
+2020-05-30T15:20:45.000000+00:00 app[api]: Build succeeded
+2020-05-30T15:21:04.909254+00:00 heroku[router]: at=error code=H14 desc="No web processes running" method=GET path="/" host=thingboard.herokuapp.com request_id=89bbbdbe-d3cd-4765-b315-c4d1d4d54a20 fwd="101.100.128.204" dyno= connect= service= status=503 bytes= protocol=https
+2020-05-30T15:21:06.239655+00:00 heroku[router]: at=error code=H14 desc="No web processes running" method=GET path="/favicon.ico" host=thingboard.herokuapp.com request_id=67b67c3e-4404-4db0-b806-3ab0ea39af8e fwd="101.100.128.204" dyno= connect= service= status=503 bytes= protocol=https
+```
+
+I did not configured postgres, so that was expected.
+
+Solution: Add a  Procfile in the project root.
+
+Problem Next: The {Page is all messed up. Probably because the static files contain the css, and I need to host it somewhere.
+
+
+
+-------------
+
+Setup S3
+
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+   <CORSRule>
+        <AllowedOrigin>*</AllowedOrigin>
+        <AllowedMethod>GET</AllowedMethod>
+        <AllowedMethod>POST</AllowedMethod>
+        <AllowedMethod>PUT</AllowedMethod>
+        <AllowedHeader>*</AllowedHeader>
+    </CORSRule>
+</CORSConfiguration>
+
+31/06/2020 6:04 AM : So after struggling for about 2 hours. The problem is that python decouple is not working somehow for AWS keys!!
+
+Commented out line does not works
+
+```
+# AWS_ACCESS_KEY_ID = Config('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = Config('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = Config('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = 'AKIA3P7JVJJBEXXXXXXXX'
+AWS_SECRET_ACCESS_KEY = 'i0F4vr7ENwg82JFFVJJBEXXXXXXX'
+AWS_STORAGE_BUCKET_NAME = 'thingboard-bucket'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+# DEFAULT_FILE_STORAGE = Config('DEFAULT_FILE_STORAGE')
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+```
+
+-[ ] Create Entity Relationship Diagram
+
+Since I changed the modeled a lot, i need to recreate it. Because of lack of time, i need to automate it, via library that I foiund
+
+Apparently graphiviz had the following problem in windows
+
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agwrite
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agisdirected
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agopen
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agraphof
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtin
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol aglstnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agedge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsubedge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agisundirected
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agidnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtsubg
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agisstrict
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agattrsym
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstin
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agattr
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agstrdup_html
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol Agdirected
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnameof
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agget
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdegree
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstedge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdelsubg
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdelnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtattr
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agread
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agparent
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agxset
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agclose
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agidedge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agroot
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstsubg
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdeledge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnnodes
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol Agundirected
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agxget
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsubnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtedge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsubg
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnedges
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agset
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstout
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsafeset
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agprvnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol Agstrictundirected
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol PyIOBase_Type
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtout
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol Agstrictdirected
+    build\lib.win-amd64-3.8\pygraphviz\_graphviz.cp38-win_amd64.pyd : fatal error LNK1120: 50 unresolved externals
+        error: command 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.24.2
+    8314\\bin\\HostX86\\x64\\link.exe' failed with exit status 1120
+        ----------------------------------------
+    ERROR: Command errored out with exit status 1: 'w:\workspace\webdev_ds\django\iot_dashboard\venv\scripts\python
+    .exe' -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'C:\\Users\\manas\\AppData\\Local\\Temp\\pip-i
+    nstall-bsq0yl66\\pygraphviz\\setup.py'"'"'; __file__='"'"'C:\\Users\\manas\\AppData\\Local\\Temp\\pip-install-b
+    sq0yl66\\pygraphviz\\setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"
+    '"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' build_ext '-IC:\Program Fi
+    les (x86)\Graphviz2.38\include' '-LC:\Program Files (x86)\Graphviz2.38\lib\release\lib' install --record 'C:\Us
+    ers\manas\AppData\Local\Temp\pip-record-711n49m1\install-record.txt' --single-version-externally-managed --comp
+    ile --install-headers 'w:\workspace\w
+
+So I switched to github -> django-dia which creates a .dia file, for which  I had to install a tool to open it and the final diagram is not that great because internal models are now visible, and the resolution is not great, so not really readable. That is the reason I have kept the previous model in readme as well to present the idea. I could have created the diagram manually much faster, as I did with version 1.
+
+
+     Started at : 8:19 PM
+     Estimated Time: 15 mins
+     Finished at: 9:48 PM
+     Remarks: django graphviz does not works easily on windows.!
+
+------
+
+
+Create User -> Using Registration Forms
+
+Since I changed the modeled a lot, i need to recreate it. Because of lack of time, i need to automate it, via library that I foiund
+
+
+
+
+
 
 
 ## Journal entry  template
@@ -338,6 +539,7 @@ Create Device Types -> Only Admin Can Do this
 Add Device -> From The List of Device Types
 
 Todo:
+
 1. GeoDjango and maps
 
 2. Attribute photos

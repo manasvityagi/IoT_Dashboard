@@ -3,7 +3,7 @@ from django import forms
 from .models import *
 
 
-# Register your models here.
+# Demo of
 class CustomAdmin(admin.ModelAdmin):
     extra_field = forms.EmailField()
     search_fields = ('device_model_info',)
