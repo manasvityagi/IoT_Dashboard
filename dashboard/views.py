@@ -91,10 +91,13 @@ things = [
     }
 ]
 
+def trigger_error():
+    division_by_zero = 1 / 0
 
 # function based view
 @login_required
 def home_view(request):
+    trigger_error()
     logged_in_user = request.user
     x = Home.objects.filter(owner=logged_in_user)
     context = {
