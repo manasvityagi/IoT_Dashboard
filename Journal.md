@@ -98,8 +98,8 @@ In reality, I am investing on learning the shortcuts, which are available in the
 ​     
 ​      print(config('SENDGRID_API_KEY'))
 ​      
-        File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\decouple.py", line 124, in __init__
-    for line in file_:
+​        File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\decouple.py", line 124, in __init__
+​    for line in file_:
 
 `  File "C:\Python38\lib\codecs.py", line 322, in decode
     (result, consumed) = self._buffer_decode(data, self.errors, final)
@@ -325,7 +325,7 @@ https://stackoverflow.com/questions/49440853/django-2-0-modelform-datefield-not-
 Problem  X:
 
 ```
-emote: -----> $ python manage.py collectstatic --noinput
+remote: -----> $ python manage.py collectstatic --noinput
 remote:        Traceback (most recent call last):
 remote:          File "manage.py", line 21, in <module>
 .
@@ -421,6 +421,95 @@ AWS_DEFAULT_ACL = None
 # DEFAULT_FILE_STORAGE = Config('DEFAULT_FILE_STORAGE')
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 ```
+
+-[ ] Create Entity Relationship Diagram
+
+Since I changed the modeled a lot, i need to recreate it. Because of lack of time, i need to automate it, via library that I foiund
+
+Apparently graphiviz had the following problem in windows
+
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agwrite
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agisdirected
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agopen
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agraphof
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtin
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol aglstnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agedge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsubedge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agisundirected
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agidnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtsubg
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agisstrict
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agattrsym
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstin
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agattr
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agstrdup_html
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol Agdirected
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnameof
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agget
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdegree
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstedge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdelsubg
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdelnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtattr
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agread
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agparent
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agxset
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agclose
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agidedge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agroot
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstsubg
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdeledge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnnodes
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol Agundirected
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agxget
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsubnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtedge
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsubg
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnedges
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agset
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstout
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsafeset
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agprvnode
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol Agstrictundirected
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol PyIOBase_Type
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtout
+    graphviz_wrap.obj : error LNK2001: unresolved external symbol Agstrictdirected
+    build\lib.win-amd64-3.8\pygraphviz\_graphviz.cp38-win_amd64.pyd : fatal error LNK1120: 50 unresolved externals
+        error: command 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.24.2
+    8314\\bin\\HostX86\\x64\\link.exe' failed with exit status 1120
+        ----------------------------------------
+    ERROR: Command errored out with exit status 1: 'w:\workspace\webdev_ds\django\iot_dashboard\venv\scripts\python
+    .exe' -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'C:\\Users\\manas\\AppData\\Local\\Temp\\pip-i
+    nstall-bsq0yl66\\pygraphviz\\setup.py'"'"'; __file__='"'"'C:\\Users\\manas\\AppData\\Local\\Temp\\pip-install-b
+    sq0yl66\\pygraphviz\\setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"
+    '"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' build_ext '-IC:\Program Fi
+    les (x86)\Graphviz2.38\include' '-LC:\Program Files (x86)\Graphviz2.38\lib\release\lib' install --record 'C:\Us
+    ers\manas\AppData\Local\Temp\pip-record-711n49m1\install-record.txt' --single-version-externally-managed --comp
+    ile --install-headers 'w:\workspace\w
+So I switched to github -> django-dia which creates a .dia file, for which  I had to install a tool to open it and the final diagram is not that great because internal models are now visible, and the resolution is not great, so not really readable. That is the reason I have kept the previous model in readme as well to present the idea. I could have created the diagram manually much faster, as I did with version 1.
+
+
+     Started at : 8:19 PM
+     Estimated Time: 15 mins
+     Finished at: 9:48 PM
+     Remarks: django graphviz does not works easily on windows.!
+
+------
+
+
+Create User -> Using Registration Forms
+
+Since I changed the modeled a lot, i need to recreate it. Because of lack of time, i need to automate it, via library that I foiund
+
+
+
+
+
+
 
 ## Journal entry  template
 

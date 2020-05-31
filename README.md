@@ -3,15 +3,13 @@ IoT Dashboard for devices in a Premises  :
 
 ### Problem It Solves
 
-The idea is to Offers single point of management of 'on premise' smart devices.
+The idea is to Offers single point of management of 'on premise' smart devices, instead of having separate application, for each type of devices
 
 At the moment, the dashboard does not handles any stream of real time data, being originated from a smart device. ( planned for future versions)
 
 The project at this stage allows you to add certain models and visualize them at a single point (Home, Manufacturer, Seller, Service Provider, The device itself etc)
 
-
-
-Following Features are planned
+##### Following Features are planned
 
 - Register A User
 - Login/Logout User
@@ -62,11 +60,28 @@ Following Devices are supported
   - Time to change dust bag
 
 
-## Entity Relationship diagram
+## Entity Relationship diagram V1
 
 <img src="https://i.imgur.com/205T6KZ.png">
 
+### Entity relationship Diagram V2 [  Created Via  https://github.com/neumond/django-dia]
 
+<img src="https://i.imgur.com/eNiVvND.jpg">
+
+
+
+```
+Inline-style: 
+![alt text](https://i.imgur.com/eNiVvND.jpg "Logo Title Text 1")
+```
+
+## How to Use
+
+1. Administrator needs to add meta models, (in this order)
+   1. Add Address
+   2. Add Manufacturer
+   3. Add Devices to Catalog, which can be installed by the user(even if he is not an admin)
+   4. See the installed device in the Home Dashboard
 
 ## Note
 
