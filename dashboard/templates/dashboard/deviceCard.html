@@ -15,12 +15,13 @@
                 <center><img src="{{ thing.device_model_info.image.url }}"
                              class="card-img-top"
                              alt="..."
-                             style="height: 66%; width: 66%;border-radius: 2%;margin-top: 2%;margin-bottom: 5%">
+                             style="height: 10rem; width: 10rem;border-radius: 2%;margin-top: 2%;margin-bottom: 5%">
                 </center>
 
                 <div class="container">
                     <div class="card-body p-sm-0 m-0" style="line-height: 90%;">
                         <h5 class="card-title">Device : {{ thing.device_model_info.name }}</h5>
+
                         <p class="card-text"> Description: {{ thing.description }}</p>
                         <p class="card-text"> Max Life: {{ thing.device_model_info.max_life }}</p>
                         <p class="card-text">Used: {{ thing.life_used }}</p>

@@ -1,33 +1,14 @@
 {% extends "dashboard/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <br><br><br><br>
-
-        <div class="col-md-4">
-            <div class="card  bg-light" style="width: 45rem; border-radius: 15px">
-                <center><h1>Register a Human</h1></center>
-                <div class="content-section">
-                    <form method="post">
-                        {% csrf_token %}
-                        <fieldset class="form-group">
-                            <legend class="fieldBox mb-4"></legend>
-                            {{ form|crispy }}
-
-                        </fieldset>
-                        <div class="form-group">
-                            <center>
-                                <button class="btn btn-outline-info" type="submit">Register</button>
-                            </center>
-                        </div>
-                    </form>
-                    <center>
-                        <div class="border-top pt-3">
-                            Registered Already? Great! head up this way <a class="ml-2" href="{% url 'login' %}">Login</a>
-                        </div>
-                    </center>
-                </div>
-            </div>
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.ownerprofile.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <p class="text-secondary">{{ user.email }}</p>
         </div>
-
-
+      </div>
+      <!-- FORM HERE -->
+    </div>
 {% endblock content %}
