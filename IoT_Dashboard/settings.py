@@ -14,12 +14,10 @@ import os
 import urllib
 import djcelery
 
-
 import django_heroku
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
-
 
 sentry_sdk.init(
     dsn="https://ac79066fe3fa4a879f56f0e5b6eaf2a3@o399169.ingest.sentry.io/5255899",
@@ -35,8 +33,6 @@ djcelery.setup_loader()
 
 # Making Redis as application cache
 redis_url = urllib.parse.urlparse(os.environ.get('REDISTOGO_URL', 'redis://localhost:6959'))
-
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from decouple import Config
@@ -186,4 +182,3 @@ django_heroku.settings(locals())
 # CELERY_TASK_SERIALIZER = "json"
 # CELERY_ACCEPT_CONTENT = ["json", "msgpack"]
 # CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
-
