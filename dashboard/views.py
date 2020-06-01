@@ -129,7 +129,7 @@ class AddDeviceModelsView(CreateView):
         if form.is_valid():
             form.save()
             form.non_field_errors()
-            return HttpResponse('New Device Model Added to Catalogue, now you can add them to your !')
+            return HttpResponse('Excellent, New Device on the market!, now Users can install them to their Homes !')
         else:
             form.non_field_errors()
             field_errors = [(field.label, field.errors) for field in form]
