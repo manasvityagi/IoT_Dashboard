@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import urllib
+
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+
 
 sentry_sdk.init(
     dsn="https://ac79066fe3fa4a879f56f0e5b6eaf2a3@o399169.ingest.sentry.io/5255899",
@@ -22,6 +25,10 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True
 )
+
+# Making Redis as application cache
+redis_url = urllib.parse.urlparse(os.environ.get('REDISTOGO_URL', 'redis://localhost:6959'))
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from decouple import Config
@@ -52,7 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django-dia',
-    'django-extensions',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +153,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGOUT_REDIRECT_URL = 'login'
+
+CELERY_BROKER_URL = 'redis://h:p3b6e6cd87c3ad1156bb4e28b40e5cd80983bd051ffae93126a92754d5c2741cf@ec2-52-23-127-211.compute-1.amazonaws.com:20539'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'

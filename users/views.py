@@ -5,7 +5,7 @@ from django.contrib import messages  # for flash messages
 from django.views import View
 from django.views.generic import CreateView
 
-from .async_tasks import send_email
+from .tasks import send_email
 from .myform import CustomRegistrationForm
 
 
@@ -18,6 +18,7 @@ def registration(request):
             registration_form.save()
             username = registration_form.cleaned_data.get('username')
             messages.success(request, f'You are officially registered, {username}!')
+            # async task via celery
             send_email(registration_form.cleaned_data.get('email'))
             return redirect('dashboard-home')
     else:

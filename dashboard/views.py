@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import CreateView
 
-from users.async_tasks import send_email
+from users.tasks import send_email
 from .forms import *
 from .models import *
 

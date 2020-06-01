@@ -1,14 +1,15 @@
-from __future__ import absolute_import, unicode_literals
-
-import os
-
-from celery import Celery
+# from __future__ import absolute_import, unicode_literals
+# import os
+#
+# from celery import shared_task
+from time import sleep
 
 # set the default Django settings module for the 'celery' program.
 from decouple import config
 from sendgrid import *
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'IoT_Dashboard.settings')
+
 
 #
 # app = Celery('proj')
@@ -22,21 +23,31 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
 # # Load task modules from all registered Django app configs.
 # app.autodiscover_tasks()
 
-# @app.task(bind=True)
+###########################
+from celery import Celery, shared_task
+
+app = Celery('tasks', broker='amqp://localhost')
+
+
+@app.task
+def add(x, y):
+    return x + y
+
+
+#####################
+@shared_task
 def send_email(email_add):
     sg = sendgrid.SendGridAPIClient(config('SENDGRID_API_KEY'))
 
-    from_email = Email("manas@thingsboard.com")
-    to_email = To(email_add)
-    subject = "Your are registered!"
-    content = Content("text/plain", "You are onboarded, Now login and enjoy a simpler life!")
-    mail = Mail(from_email, to_email, subject, content)
-    response = sg.client.mail.send.post(request_body=mail.get())
+    user_from_email = Email("manas@thingsboard.com")
+    user_to_email = To(email_add)
+    user_subject = "Your are registered!"
+    user_content = Content("text/plain", "You are onboarded, Now login and enjoy a simpler life!")
+    user_mail = Mail(user_from_email, user_to_email, user_subject, user_content)
+    response = sg.client.mail.send.post(request_body=user_mail.get())
     print(response.status_code)
     print(response.body)
     print(response.headers)
-
-
 
 #
 # @app.task(bind=True)
