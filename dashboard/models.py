@@ -30,7 +30,7 @@ class DeviceModels(models.Model):
     name = models.CharField(max_length=50, default='generic device')
     max_life = models.PositiveIntegerField()
     warranty_days = models.PositiveIntegerField()
-    image = models.ImageField(default='default.jpg', upload_to='device_catalogue', null=True, blank=True)
+    image = models.ImageField(default='device_catalogue/default.png', upload_to='device_catalogue')
     energy_rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     safety_rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     current_consumption = models.IntegerField()
@@ -93,7 +93,7 @@ class Thing(models.Model):
     # on deletion of the Home, Thing should be destroyed
     installed_home_id = models.ManyToManyField(Home)
     purchase_date = models.DateField()
-    # in hours, incase you bought it second hand, or replaced with used item
+    # in hours, in case you bought it second hand, or replaced with used item
     life_used = models.IntegerField()
     # one value stream id will contain same device's data
     value_stream_id = models.ManyToManyField(ValueStream)
