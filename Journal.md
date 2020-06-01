@@ -424,9 +424,9 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 -[ ] Create Entity Relationship Diagram
 
-Since I changed the modeled a lot, i need to recreate it. Because of lack of time, i need to automate it, via library that I foiund
+Since I changed the modeled a lot, i need to recreate it. Because of lack of time, i need to automate it, via library that I found, graphviz
 
-Apparently graphiviz had the following problem in windows
+Apparently graphiviz had the following problem in windows, it needs additional non python package to be installed. Installing it did not worked!
 
     graphviz_wrap.obj : error LNK2001: unresolved external symbol agwrite
     graphviz_wrap.obj : error LNK2001: unresolved external symbol agisdirected
@@ -501,9 +501,33 @@ So I switched to github -> django-dia which creates a .dia file, for which  I ha
 ------
 
 
+
+-[ ] Unit Testing
+
+Test Fixtures: The preparation/ setup for the test to execute
+
+Tear Down or cleanup: Removing the side effects of the test execution.
+
+Both of these are handled by django test library, it creates the temporary database in case the test is related to models, and destroys it , when test is completed.
+
+
+
+
+     Started at : 
+     Estimated Time:
+     Finished at:
+     Remarks:
+
+------
+
+
 Create User -> Using Registration Forms
 
-Since I changed the modeled a lot, i need to recreate it. Because of lack of time, i need to automate it, via library that I foiund
+
+
+Create User -> Using Registration Forms
+
+
 
 
 

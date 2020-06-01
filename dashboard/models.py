@@ -1,6 +1,9 @@
+import datetime
+
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils import timezone
 from django.utils.timezone import now
 from django.utils.deconstruct import deconstructible
 
@@ -98,7 +101,11 @@ class Thing(models.Model):
     # one value stream id will contain same device's data
     value_stream_id = models.ManyToManyField(ValueStream)
 
-    # TODO use Point field data type from GeoDjango
+    def is_purchased_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=7) <= self.purchase_date <= now
+
+    # TODO use Point field data type from GeoDjango for location
 
     def __str__(self):
         return str(self.description)
@@ -112,7 +119,7 @@ class ServiceDetails(models.Model):
 
 # when a new device is added, email is sent to all subscriber's
 class SubscribersList(models.Model):
-    name = models.CharField(max_length=150, default='my coffee machine')
+    name = models.CharField(max_length=150, default='Neil Armstrong')
     email = models.EmailField()
 
     def __str__(self):
