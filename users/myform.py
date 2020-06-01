@@ -8,7 +8,7 @@ from users.models import SubscribersList
 class CustomRegistrationForm(UserCreationForm):
     email = forms.EmailField()
     subscribe = forms.BooleanField()
-    house_id = forms.IntegerField()
+    # house_id = forms.IntegerField()
 
     class Meta:
         model = User

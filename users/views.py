@@ -58,7 +58,7 @@ class OwnerView(CreateView):
     def post(self, request):
         user_update_form = UserUpdateForm(request.POST, instance=request.user)
         profile_update_form = ProfileUpdateForm(request.POST, request.FILES,
-                                                instance=request.ownerprofile)
+                                                instance=request.user.ownerprofile)
 
         if user_update_form.is_valid() and profile_update_form.is_valid():
             user_update_form.save()
@@ -68,6 +68,7 @@ class OwnerView(CreateView):
 
         messages.success(request, f'Invalid Form')
         return redirect('profile')
+
 
 # class OwnerView(CreateView):
 #     def get(self, request):

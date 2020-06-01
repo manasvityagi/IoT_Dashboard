@@ -9,96 +9,17 @@ from users.async_tasks import send_email
 from .forms import *
 from .models import *
 
-# Todo, should be better If I add the views in logical order, for better readability
 
-things = [
-    {
-        'name': 'Coffee Machine',
-        'lifetime_used': 152,
-        'mfg_date': '04/12/2018',
-        'last_cleaned': '04/05/2020',
-        'max_lifetime': 4999
-    },
-    {
-        'name': 'Vacuum Cleaner',
-        'lifetime_used': 167,
-        'mfg_date': '04/11/2018',
-        'last_cleaned': '04/05/2020',
-        'max_lifetime': 5000
-    },
-    {
-        'name': 'Vacuum Cleaner',
-        'lifetime_used': 167,
-        'mfg_date': '04/11/2018',
-        'last_cleaned': '04/05/2020',
-        'max_lifetime': 5001
-    },
-    {
-        'name': 'Vacuum Cleaner',
-        'lifetime_used': 167,
-        'mfg_date': '04/11/2018',
-        'last_cleaned': '04/05/2020',
-        'max_lifetime': 5002
-    },
-    {
-        'name': 'Vacuum Cleaner',
-        'lifetime_used': 167,
-        'mfg_date': '04/11/2018',
-        'last_cleaned': '04/05/2020',
-        'max_lifetime': 5003
-    },
-    {
-        'name': 'Vacuum Cleaner',
-        'lifetime_used': 167,
-        'mfg_date': '04/11/2018',
-        'last_cleaned': '04/05/2020',
-        'max_lifetime': 5004
-    },
-    {
-        'name': 'Vacuum Cleaner',
-        'lifetime_used': 167,
-        'mfg_date': '04/11/2018',
-        'last_cleaned': '04/05/2020',
-        'max_lifetime': 5005
-    },
-    {
-        'name': 'Vacuum Cleaner',
-        'lifetime_used': 167,
-        'mfg_date': '04/11/2018',
-        'last_cleaned': '04/05/2020',
-        'max_lifetime': 5006
-    },
-    {
-        'name': 'Vacuum Cleaner',
-        'lifetime_used': 167,
-        'mfg_date': '04/11/2018',
-        'last_cleaned': '04/05/2020',
-        'max_lifetime': 5007
-    },
-    {
-        'name': 'Vacuum Cleaner',
-        'lifetime_used': 167,
-        'mfg_date': '04/11/2018',
-        'last_cleaned': '04/05/2020',
-        'max_lifetime': 5008
-    },
-    {
-        'name': 'Vacuum Cleaner',
-        'lifetime_used': 167,
-        'mfg_date': '04/11/2018',
-        'last_cleaned': '04/05/2020',
-        'max_lifetime': 5009
-    }
-]
+# Todo, should be better If I add the views in logical order, for better readability
 
 
 # function based view
 @login_required
 def home_view(request):
     logged_in_user = request.user
-    x = Home.objects.filter(owner=logged_in_user)
+    x = Thing.objects.filter(owner=logged_in_user)
     context = {
-        'things': Thing.objects.filter(installed_home_id__owner=logged_in_user),
+        'things': x,
         'title': 'My Devices'
     }
     Thing.objects.all()
@@ -122,7 +43,6 @@ class AddDeviceView(CreateView):
         if form.is_valid():
             form.save()
             return HttpResponse('New Device Installed!')
-
 
 
 # def AddDeviceView(request):
@@ -291,3 +211,83 @@ class AddSellerView(CreateView):
             errors = str(field_errors)
             # TODO should display specific error in formatted manner
             return HttpResponse('Invalid Form, Reason -> ' + errors)
+
+# things = [
+#     {
+#         'name': 'Coffee Machine',
+#         'lifetime_used': 152,
+#         'mfg_date': '04/12/2018',
+#         'last_cleaned': '04/05/2020',
+#         'max_lifetime': 4999
+#     },
+#     {
+#         'name': 'Vacuum Cleaner',
+#         'lifetime_used': 167,
+#         'mfg_date': '04/11/2018',
+#         'last_cleaned': '04/05/2020',
+#         'max_lifetime': 5000
+#     },
+#     {
+#         'name': 'Vacuum Cleaner',
+#         'lifetime_used': 167,
+#         'mfg_date': '04/11/2018',
+#         'last_cleaned': '04/05/2020',
+#         'max_lifetime': 5001
+#     },
+#     {
+#         'name': 'Vacuum Cleaner',
+#         'lifetime_used': 167,
+#         'mfg_date': '04/11/2018',
+#         'last_cleaned': '04/05/2020',
+#         'max_lifetime': 5002
+#     },
+#     {
+#         'name': 'Vacuum Cleaner',
+#         'lifetime_used': 167,
+#         'mfg_date': '04/11/2018',
+#         'last_cleaned': '04/05/2020',
+#         'max_lifetime': 5003
+#     },
+#     {
+#         'name': 'Vacuum Cleaner',
+#         'lifetime_used': 167,
+#         'mfg_date': '04/11/2018',
+#         'last_cleaned': '04/05/2020',
+#         'max_lifetime': 5004
+#     },
+#     {
+#         'name': 'Vacuum Cleaner',
+#         'lifetime_used': 167,
+#         'mfg_date': '04/11/2018',
+#         'last_cleaned': '04/05/2020',
+#         'max_lifetime': 5005
+#     },
+#     {
+#         'name': 'Vacuum Cleaner',
+#         'lifetime_used': 167,
+#         'mfg_date': '04/11/2018',
+#         'last_cleaned': '04/05/2020',
+#         'max_lifetime': 5006
+#     },
+#     {
+#         'name': 'Vacuum Cleaner',
+#         'lifetime_used': 167,
+#         'mfg_date': '04/11/2018',
+#         'last_cleaned': '04/05/2020',
+#         'max_lifetime': 5007
+#     },
+#     {
+#         'name': 'Vacuum Cleaner',
+#         'lifetime_used': 167,
+#         'mfg_date': '04/11/2018',
+#         'last_cleaned': '04/05/2020',
+#         'max_lifetime': 5008
+#     },
+#     {
+#         'name': 'Vacuum Cleaner',
+#         'lifetime_used': 167,
+#         'mfg_date': '04/11/2018',
+#         'last_cleaned': '04/05/2020',
+#         'max_lifetime': 5009
+#     }
+# ]

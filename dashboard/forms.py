@@ -6,8 +6,6 @@ from django.contrib.auth.models import User
 from dashboard.models import *
 
 
-
-
 class add_address(forms.ModelForm):
     class Meta:
         model = Address
@@ -22,7 +20,7 @@ class add_device(forms.ModelForm):
     class Meta:
         model = Thing
         # fields = ('description',)
-        fields = ('description', 'device_model_info', 'installed_home_id',
+        fields = ('owner','description', 'device_model_info', 'installed_home_id',
                   'purchase_date', 'life_used',)
 
         widgets = {

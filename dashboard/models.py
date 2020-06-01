@@ -89,6 +89,7 @@ class ValueStream(models.Model):
 
 
 class Thing(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True)
     description = models.CharField(max_length=150, default='my smart coffee machine')
     # Many to one, because, many devices can have one model type
     device_model_info = models.ForeignKey(DeviceModels, on_delete=models.DO_NOTHING)
@@ -115,7 +116,6 @@ class ServiceDetails(models.Model):
     thing = models.OneToOneField(Thing, on_delete=models.CASCADE)
     owner_email = models.EmailField()
     service_provider = models.ForeignKey(ServiceProvider, on_delete=models.CASCADE)
-
 
 # class SubscribersList(models.Model):
 #     name = models.CharField(max_length=150, default='Neil Armstrong')
