@@ -153,11 +153,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGOUT_REDIRECT_URL = 'login'
-
+CELERY_BROKER_URL = 'amqp://localhost'
 # BROKER_URL  = os.environ.get("REDISCLOUD_URL", "django://")
 # BROKER_POOL_LIMIT = 1
 # BROKER_CONNECTION_MAX_RETRIES = None
-CELERY_BROKER_URL = 'redis://h:p3b6e6cd87c3ad1156bb4e28b40e5cd80983bd051ffae93126a92754d5c2741cf@ec2-52-23-127-211.compute-1.amazonaws.com:20539'
+#CELERY_BROKER_URL = 'redis://h:p3b6e6cd87c3ad1156bb4e28b40e5cd80983bd051ffae93126a92754d5c2741cf@ec2-52-23-127-211.compute-1.amazonaws.com:20539'
 CELERY_TASK_SERIALIZER = "json"
 CELERY_ACCEPT_CONTENT = ["json", "msgpack"]
 # CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
