@@ -9,6 +9,7 @@ from users.tasks import send_email
 from .forms import *
 from .models import *
 
+
 # Todo, should be better If I add the views in logical order, for better readability
 
 things = [
