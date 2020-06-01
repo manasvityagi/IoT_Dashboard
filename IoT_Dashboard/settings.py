@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import urllib
+import djcelery
+
+
 import django_heroku
 
 import sentry_sdk
@@ -25,6 +29,13 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True
 )
+
+# celery setup
+djcelery.setup_loader()
+
+# Making Redis as application cache
+redis_url = urllib.parse.urlparse(os.environ.get('REDISTOGO_URL', 'redis://localhost:6959'))
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -167,3 +178,14 @@ AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 django_heroku.settings(locals())
+
+BROKER_URL = os.environ.get("CLOUDAMQP_URL", "django://")
+BROKER_POOL_LIMIT = 1
+BROKER_CONNECTION_MAX_RETRIES = None
+
+CELERY_TASK_SERIALIZER = "json"
+CELERY_ACCEPT_CONTENT = ["json", "msgpack"]
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+
+if BROKER_URL == "django://":
+    INSTALLED_APPS += ("kombu.transport.django",)
