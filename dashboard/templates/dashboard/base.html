@@ -24,7 +24,7 @@
 
 <body>
 <div class="wrapper">
-    <div class="sidebar">
+    <div class="sidebar" >
         <h2>ThingsBoard</h2>
         <ul>
             <li><a href="{% url 'dashboard-home' %}"><i class="fas fa-chart-bar"></i>Home</a></li>
@@ -36,7 +36,7 @@
             <li><a href="#"><i class="fas fa-store"></i>Device Market</a></li>
             {% if user.is_superuser %}
                 <br>
-                <h2 style="text-align:left;"><i class="fas fa-bolt"></i> Admin</h2>
+                <h2 style="text-align:left;"><i class="fas fa-bolt" style="margin-left: 1rem"></i> Admin</h2>
                 <li><a href="{% url 'add_address' %}"><i class="fas fa-map-marker-alt"></i>Add Address</a>
                 <li><a href="{% url 'add_device_model' %}"><i class="fas fa-wifi"></i>Add Device to Catalog</a></li>
                 <li><a href="{% url 'add_home' %}"><i class="fas fa-home"></i>Add Home</a></li>
@@ -51,9 +51,10 @@
     </div>
 </div>
 
-<main role="main" class="container">
+<main role="main" class="container" >
     <div class="row">
-        <div class="col-md-10">
+    <br>
+        <div class="col-lg-auto">
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }}">

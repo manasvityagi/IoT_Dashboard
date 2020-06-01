@@ -517,6 +517,8 @@ https://stackoverflow.com/questions/55954937/celery-the-module-was-not-found
 
 
 
+What's the best way to merge two branches in Git? . I setup two folders and used winmerge, one branch for heroku and another for local developement
+
 ## Journal entry  template
 
 -[ ] What needs to be done

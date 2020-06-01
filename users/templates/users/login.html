@@ -1,6 +1,5 @@
 {% load static %}
 <!DOCTYPE html>
-
 <style>
     body, html {
         height: 100%;
@@ -35,11 +34,12 @@
 {% load crispy_forms_tags %}
 <div class="bg">
     <center>
+     <center><h1 style="font-weight: bold; color: #ffffff; font-size: 85px " >ThingsBoard : Simplify</h1></center>
         {% block content %}
             <br><br><br><br>
             <br><br><br><br><br><br>
             <div class="col-md-2">
-                <div class="card  bg-light" style="width: 25rem; border-radius: 15px">
+                <div class="card bg-transparent shadow-lg" style="width: 25rem; border-radius: 15px">
                     <center><h1>Sign in</h1></center>
                     <br>
                     <div class="content-section">
@@ -48,7 +48,6 @@
                             <fieldset class="form-group">
                                 <legend class="fieldBox mb-8"></legend>
                                 {{ form|crispy }}
-
                             </fieldset>
                             <div class="form-group">
                                 <center>
@@ -59,8 +58,8 @@
                             </div>
                         </form>
                         <center>
-                            <div class="border-top pt-3">
-                                Want to join? <a class="ml-2" href="{% url 'signup' %}">Signup</a>
+                            <div class="border-top pt-3" style="color:white">
+                                Want to join? <a class="ml-2" style="color:white; font-weight: bold" href="{% url 'signup' %}">Signup</a>
                             </div>
                         </center>
                     </div>
