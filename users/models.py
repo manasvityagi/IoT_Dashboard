@@ -10,3 +10,11 @@ class OwnerProfile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+
+class SubscribersList(models.Model):
+    name = models.CharField(max_length=150, default='Neil Armstrong')
+    email = models.EmailField()
+
+    def __str__(self):
+        return str(self.name + " " + self.email)

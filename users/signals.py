@@ -16,6 +16,6 @@ def create_owner_profile(sender, instance, created, **kwargs):
         OwnerProfile.objects.create(user=instance)
 
 
-# @receiver(post_save, sender=User)
-# def save_owner_profile(sender, instance, **kwargs):
-#     instance.OwnerProfile.save()
+@receiver(post_save, sender=OwnerProfile)
+def save_owner_profile(sender, instance, **kwargs):
+    instance.OwnerProfile.save()

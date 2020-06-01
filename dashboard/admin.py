@@ -21,4 +21,4 @@ admin.site.register(ValueStream)
 admin.site.register(ServiceProvider)
 admin.site.register(Seller)
 admin.site.register(ServiceDetails)
-admin.site.register(SubscribersList)
+
