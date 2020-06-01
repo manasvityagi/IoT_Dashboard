@@ -8,6 +8,8 @@ from django.views.generic import CreateView
 from .tasks import send_email
 from .myform import CustomRegistrationForm
 
+from.tasks import sleepy
+
 
 def registration(request):
     if request.method == 'POST':
@@ -22,6 +24,7 @@ def registration(request):
             send_email(registration_form.cleaned_data.get('email'))
             return redirect('dashboard-home')
     else:
+        sleepy(25)
         registration_form = CustomRegistrationForm()
 
     context = {

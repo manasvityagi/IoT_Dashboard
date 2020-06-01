@@ -26,13 +26,13 @@ from sendgrid import *
 ###########################
 from celery import Celery, shared_task
 
-app = Celery('tasks', broker='amqp://localhost')
 
 
-@app.task
-def add(x, y):
-    return x + y
 
+@shared_task
+def sleepy(duration):
+    sleep(duration)
+    return None
 
 #####################
 @shared_task
