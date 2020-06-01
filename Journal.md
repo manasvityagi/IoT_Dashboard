@@ -509,7 +509,9 @@ Create User -> Using Registration Forms
 
 Since I changed the modeled a lot, i need to recreate it. Because of lack of time, i need to automate it, via library that I foiund
 
+Stuck on celery, leaving it for now, testing the final app
 
+https://stackoverflow.com/questions/55954937/celery-the-module-was-not-found
 
 
 
@@ -541,6 +543,8 @@ Add Device -> From The List of Device Types
 Todo:
 
 1. GeoDjango and maps
-
 2. Attribute photos
+3. Change The image background on the login page to css pattern so it loads faster
+4. Change the form input field style, should not span the whole width
+5. 
 
