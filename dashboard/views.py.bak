@@ -45,6 +45,7 @@ class AddDeviceView(CreateView):
             return HttpResponse('New Device Installed!')
 
 
+
 # def AddDeviceView(request):
 #     if request.method == 'POST':
 #         form = add_device(request.POST)
