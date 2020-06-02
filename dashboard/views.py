@@ -160,7 +160,7 @@ class AddHomeView(CreateView):
         if form.is_valid():
             form.save()
             form.non_field_errors()
-            messages.success(request,f'New Home Added!')
+            messages.success(request, f'New Home Added!')
             return redirect('dashboard-home')
 
         else:
