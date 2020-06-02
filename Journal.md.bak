@@ -33,11 +33,13 @@ Problem 2: When I try to debug (For problem 1), I am getting following error
 Error Messagedjango.core.exceptions.ImproperlyConfigured: 
 Requested setting INSTALLED_APPS, but settings are not configured"
 ```
+
 Solution to Problem 2: I had selected a particular view, for debugging, which does not runs the 'manage.py', which is responsible
 for configuring the setting, particularly this extended line in the error message
 
 Solution to Problem 1: I assumed that is_valid function will check for validity. It does, but not if you have have already saved the form.
 I missed the .form_save() fx and hence I was able to 'register' with same username twice. 
+
 ```
 '*You must either define the environment variable DJANGO_SETTINGS_MODULE...*
 ```
@@ -536,8 +538,6 @@ Create User -> Using Registration Forms
 
 
 
-
-What's the best way to merge two branches in Git? . I setup two folders and used winmerge, one branch for heroku and another for local developement
 
 ## Journal entry  template
 

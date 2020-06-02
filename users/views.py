@@ -1,5 +1,7 @@
 from django.contrib import messages  # for flash messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages  # for flash messages
 from django.views import View
@@ -26,6 +28,7 @@ def registration(request):
                 sub.save()
             # Add to subscriber's list for important emails
             messages.success(request, f'You are officially registered, {username}!')
+            # async task via celery
             send_email(registration_form.cleaned_data.get('email'))
             return redirect('dashboard-home')
     else:
