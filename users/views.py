@@ -1,15 +1,16 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 from .models import SubscribersList
 from .tasks import send_email
 from .myform import CustomRegistrationForm, UserUpdateForm, ProfileUpdateForm
 
-from.tasks import sleepy
+from .tasks import sleepy
 
 
+# function based views
 def registration(request):
     if request.method == 'POST':
         print('Its a post')
@@ -38,11 +39,6 @@ def registration(request):
     return render(request, 'users/registration.html', context)
 
 
-@login_required
-def owner_profile(request):
-    return render(request, 'users/profile.html')
-
-
 class OwnerView(CreateView):
     def get(self, request):
         user_update_form = UserUpdateForm()
@@ -69,13 +65,10 @@ class OwnerView(CreateView):
         return redirect('profile')
 
 
-# class OwnerView(CreateView):
-#     def get(self, request):
-#         user_update_form = UserUpdateForm()
-#         profile_update_form = ProfileUpdateForm()
-#
-#         context = {
-#             'user_update_form': user_update_form,
-#             'profile_update_form': profile_update_form
-#         }
-#         return render(request, 'users/profile.html', context)
+class GetSubscribersList(ListView):
+    template_name = 'users/subscribers_list.html'
+    context_object_name = 'subscribers_list_object'
+
+    def get_queryset(self):
+        print(SubscribersList.objects.all())
+        return SubscribersList.objects.all().order_by('name')

@@ -21,6 +21,7 @@ urlpatterns = [
     path('add_service_provider/',
          login_required(dashboard_view.AddServiceProviderView.as_view()), name="add_service_provider"),
     path('add_seller/', login_required(dashboard_view.AddSellerView.as_view()), name="add_seller"),
+    path('subscribers_list/', login_required(user_views.GetSubscribersList.as_view()), name="subscribers_list"),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name="login"),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name="logout"),
     path('', include('dashboard.urls')),

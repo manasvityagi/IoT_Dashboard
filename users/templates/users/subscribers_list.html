@@ -1,0 +1,17 @@
+{% extends "dashboard/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <br>  <br>
+    <h1>Existing Subscribers</h1>
+    {% for subscriber in subscribers_list_object %}
+
+        <div class="card bg-transparent shadow-sm m-1 p-lg-3" style="width: 40rem; border-radius: 10px">
+
+            <h5>Name: {{ subscriber.name }}</h5>
+            <h5>Email: {{ subscriber.email }}</h5>
+        </div>
+        <br>
+    {% endfor %}
+{% endblock content %}
+

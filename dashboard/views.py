@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView, DetailView
 
 from users.tasks import send_email
 from .forms import *
@@ -23,6 +23,13 @@ def home_view(request):
     }
     Thing.objects.all()
     return render(request, 'dashboard/deviceCard.html', context)
+
+
+
+
+class ThingDetails(DetailView):
+    model = Thing
+    template_name = 'dashboard/deviceDetails.html'
 
 
 class AddDeviceView(CreateView):

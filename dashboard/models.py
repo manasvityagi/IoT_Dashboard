@@ -84,7 +84,7 @@ class Seller(models.Model):
 # a time series database model
 class ValueStream(models.Model):
     description = models.CharField(max_length=150, default='value stream description')
-    property_name = models.CharField(max_length=25, default='default roperty name')
+    property_name = models.CharField(max_length=25, default='default property name')
     value = models.FloatField(default=0.0)
     ts = models.DateTimeField(auto_now_add=True)
 
@@ -113,9 +113,14 @@ class Thing(models.Model):
 
 
 class ServiceDetails(models.Model):
+    # In case the thing or device is deleted, there is no point in keeping its service record
     thing = models.OneToOneField(Thing, on_delete=models.CASCADE)
-    owner_email = models.EmailField()
-    service_provider = models.ForeignKey(ServiceProvider, on_delete=models.CASCADE)
+    receipt_email = models.EmailField()
+    # date of service is when this is posted, be default, it may be overridden
+    date_of_service = models.DateField(default=timezone.now)
+    # Even if the service provider is deleted, the record may be kept
+    service_provider = models.ForeignKey(ServiceProvider, on_delete=models.DO_NOTHING)
+    remarks = models.TextField(default="Service completed")
 
 
 # when a new device is added to the marketplace, email is sent to all subscriber's

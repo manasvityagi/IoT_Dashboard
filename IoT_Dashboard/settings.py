@@ -13,7 +13,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import urllib
 import django_heroku
-from decouple import Config
+from decouple import config
+
+#config.encoding = 'cp1251'
 from django.contrib import staticfiles
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -39,7 +41,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ai0g^ot$m1d_leodg0_v%fescpt(a4+-fficz=p7&ky5&#@5e$'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -157,11 +159,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGOUT_REDIRECT_URL = 'login'
 
-# AWS_ACCESS_KEY_ID = Config('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = Config('AWS_SECRET_ACCESS_KEY')
-# AWS_STORAGE_BUCKET_NAME = Config('AWS_STORAGE_BUCKET_NAME')
-AWS_ACCESS_KEY_ID = 'AKIA3P7JVJJBE6BUB6MQ'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = str(config('AWS_ACCESS_KEY_ID'))
+AWS_SECRET_ACCESS_KEY = str(config('AWS_SECRET_ACCESS_KEY'))
 AWS_STORAGE_BUCKET_NAME = 'thingboard-bucket'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
