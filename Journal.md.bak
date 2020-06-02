@@ -118,7 +118,6 @@ which seems a bit of mystery). But it the disadvantage is that the redirect URL 
 
 Problem 6: Forgot to add form.save() after validation. Hence could not locate the database entry.
      
-
      Estimated Time: 2 hours
      Finished at: Actually took whole working day, because of intermediate steps. 
      Remarks:
@@ -491,7 +490,6 @@ Apparently graphiviz had the following problem in windows, it needs additional n
     les (x86)\Graphviz2.38\include' '-LC:\Program Files (x86)\Graphviz2.38\lib\release\lib' install --record 'C:\Us
     ers\manas\AppData\Local\Temp\pip-record-711n49m1\install-record.txt' --single-version-externally-managed --comp
     ile --install-headers 'w:\workspace\w
-
 So I switched to github -> django-dia which creates a .dia file, for which  I had to install a tool to open it and the final diagram is not that great because internal models are now visible, and the resolution is not great, so not really readable. That is the reason I have kept the previous model in readme as well to present the idea. I could have created the diagram manually much faster, as I did with version 1.
 
 
@@ -522,16 +520,16 @@ Both of these are handled by django test library, it creates the temporary datab
 
 ------
 
+
 Create User -> Using Registration Forms
 
-https://stackoverflow.com/questions/1644455/django-form-not-saving-default-image-name
 
-https://coderwall.com/p/bz0sng/simple-django-image-upload-to-model-imagefield
 
-Quit the server with CTRL-BREAK.
-Session data corrupted
+Create User -> Using Registration Forms
 
-https://stackoverflow.com/questions/38970832/session-data-corrupted-in-django
+
+
+
 
 
 

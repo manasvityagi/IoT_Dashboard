@@ -3,7 +3,6 @@ import datetime
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.db.models.functions import datetime
 from django.utils import timezone
 from django.utils.timezone import now
 from django.utils.deconstruct import deconstructible
@@ -98,13 +97,14 @@ class Thing(models.Model):
     # on deletion of the Home, Thing should be destroyed
     installed_home_id = models.ManyToManyField(Home)
     purchase_date = models.DateField()
-    # in hours, in case you bought it second hand, or replaced with used item
+    # in hours, incase you bought it second hand, or replaced with used item
     life_used = models.IntegerField()
     # one value stream id will contain same device's data
     value_stream_id = models.ManyToManyField(ValueStream)
 
     def is_purchased_recently(self):
-        return now - datetime.timedelta(days=7) <= self.purchase_date <= timezone.now()
+        now = timezone.now()
+        return now - datetime.timedelta(days=7) <= self.purchase_date <= now
 
     # TODO use Point field data type from GeoDjango for location
 
@@ -117,11 +117,9 @@ class ServiceDetails(models.Model):
     owner_email = models.EmailField()
     service_provider = models.ForeignKey(ServiceProvider, on_delete=models.CASCADE)
 
-
-# when a new device is added to the marketplace, email is sent to all subscriber's
-class SubscribersList(models.Model):
-    name = models.CharField(max_length=150, default='my coffee machine')
-    email = models.EmailField()
-
-    def __str__(self):
-        return str(self.name + " " + self.email)
+# class SubscribersList(models.Model):
+#     name = models.CharField(max_length=150, default='Neil Armstrong')
+#     email = models.EmailField()
+#
+#     def __str__(self):
+#         return str(self.name + " " + self.email)
