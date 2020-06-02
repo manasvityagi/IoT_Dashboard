@@ -1,14 +1,14 @@
+from django.contrib import messages  # for flash messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages  # for flash messages
 from django.views import View
 from django.views.generic import CreateView
 
 from .tasks import send_email
-from .myform import CustomRegistrationForm
-
-from.tasks import sleepy
+from .models import SubscribersList
+from .myform import CustomRegistrationForm, UserUpdateForm, ProfileUpdateForm
+from .tasks import send_email
 
 
 def registration(request):
@@ -19,12 +19,16 @@ def registration(request):
             print('And its a valid one')
             registration_form.save()
             username = registration_form.cleaned_data.get('username')
+            email = registration_form.cleaned_data.get('email')
+            subscription_choice = registration_form.cleaned_data.get('subscribe')
+            if subscription_choice:
+                sub = SubscribersList(name=username, email=email)
+                sub.save()
+            # Add to subscriber's list for important emails
             messages.success(request, f'You are officially registered, {username}!')
-            # async task via celery
             send_email(registration_form.cleaned_data.get('email'))
             return redirect('dashboard-home')
     else:
-        sleepy(25)
         registration_form = CustomRegistrationForm()
 
     context = {
@@ -42,4 +46,37 @@ def owner_profile(request):
 
 class OwnerView(CreateView):
     def get(self, request):
-        return render(request, 'users/profile.html')
+        user_update_form = UserUpdateForm()
+        profile_update_form = ProfileUpdateForm()
+
+        context = {
+            'user_update_form': user_update_form,
+            'profile_update_form': profile_update_form
+        }
+        return render(request, 'users/profile.html', context)
+
+    def post(self, request):
+        user_update_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_update_form = ProfileUpdateForm(request.POST, request.FILES,
+                                                instance=request.user.ownerprofile)
+
+        if user_update_form.is_valid() and profile_update_form.is_valid():
+            user_update_form.save()
+            profile_update_form.save()
+            messages.success(request, f'Account Updated')
+            return redirect('profile')
+
+        messages.success(request, f'Invalid Form')
+        return redirect('profile')
+
+
+# class OwnerView(CreateView):
+#     def get(self, request):
+#         user_update_form = UserUpdateForm()
+#         profile_update_form = ProfileUpdateForm()
+#
+#         context = {
+#             'user_update_form': user_update_form,
+#             'profile_update_form': profile_update_form
+#         }
+#         return render(request, 'users/profile.html', context)

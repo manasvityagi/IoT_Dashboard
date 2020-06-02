@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.utils.timezone import now
+from django.db.models.functions import datetime
+from django.utils import timezone
 from django.utils.deconstruct import deconstructible
 
 
@@ -30,7 +31,10 @@ class DeviceModels(models.Model):
     name = models.CharField(max_length=50, default='generic device')
     max_life = models.PositiveIntegerField()
     warranty_days = models.PositiveIntegerField()
-    image = models.ImageField(default='device_catalogue/default.png', upload_to='device_catalogue')
+
+   # image = models.ImageField(default='device_catalogue/default.jpg', upload_to='device_catalogue')
+
+    image = models.ImageField(default='owner_pics/default.jpg', upload_to='owner_pics')
     energy_rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     safety_rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     current_consumption = models.IntegerField()
@@ -86,6 +90,7 @@ class ValueStream(models.Model):
 
 
 class Thing(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True)
     description = models.CharField(max_length=150, default='my smart coffee machine')
     # Many to one, because, many devices can have one model type
     device_model_info = models.ForeignKey(DeviceModels, on_delete=models.DO_NOTHING)
@@ -98,7 +103,11 @@ class Thing(models.Model):
     # one value stream id will contain same device's data
     value_stream_id = models.ManyToManyField(ValueStream)
 
-    # TODO use Point field data type from GeoDjango
+    def is_purchased_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=7) <= self.purchase_date <= now
+
+    # TODO use Point field data type from GeoDjango for location
 
     def __str__(self):
         return str(self.description)

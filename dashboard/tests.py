@@ -42,7 +42,7 @@ class ThingModeTest(TestCase):
         # add a subscriber
         SubscribersList(name=test_name, email=test_email).save()
 
-        # remove a subscriberS
+        # remove a subscriber
         SubscribersList.objects.get(name=test_name).delete()
 
         # Test whether the subscriber count for this email is 0

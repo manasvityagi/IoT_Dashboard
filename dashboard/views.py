@@ -15,9 +15,9 @@ from .models import *
 @login_required
 def home_view(request):
     logged_in_user = request.user
-    x = Home.objects.filter(owner=logged_in_user)
+    x = Thing.objects.filter(owner=logged_in_user)
     context = {
-        'things': Thing.objects.filter(installed_home_id__owner=logged_in_user),
+        'things': x,
         'title': 'My Devices'
     }
     Thing.objects.all()
@@ -127,7 +127,7 @@ class AddDeviceModelsView(CreateView):
         return render(request, 'dashboard/addDeviceModel.html', context)
 
     def post(self, request):
-        form = add_device_models(request.POST or None)
+        form = add_device_models(request.POST, request.FILES)
         # check whether it's valid:
         if form.is_valid():
             form.save()

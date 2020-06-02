@@ -7,7 +7,7 @@ from .models import *
 class CustomAdmin(admin.ModelAdmin):
     extra_field = forms.EmailField()
     search_fields = ('device_model_info',)
-    list_display = ('device_model_info', 'description','purchase_date',)
+    list_display = ('device_model_info', 'description', 'purchase_date',)
     list_filter = ('installed_home_id',)
     fields = ('device_model_info',)
 
