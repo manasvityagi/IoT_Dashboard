@@ -2,10 +2,10 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <br><br><br><br>
-
+     <div class="content-section">
     <div class="col-md-4">
         <div class="card  bg-light" style="width: 40rem; border-radius: 25px">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <fieldset class="form-group">
                     <legend class="fieldBox mb-4"></legend>
@@ -13,15 +13,16 @@
                 </fieldset>
                 <div class="form-group">
                     <center>
-                        <button class="btn btn-outline-info" type="submit">Register</button>
+                        <button class="btn btn-outline-info" type="submit">Add</button>
                     </center>
                 </div>
             </form>
-            </form>
+
         </div>
     </div>
+     </div>
     <br>
- <hr>
+    <hr>
     <br>
 
 {% endblock content %}r

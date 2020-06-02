@@ -1,8 +1,4 @@
 from django import forms
-from django.forms import inlineformset_factory, DateField, Textarea
-
-from django.contrib.auth.models import User
-
 from dashboard.models import *
 
 
@@ -13,14 +9,11 @@ class add_address(forms.ModelForm):
 
 
 class add_device(forms.ModelForm):
-    # description = forms.CharField(label='Description', max_length=100)
-    # device_type = forms.CharField(label='Device Type', max_length=100)
-    #
 
     class Meta:
         model = Thing
         # fields = ('description',)
-        fields = ('owner','description', 'device_model_info', 'installed_home_id',
+        fields = ('owner', 'description', 'device_model_info', 'installed_home_id',
                   'purchase_date', 'life_used',)
 
         widgets = {
@@ -28,12 +21,6 @@ class add_device(forms.ModelForm):
                                              attrs={'class': 'form-control', 'placeholder': 'Select a date',
                                                     'type': 'date'}),
         }
-
-
-class add_address(forms.ModelForm):
-    class Meta:
-        model = Address
-        fields = ('street', 'zip',)
 
 
 class add_manufacturer(forms.ModelForm):

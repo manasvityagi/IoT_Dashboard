@@ -13,9 +13,10 @@ from .models import OwnerProfile
 @receiver(post_save, sender=User)
 def create_owner_profile(sender, instance, created, **kwargs):
     if created:
+        print('This is done via signals!')
         OwnerProfile.objects.create(user=instance)
 
 
-# @receiver(post_save, sender=OwnerProfile)
+# @receiver(post_save, sender=User)
 # def save_owner_profile(sender, instance, **kwargs):
-#     instance.save()
+#     instance.OwnerProfile.save()

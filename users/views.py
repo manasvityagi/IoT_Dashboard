@@ -1,9 +1,6 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib import messages  # for flash messages
-from django.views import View
 from django.views.generic import CreateView
 
 from .async_tasks import send_email

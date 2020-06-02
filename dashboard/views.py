@@ -1,11 +1,9 @@
-from decouple import config
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views import View
 from django.views.generic import CreateView
 
-from users.async_tasks import send_email
 from .forms import *
 from .models import *
 
@@ -42,9 +40,11 @@ class AddDeviceView(CreateView):
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            return HttpResponse('New Device Installed!')
+            messages.success(request, f'Your Device is Installed!')
+            return redirect('dashboard-home')
 
 
+# Move to Class Based View
 # def AddDeviceView(request):
 #     if request.method == 'POST':
 #         form = add_device(request.POST)
@@ -84,7 +84,8 @@ class AddAddressView(CreateView):
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            return HttpResponse('New Address Added!')
+            messages.success(request, f'Perfecto!, New Address Added!')
+            return redirect('dashboard-home')
 
 
 class AddManufacturerView(CreateView):
@@ -104,7 +105,9 @@ class AddManufacturerView(CreateView):
         if form.is_valid():
             form.save()
             form.non_field_errors()
-            return HttpResponse('New Manufacturer Added!')
+
+            messages.success(request, f'New Manufacturer Added!')
+            return redirect('dashboard-home')
         else:
             form.non_field_errors()
             field_errors = [(field.label, field.errors) for field in form]
@@ -124,12 +127,15 @@ class AddDeviceModelsView(CreateView):
         return render(request, 'dashboard/addDeviceModel.html', context)
 
     def post(self, request):
-        form = add_device_models(request.POST or None)
+        form = add_device_models(request.POST, request.FILES)
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            form.non_field_errors()
-            return HttpResponse('Excellent, New Device on the market!, now Users can install them to their Homes !')
+            messages.success(request,
+                             f'Excellent, New Device Mon market, now customers can add it to their Home')
+            return redirect('dashboard-home')
+            # # return HttpResponse('Excellent, New Device Model Added to Catalogue, now customers can add it to their '
+            #                     'Home!')
         else:
             form.non_field_errors()
             field_errors = [(field.label, field.errors) for field in form]
@@ -154,7 +160,9 @@ class AddHomeView(CreateView):
         if form.is_valid():
             form.save()
             form.non_field_errors()
-            return HttpResponse('New Home Added!')
+            messages.success(request, f'New Home Added!')
+            return redirect('dashboard-home')
+
         else:
             form.non_field_errors()
             field_errors = [(field.label, field.errors) for field in form]
@@ -179,7 +187,8 @@ class AddServiceProviderView(CreateView):
         if form.is_valid():
             form.save()
             form.non_field_errors()
-            return HttpResponse('New Service Provider Added!')
+            messages.success(request, f'Great, New Service Provider Added!')
+            return redirect('dashboard-home')
         else:
             form.non_field_errors()
             field_errors = [(field.label, field.errors) for field in form]
@@ -204,7 +213,9 @@ class AddSellerView(CreateView):
         if form.is_valid():
             form.save()
             form.non_field_errors()
-            return HttpResponse('New Seller Added!')
+            messages.success(request, f'Bravo, New Seller Added!')
+            return redirect('dashboard-home')
+
         else:
             form.non_field_errors()
             field_errors = [(field.label, field.errors) for field in form]

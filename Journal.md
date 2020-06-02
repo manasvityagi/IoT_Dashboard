@@ -520,16 +520,16 @@ Both of these are handled by django test library, it creates the temporary datab
 
 ------
 
-
 Create User -> Using Registration Forms
 
+https://stackoverflow.com/questions/1644455/django-form-not-saving-default-image-name
 
+https://coderwall.com/p/bz0sng/simple-django-image-upload-to-model-imagefield
 
-Create User -> Using Registration Forms
+Quit the server with CTRL-BREAK.
+Session data corrupted
 
-
-
-
+https://stackoverflow.com/questions/38970832/session-data-corrupted-in-django
 
 
 
