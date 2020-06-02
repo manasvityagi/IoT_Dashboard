@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.forms import modelformset_factory
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, ListView, DetailView
@@ -16,15 +17,13 @@ from .models import *
 @login_required
 def home_view(request):
     logged_in_user = request.user
-    x = Thing.objects.filter(owner=logged_in_user)
+    x = Thing.objects.filter(owner=logged_in_user).order_by('-life_used')
     context = {
         'things': x,
         'title': 'My Devices'
     }
-    Thing.objects.all()
+
     return render(request, 'dashboard/deviceCard.html', context)
-
-
 
 
 class ThingDetails(DetailView):
@@ -35,7 +34,9 @@ class ThingDetails(DetailView):
 class AddDeviceView(CreateView):
 
     def get(self, request):
-        existing_installed_devices = Thing.objects.all()
+        # cannot find a good use case of exclude, here so wherever owner is null( although it is non nullable foield
+        # by definition in the model) The device will be excluded
+        existing_installed_devices = Thing.objects.all().exclude(owner__isnull=True)
         form = add_device(request.POST)
         context = {
             'form': form,
@@ -121,6 +122,22 @@ class AddManufacturerView(CreateView):
             field_errors = [(field.label, field.errors) for field in form]
             errors = str(field_errors)
             return HttpResponse('Invalid Form, Reason -> ' + errors)
+
+
+# bulk add addresses using formset
+def AddAddressFS(request):
+    mfgformset = modelformset_factory(Address, fields=('street', 'zip'), extra=4)
+
+    if request.method == 'POST':
+        form = mfgformset(request.POST)
+        instances = form.save()
+
+    # instantiate an empty one in case it is get request
+    form = mfgformset(queryset=Address.objects.none())
+    # though the info is duplicated
+    existing_addresses = Address.objects.all()
+    return render(request, 'dashboard/addAddress.html',
+                  {'form': form, 'existing_addresses': existing_addresses})
 
 
 class AddDeviceModelsView(CreateView):

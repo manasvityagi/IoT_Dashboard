@@ -8,8 +8,7 @@
         {% csrf_token %}
         <fieldset class="form-group">
             <legend class="fieldBox mb-4"></legend>
-            {{ form|crispy }}
-
+            {{ form.as_p.format }}
         </fieldset>
         <div class="form-group">
             <center>
