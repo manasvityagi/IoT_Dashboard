@@ -31,7 +31,7 @@ def registration(request):
         registration_form = CustomRegistrationForm()
 
     context = {
-        'title': 'Sign up',
+        'title': 'Sign up!',
         'form': registration_form
     }
 
