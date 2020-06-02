@@ -13,7 +13,7 @@ class OwnerProfile(models.Model):
 
 
 class SubscribersList(models.Model):
-    name = models.CharField(max_length=150, default='Neil Armstrong')
+    name = models.CharField(max_length=150, default='Joe')
     email = models.EmailField()
 
     def __str__(self):
