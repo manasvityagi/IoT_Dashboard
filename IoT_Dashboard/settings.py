@@ -12,10 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import urllib
-import djcelery
-
 import django_heroku
-
+from decouple import Config
+from django.contrib import staticfiles
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -28,15 +27,11 @@ sentry_sdk.init(
     send_default_pii=True
 )
 
-# celery setup
-djcelery.setup_loader()
-
 # Making Redis as application cache
 redis_url = urllib.parse.urlparse(os.environ.get('REDISTOGO_URL', 'redis://localhost:6959'))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-from decouple import Config
-from django.contrib import staticfiles
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -174,5 +169,3 @@ AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 django_heroku.settings(locals())
-
-
