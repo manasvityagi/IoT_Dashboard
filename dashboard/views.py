@@ -130,7 +130,7 @@ class AddDeviceModelsView(CreateView):
         form = add_device_models(request.POST, request.FILES)
         # check whether it's valid:
         if form.is_valid():
-            form.save()git fetch
+            form.save()
             messages.success(request,
                              f'Excellent, New Device Mon market, now customers can add it to their Home')
             return redirect('dashboard-home')
