@@ -84,7 +84,7 @@ class AddAddressView(CreateView):
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            messages.success(request, f'Perfecto, New Address Added!')
+            messages.success(request, f'Perfecto!, New Address Added!')
             return redirect('dashboard-home')
 
 

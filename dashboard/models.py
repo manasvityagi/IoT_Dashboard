@@ -5,7 +5,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models.functions import datetime
 from django.utils import timezone
-from django.utils import timezone
 from django.utils.timezone import now
 from django.utils.deconstruct import deconstructible
 
@@ -105,8 +104,7 @@ class Thing(models.Model):
     value_stream_id = models.ManyToManyField(ValueStream)
 
     def is_purchased_recently(self):
-        now = timezone.now()
-        return now - datetime.timedelta(days=7) <= self.purchase_date <= now
+        return now - datetime.timedelta(days=7) <= self.purchase_date <= timezone.now()
 
     # TODO use Point field data type from GeoDjango for location
 

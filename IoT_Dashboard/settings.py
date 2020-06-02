@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import urllib
-
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from decouple import Config
 
 
 sentry_sdk.init(
@@ -31,7 +31,7 @@ redis_url = urllib.parse.urlparse(os.environ.get('REDISTOGO_URL', 'redis://local
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-from decouple import Config
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
