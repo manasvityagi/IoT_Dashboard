@@ -90,6 +90,8 @@ class ValueStream(models.Model):
     ts = models.DateTimeField(auto_now_add=True)
 
 
+# A thing is a digital representation of a physical object which is sensorized
+# Its a digital twin. In this project, it has interchangeably called as device
 class Thing(models.Model):
     owner = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=False)
     description = models.CharField(max_length=120, default='my smart coffee machine')

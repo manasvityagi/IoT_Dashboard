@@ -9,11 +9,10 @@ class add_address(forms.ModelForm):
 
 
 class add_device(forms.ModelForm):
-
     class Meta:
         model = Thing
         # fields = ('description',)
-        fields = ('owner', 'description', 'device_model_info', 'installed_home_id',
+        fields = ('device_model_info', 'description', 'installed_home_id',
                   'purchase_date', 'life_used',)
 
         widgets = {

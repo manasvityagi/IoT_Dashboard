@@ -533,9 +533,13 @@ Session data corrupted
 
 https://stackoverflow.com/questions/38970832/session-data-corrupted-in-django
 
+`heroku pg:psql`.
 
+heroku restart; heroku pg:reset DATABASE --confirm APP-NAME; heroku run rake db:migrate
 
+tyagi.tech does not work, but www.tyagi.tech does !
 
+`heroku pg:psql`.
 
 ## Journal entry  template
 
