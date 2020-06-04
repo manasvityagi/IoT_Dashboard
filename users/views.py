@@ -92,6 +92,6 @@ class GetSubscribersList(ListView):
         return SubscribersList.objects.all().order_by('name')
 
 
-def random_string(stringLength=12):
+def random_string(stringLength=10):
     letters = string.ascii_letters
     return ''.join(random.choice(letters) for i in range(stringLength))
