@@ -619,6 +619,10 @@ not really misleading, but the rest of therror is, I just forgot to put pip free
 
 heroku run python manage.py migrate       || Saved a of of time
 
+
+
+So the problem I faced is that after adding a smart device, I am unable to see the device, immediately, and this has caused like lot of loss of confidence and therefore distraction. The thing is, the cache is not returning from permanent db., it is for fast response and may not reflect the true state. The variable that i mindlessely pasted from page, CACHE_TTL, stands for time to live, which I am guessing is the time after it will sync with postgres, where the accurate data is present. So the caches should not be used where absolute truth depends on the order of operation.
+
 ## Journal entry  template
 
 -[ ] What needs to be done
