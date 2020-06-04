@@ -494,15 +494,57 @@ Apparently graphiviz had the following problem in windows, it needs additional n
 
 So I switched to github -> django-dia which creates a .dia file, for which  I had to install a tool to open it and the final diagram is not that great because internal models are now visible, and the resolution is not great, so not really readable. That is the reason I have kept the previous model in readme as well to present the idea. I could have created the diagram manually much faster, as I did with version 1.
 
+python manage.py graph_models dashboard users -o EntityRelationshipDiagramSelective.png
+
 
      Started at : 8:19 PM
      Estimated Time: 15 mins
      Finished at: 9:48 PM
-     Remarks: django graphviz does not works easily on windows.!
+     Remarks: django graphviz does not works easily on windows.! Also there is a buig in graphviz, if you pass an application which has no models, it will crash, and gives the following error. The command used to create selective models is also given
 
 ------
 
+```
+PS W:\workspace\WebDev_DS\django\IoT_Dashboard> python manage.py graph_models dashboard users notifications -o EntityRelationshipDiagramSelective.png
+System check identified some issues:
 
+WARNINGS:
+?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace
+Traceback (most recent call last):
+  File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\django\apps\registry.py", line 155, in get_app_config
+    return self.app_configs[app_label]
+KeyError: 'notifications'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "manage.py", line 21, in <module>
+    main()
+  File "manage.py", line 17, in main
+    execute_from_command_line(sys.argv)
+  File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\django\core\management\__init__.py", line 401, in execute_from_command_line
+    utility.execute()
+  File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\django\core\management\__init__.py", line 395, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\django\core\management\base.py", line 328, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\django\core\management\base.py", line 369, in execute
+    output = self.handle(*args, **options)
+  File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\django_extensions\management\utils.py", line 62, in inner
+    ret = func(self, *args, **kwargs)
+  File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\django_extensions\management\commands\graph_models.py", line 238, in handle
+    graph_models.generate_graph_data()
+  File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\django_extensions\management\modelviz.py", line 90, in generate_graph_data
+    self.process_apps()
+  File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\django_extensions\management\modelviz.py", line 279, in process_apps
+    app = apps.get_app_config(app_label)
+  File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\django\apps\registry.py", line 162, in get_app_config
+    raise LookupError(message)
+LookupError: No installed app with label 'notifications'.
+Sentry is attempting to send 0 pending error messages
+Waiting up to 2 seconds
+Press Ctrl-Break to quit
+```
 
 -[ ] Unit Testing
 
