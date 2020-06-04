@@ -601,6 +601,20 @@ Read cache can help in minimizing the db reads.  So the idea is that, the bottle
 
 But, when I make writing to IoT devices feature. And my application can can receive million of data points, this will be very suitable.
 
+https://realpython.com/caching-in-django-with-redis/
+
+https://devcenter.heroku.com/articles/celery-heroku
+
+
+
+https://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
+
+Extremely misleading error
+
+|  Exception Type: | InvalidCacheBackendError                                     |
+| ---------------: | ------------------------------------------------------------ |
+| Exception Value: | `Could not find backend 'django_redis.cache.RedisCache': No module named 'django_redis'` |
+
 ## Journal entry  template
 
 -[ ] What needs to be done

@@ -72,8 +72,9 @@ class PasswordResetView(CreateView):
         return render(request, 'users/passwordReset.html')
 
     def post(self, request):
-        email = request.POST.get("email", "")
-        u = User.objects.get(email__exact=email)
+        email = request.POST.get('email_form_field')
+        # u = User.objects.get(email__exact=email)[:1].get()
+        u = User.objects.filter(email__exact=email).first()
         new_password = random_string()
         u.set_password(new_password)
         u.save()
