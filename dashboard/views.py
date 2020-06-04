@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, ListView, DetailView
 
-from users.tasks import send_email
+from notification.tasks import send_email
 from .forms import *
 from .models import *
 

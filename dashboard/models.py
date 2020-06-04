@@ -123,6 +123,7 @@ class ServiceDetails(models.Model):
     date_of_service = models.DateField(default=timezone.now)
     # Even if the service provider is deleted, the record may be kept
     service_provider = models.ForeignKey(ServiceProvider, on_delete=models.DO_NOTHING)
+    # providers_address = models.ForeignKey(Address, on_delete=models.DO_NOTHING)
     remarks = models.TextField(default="Service completed")
 
 
@@ -133,3 +134,4 @@ class SubscribersList(models.Model):
 
     def __str__(self):
         return str(self.name + " " + self.email)
+

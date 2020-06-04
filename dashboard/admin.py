@@ -3,6 +3,9 @@ from django import forms
 
 from .models import *
 
+# Customizing the admin panel
+admin.site.site_header = "THINGSBOARD ADMIN PANEL"
+
 
 # Demo of Customizing the admin page
 class CustomAdminThing(admin.ModelAdmin):
@@ -23,6 +26,8 @@ class CustomAdminThing(admin.ModelAdmin):
 #  inlines or custom forms
 
 
+# Inline Forms , when you add a service provider,
+# you can add a bunch of service it has provided in the past
 class ServiceProviderInline(admin.TabularInline):
     model = ServiceDetails
 
@@ -40,8 +45,7 @@ admin.site.register(Address)
 admin.site.register(Home)
 admin.site.register(DeviceModels)
 admin.site.register(ValueStream)
-admin.site.register(ServiceProvider,ServiceDetailsAdmin )
+admin.site.register(ServiceProvider, ServiceDetailsAdmin)
 admin.site.register(Seller)
 admin.site.register(ServiceDetails)
 admin.site.register(SubscribersList)
-

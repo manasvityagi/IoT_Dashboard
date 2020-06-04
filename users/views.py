@@ -1,13 +1,15 @@
+import random
+import string
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, ListView
 
 from .models import SubscribersList
-from .tasks import send_email
+from notification.tasks import send_email, send_reset_email
 from .myform import CustomRegistrationForm, UserUpdateForm, ProfileUpdateForm
-
-from .tasks import sleepy
 
 
 # function based views
@@ -65,6 +67,21 @@ class OwnerView(CreateView):
         return redirect('profile')
 
 
+class PasswordResetView(CreateView):
+    def get(self, request):
+        return render(request, 'users/passwordReset.html')
+
+    def post(self, request):
+        email = request.POST.get("email", "")
+        u = User.objects.get(email__exact=email)
+        new_password = random_string()
+        u.set_password(new_password)
+        u.save()
+        send_reset_email(email, new_password)
+        messages.success(request, f'Check Email for new password')
+        return redirect('login')
+
+
 class GetSubscribersList(ListView):
     template_name = 'users/subscribers_list.html'
     context_object_name = 'subscribers_list_object'
@@ -72,3 +89,8 @@ class GetSubscribersList(ListView):
     def get_queryset(self):
         print(SubscribersList.objects.all())
         return SubscribersList.objects.all().order_by('name')
+
+
+def random_string(stringLength=12):
+    letters = string.ascii_letters
+    return ''.join(random.choice(letters) for i in range(stringLength))

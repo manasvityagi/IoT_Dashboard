@@ -14,7 +14,6 @@ urlpatterns = [
     path('profile/', login_required(user_views.OwnerView.as_view()), name="profile"),
     path('about/', dashboard_view.about, name="about"),
     path('add_device/', login_required(dashboard_view.AddDeviceView.as_view()), name="add_device"),
-    #path('add_address/', login_required(dashboard_view.AddAddressView.as_view()), name="add_address"),
     path('add_address/', dashboard_view.AddAddressFS, name="add_address"),
     path('add_manufacturer/', login_required(dashboard_view.AddManufacturerView.as_view()), name="add_manufacturer"),
     path('add_device_model/', login_required(dashboard_view.AddDeviceModelsView.as_view()), name="add_device_model"),
@@ -25,6 +24,19 @@ urlpatterns = [
     path('subscribers_list/', login_required(user_views.GetSubscribersList.as_view()), name="subscribers_list"),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name="login"),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name="logout"),
+    path('password_reset/', user_views.PasswordResetView.as_view(template_name='users/passwordReset.html'),
+         name="password_reset"),
+    # path('password_reset/', auth_views.PasswordResetView.as_view(template_name='users/passwordReset.html'),
+    #      name="password_reset"),
+    #
+    # path('password_reset/done/ ', auth_views.PasswordResetDoneView.as_view(template_name='users/passwordResetDone.html'),
+    #      name="password_reset_done"),
+    #
+    # path('password-reset-confirm/<uidb64>/<token>',
+    #      auth_views.PasswordResetConfirmView.as_view(template_name='users/passwordResetConfirm.html'),
+    #      name="password_reset_confirm"),
+
+
     path('', include('dashboard.urls')),
 
 ]

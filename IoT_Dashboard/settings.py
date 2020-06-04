@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django-dia',
+
 ]
 
 MIDDLEWARE = [
@@ -159,6 +160,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGOUT_REDIRECT_URL = 'login'
 
+
 AWS_ACCESS_KEY_ID = str(config('AWS_ACCESS_KEY_ID'))
 AWS_SECRET_ACCESS_KEY = str(config('AWS_SECRET_ACCESS_KEY'))
 AWS_STORAGE_BUCKET_NAME = 'thingboard-bucket'
@@ -166,5 +168,14 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 # DEFAULT_FILE_STORAGE = Config('DEFAULT_FILE_STORAGE')
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Emails
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.sendgrid.net' # mail service smtp
+# EMAIL_HOST_USER = str(config('EMAIL_HOST_USER'))
+# EMAIL_HOST_PASSWORD = str(config('EMAIL_HOST_PASSWORD'))
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
 
 django_heroku.settings(locals())
