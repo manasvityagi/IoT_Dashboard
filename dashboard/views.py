@@ -164,7 +164,7 @@ class AddDeviceModelsView(CreateView):
         return render(request, 'dashboard/addDeviceModel.html', context)
 
     def post(self, request):
-        form = add_device_models(request.POST or None)
+        form = add_device_models(request.POST, request.FILES)
         # check whether it's valid:
         if form.is_valid():
             form.save()
