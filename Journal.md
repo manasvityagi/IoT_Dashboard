@@ -494,7 +494,7 @@ Apparently graphiviz had the following problem in windows, it needs additional n
 
 So I switched to github -> django-dia which creates a .dia file, for which  I had to install a tool to open it and the final diagram is not that great because internal models are now visible, and the resolution is not great, so not really readable. That is the reason I have kept the previous model in readme as well to present the idea. I could have created the diagram manually much faster, as I did with version 1.
 
-python manage.py graph_models dashboard users -o EntityRelationshipDiagramSelective.png
+python manage.py graph_models dashboard users -o EntityRelationshipDiagramSelective.png 
 
 
      Started at : 8:19 PM
@@ -644,5 +644,5 @@ Todo:
 2. Attribute photos
 3. Change The image background on the login page to css pattern so it loads faster
 4. Change the form input field style, should not span the whole width
-5. 
+5. Add the 
 

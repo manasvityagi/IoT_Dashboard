@@ -1,3 +1,13 @@
+www.tyagi.tech  |  www.thingsboard.herokuapp.com
+
+**For all the features to be used, it is necessary to have admin rights.**
+
+### **Admin Credentials provided separately.**
+
+-------------------------------------
+
+
+
 IoT Dashboard for devices in a Premises  :
 ----------------------------------------------------
 
@@ -7,7 +17,7 @@ The idea is to Offers single point of management of 'on premise' smart devices, 
 
 At the moment, the dashboard does not handles any stream of real time data, being originated from a smart device. ( planned for future versions)
 
-The project at this stage allows you to add certain models and visualize them at a single point (Home, Manufacturer, Seller, Service Provider, The device itself etc)
+The project at this stage allows you to add certain models and visualize them at a single point (Home, Manufacturer, Seller, Service Provider, The device itself etc..)
 
 ##### Following Features are planned
 
@@ -17,11 +27,21 @@ The project at this stage allows you to add certain models and visualize them at
 - Register a device
 - Install a device Devices
 - Add a picture of the device
-- ~~See the dashboard of user's devices, with some KPIs~~
+- ~~See the dashboard of user's devices, with some KPIs~~ 
 - ~~On clicking the Device Card, Some additional info, such as trend should be visible~~
 - ~~Send Notification when the lifetime of the 'thing' is about to end.~~
 
 ---------------------------------
+
+How to use:
+
+1. Add Address, Homes, Devices, Seller etc  that are available on market etc.( I have preconfigured it, some of it) as Admin
+2.  Users can view the devices installed on the home page. 
+3. ~~Click each device, to view analytics regarding it on a chart dashboard [future releases]~~
+
+### 
+
+This was the original plan, but, now types of devices are not limited, anything can be added, because its just a generic thing model.
 
 Following Devices are supported 
 ---------------------------------
@@ -60,11 +80,11 @@ Following Devices are supported
   - Time to change dust bag
 
 
-## Entity Relationship diagram V1 , using dbdiagram.io [source json in root directory]
+## Entity Relationship diagram V1 , using dbdiagram.io [source json in root directory as ClassModelDefinition]
 
 <img src="https://i.imgur.com/205T6KZ.png">
 
-### Entity relationship Diagram V2 [  Created Via  https://github.com/neumond/django-dia]
+### Updated and Final Entity relationship Diagram V2 [  Created Via  https://github.com/neumond/django-dia]
 
 <img src="https://i.imgur.com/K3ljT2C.png">
 
