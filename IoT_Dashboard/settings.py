@@ -13,9 +13,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import urllib
 import django_heroku
+from celery import Celery
 from decouple import config
 
-#config.encoding = 'cp1251'
+config.encoding = 'cp1251'
 from django.contrib import staticfiles
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -28,6 +29,12 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True
 )
+
+# Celery
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'IoT_Dashboard.settings')
+app = Celery('IoT_Dashboard')
+app.config_from_object('django.conf:settings', namespace='CELERY')
+app.autodiscover_tasks()
 
 # Making Redis as application cache
 redis_url = urllib.parse.urlparse(os.environ.get('REDISTOGO_URL', 'redis://localhost:6959'))
@@ -160,7 +167,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGOUT_REDIRECT_URL = 'login'
 
-
 AWS_ACCESS_KEY_ID = str(config('AWS_ACCESS_KEY_ID'))
 AWS_SECRET_ACCESS_KEY = str(config('AWS_SECRET_ACCESS_KEY'))
 AWS_STORAGE_BUCKET_NAME = 'thingboard-bucket'
@@ -179,3 +185,7 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
 
 django_heroku.settings(locals())
+
+CELERY_BROKER_URL = str(config('CELERY_BROKER_URL'))
+CELERY_ACCEPT_CONTENT = ['json', 'application/text']
+CELERY_TASK_SERIALIZER = 'json'

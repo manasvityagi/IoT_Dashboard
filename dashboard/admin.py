@@ -3,7 +3,6 @@ from django import forms
 
 from .models import *
 
-# Customizing the admin panel
 admin.site.site_header = "THINGSBOARD ADMIN PANEL"
 
 
@@ -22,9 +21,6 @@ class CustomAdminThing(admin.ModelAdmin):
 
 
 #  list_display, search_fields, fields, list_filter, custom_fields and
-
-#  inlines or custom forms
-
 
 # Inline Forms , when you add a service provider,
 # you can add a bunch of service it has provided in the past

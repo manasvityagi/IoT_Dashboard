@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, ListView, DetailView
 
-from notification.tasks import send_email
+from notification.tasks import send_email, sleepy
 from .forms import *
 from .models import *
 
@@ -70,6 +70,8 @@ class AddDeviceView(CreateView):
 
 
 def about(request):
+    sleepy.delay(10)
+    messages.success(request, f'Show off! Used celery, for no reasonable reason')
     return render(request, 'dashboard/about.html')
 
 

@@ -134,4 +134,3 @@ class SubscribersList(models.Model):
 
     def __str__(self):
         return str(self.name + " " + self.email)
-
