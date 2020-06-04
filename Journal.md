@@ -537,9 +537,27 @@ https://stackoverflow.com/questions/38970832/session-data-corrupted-in-django
 
 heroku restart; heroku pg:reset DATABASE --confirm APP-NAME; heroku run rake db:migrate
 
-tyagi.tech does not work, but www.tyagi.tech does !
+tyagi.tech does not work, but www.tyagi.tech does ! Something to do with dns configuration, but could not find anything on the controlpanel of domain provider.
+
+
 
 `heroku pg:psql`.
+
+
+
+```
+Received invalid task message: Refusing to deserialize untrusted content of type json (application/json)
+```
+
+
+
+
+
+application cache on redis
+
+Read cache can help in minimizing the db reads.  So the idea is that, the bottleneck in some application performance is hard disk read and write. And thats the DB operations in web apps mostly(?) To solve this, redis helps , because it is faster, because it works in memory, i.e. RAM. But I do not know how to us in my application. 
+
+But, when I make writing to IoT devices feature. And my application can can receive million of data points, this will be very suitable.
 
 ## Journal entry  template
 

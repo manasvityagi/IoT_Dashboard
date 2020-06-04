@@ -28,7 +28,7 @@ def registration(request):
                 sub.save()
             # Add to subscriber's list for important emails
             messages.success(request, f'You are officially registered, {username}!')
-            send_email(registration_form.cleaned_data.get('email'))
+            send_email.delay(registration_form.cleaned_data.get('email'))
             return redirect('dashboard-home')
     else:
         registration_form = CustomRegistrationForm()

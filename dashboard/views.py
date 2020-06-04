@@ -1,19 +1,27 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
 from django.forms import modelformset_factory
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, DetailView
 
-from notification.tasks import send_email, sleepy
+from IoT_Dashboard import settings
 from .forms import *
 from .models import *
-
+from django.views.decorators.cache import cache_page
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 # Todo, should be better If I add the views in logical order, for better readability
 
 
+
 # function based view
+# This also serves as a demo of redis cache
+# this view has the maximum probability of having lot of requests,
+# after each logon, this view is sure to be called.
+# Therefore, it becomes the best candidate for caching in this application
+@cache_page(CACHE_TTL)
 @login_required
 def home_view(request):
     logged_in_user = request.user
@@ -53,7 +61,7 @@ class AddDeviceView(CreateView):
             return redirect('dashboard-home')
 
 
-# Move to Class Based View
+# Moved to Class Based View
 # def AddDeviceView(request):
 #     if request.method == 'POST':
 #         form = add_device(request.POST)
@@ -70,13 +78,12 @@ class AddDeviceView(CreateView):
 
 
 def about(request):
-    sleepy.delay(10)
-    messages.success(request, f'Show off! Used celery, for no reasonable reason')
     return render(request, 'dashboard/about.html')
 
 
 def not_found(request):
     return HttpResponse("<h1>No Such Path! Lost ?</h1>")
+
 
 
 # class based views from here on
