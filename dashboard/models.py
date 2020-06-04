@@ -11,7 +11,7 @@ from django.utils.deconstruct import deconstructible
 
 @deconstructible
 class Address(models.Model):
-    street = models.CharField(max_length=80, default="38 Windsor Street")
+    street = models.CharField(max_length=85, default="38 Windsor Street")
     # https://en.wikipedia.org/wiki/Postal_code max could be 12
     zip = models.CharField(max_length=12, default="06001")
 
