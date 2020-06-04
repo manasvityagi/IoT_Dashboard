@@ -15,7 +15,7 @@ def send_email(email_add):
     user_from_email = Email("manas@thingsboard.com")
     user_to_email = To(email_add)
     user_subject = "Your are registered!"
-    user_content = Content("text/plain", "You are onboarded, Now login and enjoy a simpler life!")
+    user_content = Content("text/plain", "You are on boarded, Now login and enjoy a simpler life!")
     user_mail = Mail(user_from_email, user_to_email, user_subject, user_content)
     response = sg.client.mail.send.post(request_body=user_mail.get())
     print(response.status_code)
