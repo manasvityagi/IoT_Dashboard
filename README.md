@@ -60,13 +60,13 @@ Following Devices are supported
   - Time to change dust bag
 
 
-## Entity Relationship diagram V1
+## Entity Relationship diagram V1 , using dbdiagram.io [source json in root directory]
 
 <img src="https://i.imgur.com/205T6KZ.png">
 
 ### Entity relationship Diagram V2 [  Created Via  https://github.com/neumond/django-dia]
 
-<img src="https://i.imgur.com/eNiVvND.jpg">
+<img src="https://i.imgur.com/K3ljT2C.png">
 
 
 

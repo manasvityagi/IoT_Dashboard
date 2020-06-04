@@ -120,7 +120,7 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": str(config('CELERY_BROKER_URL')),
+        "LOCATION": "redis://h:p3b6e6cd87c3ad1156bb4e28b40e5cd80983bd051ffae93126a92754d5c2741cf@ec2-52-23-127-211.compute-1.amazonaws.com:20539",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
         },
