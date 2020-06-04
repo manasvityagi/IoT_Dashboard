@@ -12,7 +12,7 @@ class add_device(forms.ModelForm):
     class Meta:
         model = Thing
         # fields = ('description',)
-        fields = ('device_model_info', 'description', 'installed_home_id',
+        fields = ('device_model_info','owner', 'description', 'installed_home_id',
                   'purchase_date', 'life_used',)
 
         widgets = {

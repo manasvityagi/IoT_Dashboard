@@ -21,7 +21,7 @@ CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 # this view has the maximum probability of having lot of requests,
 # after each logon, this view is sure to be called.
 # Therefore, it becomes the best candidate for caching in this application
-@cache_page(CACHE_TTL)
+
 @login_required
 def home_view(request):
     logged_in_user = request.user
@@ -44,7 +44,7 @@ class AddDeviceView(CreateView):
     def get(self, request):
         # cannot find a good use case of exclude, here so wherever owner is null( although it is non nullable foield
         # by definition in the model) The device will be excluded
-        existing_installed_devices = Thing.objects.all().exclude(owner__isnull=True)
+        existing_installed_devices = Thing.objects.all()
         form = add_device(request.POST)
         context = {
             'form': form,
@@ -56,6 +56,9 @@ class AddDeviceView(CreateView):
         form = add_device(request.POST)
         # check whether it's valid:
         if form.is_valid():
+            # obj = form.save(commit=False)
+            # obj.owner = request.user
+            # obj.save()
             form.save()
             messages.success(request, f'Your Device is Installed!')
             return redirect('dashboard-home')
