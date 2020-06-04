@@ -10,10 +10,11 @@ from IoT_Dashboard import settings
 from .forms import *
 from .models import *
 from django.views.decorators.cache import cache_page
+
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
-# Todo, should be better If I add the views in logical order, for better readability
 
+# Todo, should be better If I add the views in logical order, for better readability
 
 
 # function based view
@@ -86,7 +87,6 @@ def about(request):
 
 def not_found(request):
     return HttpResponse("<h1>No Such Path! Lost ?</h1>")
-
 
 
 # class based views from here on

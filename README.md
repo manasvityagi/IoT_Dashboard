@@ -4,8 +4,6 @@ www.tyagi.tech  |  www.thingsboard.herokuapp.com
 
 ### **Admin Credentials provided separately.**
 
--------------------------------------
-
 
 
 IoT Dashboard for devices in a Premises  :
