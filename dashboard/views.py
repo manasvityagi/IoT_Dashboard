@@ -24,7 +24,7 @@ CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 # Therefore, it becomes the best candidate for caching in this application
 
 @login_required
-# @cache_page(CACHE_TTL)
+@cache_page(CACHE_TTL)
 def home_view(request):
     logged_in_user = request.user
     x = Thing.objects.filter(owner=logged_in_user).order_by('-life_used')

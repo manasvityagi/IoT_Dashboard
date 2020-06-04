@@ -577,7 +577,7 @@ https://stackoverflow.com/questions/38970832/session-data-corrupted-in-django
 
 `heroku pg:psql`.
 
-heroku restart; heroku pg:reset DATABASE --confirm APP-NAME; heroku run rake db:migrate
+heroku restart; heroku pg:reset DATABASE --confirm thingboard; heroku run rake db:migrate
 
 tyagi.tech does not work, but www.tyagi.tech does ! Something to do with dns configuration, but could not find anything on the controlpanel of domain provider.
 
@@ -614,6 +614,10 @@ Extremely misleading error
 |  Exception Type: | InvalidCacheBackendError                                     |
 | ---------------: | ------------------------------------------------------------ |
 | Exception Value: | `Could not find backend 'django_redis.cache.RedisCache': No module named 'django_redis'` |
+
+not really misleading, but the rest of therror is, I just forgot to put pip freeze > req.....txt. Which created problem on heroku
+
+heroku run python manage.py migrate       || Saved a of of time
 
 ## Journal entry  template
 
