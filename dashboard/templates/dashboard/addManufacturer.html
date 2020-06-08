@@ -9,7 +9,6 @@
         <fieldset class="form-group">
             <legend class="fieldBox mb-4"></legend>
             {{ form|crispy }}
-
         </fieldset>
         <div class="form-group">
             <center>
@@ -25,7 +24,7 @@
 
 
     {% for manufacturers in existing_manufacturers %}
-        <div class="card bg-light" style="width: 35rem; border-radius: 15px">
+        <div class="card bg-light shadow-sm p-lg-3" style="width: 35rem; border-radius: 15px">
             <h2>Name: {{ manufacturers.name }}</h2>
             <h4>Address: {{ manufacturers.address.street }}</h4>
             <h5>Phone: {{ manufacturers.phone_number }}</h5>

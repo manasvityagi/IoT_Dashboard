@@ -8,12 +8,12 @@
         {% csrf_token %}
         <fieldset class="form-group">
             <legend class="fieldBox mb-4"></legend>
-            {{ form|crispy }}
-
+            {{ form.as_p.format }}
         </fieldset>
         <div class="form-group">
             <center>
                 <button class="btn btn-outline-info" type="submit">Add</button>
+                <br>
             </center>
         </div>
     </form>
@@ -21,7 +21,7 @@
     <br>
     <h1>Existing Addresses</h1>
     {% for address in existing_addresses %}
-        <div class="card bg-light" style="width: 35rem; border-radius: 15px">
+        <div class="card bg-light shadow p-lg-3" style="width: 35rem; border-radius: 15px">
             <h5>Street: {{ address.street }}</h5>
             <h5>Zip: {{ address.zip }}</h5>
         </div>

@@ -22,13 +22,11 @@
                 <div class="container">
                     <div class="card-body p-sm-0 m-0" style="line-height: 90%;">
                         <h5 class="card-title">Device : {{ thing.device_model_info.name }}</h5>
-
                         <p class="card-text"> Description: {{ thing.description }}</p>
-                        <p class="card-text"> Description: {{ thing.device_model_info.image.url }}</p>
                         <p class="card-text"> Max Life: {{ thing.device_model_info.max_life }}</p>
                         <p class="card-text">Used: {{ thing.life_used }}</p>
                         <p class="card-text">Date manufactured: {{ thing.purchase_date|date:"d M, Y" }}</p>
-                        <a href="#" class="btn btn-primary" style="position: absolute;left: 50%;width: 108px;
+                        <a href="#" class="btn  btn-disabled" style="position: absolute;left: 50%;width: 108px;
                             margin-left: -54px;bottom:5px;">See Details</a>
                     </div>
                 </div>

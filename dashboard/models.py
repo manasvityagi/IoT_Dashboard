@@ -11,19 +11,20 @@ from django.utils.deconstruct import deconstructible
 
 @deconstructible
 class Address(models.Model):
-    street = models.CharField(max_length=150, default="38 Windsor")
-    zip = models.CharField(max_length=10, default="06001")
+    street = models.CharField(max_length=85, default="38 Windsor Street")
+    # https://en.wikipedia.org/wiki/Postal_code max could be 12
+    zip = models.CharField(max_length=12, default="06001")
 
     def __str__(self):
         return str(self.street)
 
 
 class Manufacturer(models.Model):
-    name = models.CharField(max_length=150, default='generic manufacturer')
+    name = models.CharField(max_length=50, default='generic manufacturer')
     # One Manufacturer can have one address, and one address can have only one manufacturer
     address = models.OneToOneField(Address, on_delete=models.DO_NOTHING)
     is_certified = models.BooleanField(default=True)
-    phone_number = models.CharField(max_length=14, default='0000')
+    phone_number = models.CharField(max_length=14, default='007')
 
     def __str__(self):
         return str(self.name)
@@ -74,7 +75,7 @@ class Seller(models.Model):
     # Hence one to many relationship, deletion of the address should Ideally be protected when one of the seller
     # is already in business
     address = models.OneToOneField(Address, on_delete=models.PROTECT)
-    phone_number = models.CharField(max_length=14, default='0000')
+    phone_number = models.CharField(max_length=14, default='007')
     type_of_device_sold = models.ManyToManyField(DeviceModels)
 
     def __str__(self):
@@ -83,15 +84,17 @@ class Seller(models.Model):
 
 # a time series database model
 class ValueStream(models.Model):
-    description = models.CharField(max_length=150, default='value stream description')
-    property_name = models.CharField(max_length=25, default='default roperty name')
+    description = models.CharField(max_length=50, default='value stream description')
+    property_name = models.CharField(max_length=25, default='default property name')
     value = models.FloatField(default=0.0)
     ts = models.DateTimeField(auto_now_add=True)
 
 
+# A thing is a digital representation of a physical object which is sensorized
+# Its a digital twin. In this project, it has interchangeably called as device
 class Thing(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True)
-    description = models.CharField(max_length=150, default='my smart coffee machine')
+    owner = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=False)
+    description = models.CharField(max_length=120, default='my smart coffee machine')
     # Many to one, because, many devices can have one model type
     device_model_info = models.ForeignKey(DeviceModels, on_delete=models.DO_NOTHING)
     # many to one relationship, since many houses can belong to a single owner
@@ -113,9 +116,15 @@ class Thing(models.Model):
 
 
 class ServiceDetails(models.Model):
+    # In case the thing or device is deleted, there is no point in keeping its service record
     thing = models.OneToOneField(Thing, on_delete=models.CASCADE)
-    owner_email = models.EmailField()
-    service_provider = models.ForeignKey(ServiceProvider, on_delete=models.CASCADE)
+    receipt_email = models.EmailField()
+    # date of service is when this is posted, be default, it may be overridden
+    date_of_service = models.DateField(default=timezone.now)
+    # Even if the service provider is deleted, the record may be kept
+    service_provider = models.ForeignKey(ServiceProvider, on_delete=models.DO_NOTHING)
+    # providers_address = models.ForeignKey(Address, on_delete=models.DO_NOTHING)
+    remarks = models.TextField(default="Service completed")
 
 
 # when a new device is added to the marketplace, email is sent to all subscriber's

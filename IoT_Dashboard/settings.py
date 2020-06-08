@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import urllib
+import django_heroku
+from celery import Celery
+from decouple import config
+
+config.encoding = 'cp1251'
+from django.contrib import staticfiles
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from decouple import Config
@@ -26,9 +32,14 @@ sentry_sdk.init(
     send_default_pii=True
 )
 
+# Celery
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'IoT_Dashboard.settings')
+app = Celery('IoT_Dashboard')
+app.config_from_object('django.conf:settings', namespace='CELERY')
+app.autodiscover_tasks()
+
 # Making Redis as application cache
 redis_url = urllib.parse.urlparse(os.environ.get('REDISTOGO_URL', 'redis://localhost:6959'))
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -39,7 +50,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = Config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -52,6 +63,7 @@ INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'storages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,6 +72,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django-dia',
+
 ]
 
 MIDDLEWARE = [
@@ -155,3 +168,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGOUT_REDIRECT_URL = 'login'
 
 
+
+CELERY_BROKER_URL = str(config('CELERY_BROKER_URL'))
+CELERY_ACCEPT_CONTENT = ['json', 'application/text']
+CELERY_TASK_SERIALIZER = 'json'

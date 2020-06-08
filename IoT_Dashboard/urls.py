@@ -9,20 +9,24 @@ from dashboard import views as dashboard_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('test_celery/', admin.site.urls),
     path('signup/', user_views.registration, name="signup"),
     # class based views with login required
     path('profile/', login_required(user_views.OwnerView.as_view()), name="profile"),
     path('about/', dashboard_view.about, name="about"),
     path('add_device/', login_required(dashboard_view.AddDeviceView.as_view()), name="add_device"),
-    path('add_address/', login_required(dashboard_view.AddAddressView.as_view()), name="add_address"),
+    path('add_address/', dashboard_view.AddAddressFS, name="add_address"),
     path('add_manufacturer/', login_required(dashboard_view.AddManufacturerView.as_view()), name="add_manufacturer"),
     path('add_device_model/', login_required(dashboard_view.AddDeviceModelsView.as_view()), name="add_device_model"),
     path('add_home/', login_required(dashboard_view.AddHomeView.as_view()), name="add_home"),
     path('add_service_provider/',
          login_required(dashboard_view.AddServiceProviderView.as_view()), name="add_service_provider"),
     path('add_seller/', login_required(dashboard_view.AddSellerView.as_view()), name="add_seller"),
+    path('subscribers_list/', login_required(user_views.GetSubscribersList.as_view()), name="subscribers_list"),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name="login"),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name="logout"),
+    path('password_reset/', user_views.PasswordResetView.as_view(template_name='users/passwordReset.html'),
+         name="password_reset"),
     path('', include('dashboard.urls')),
 
 ]
