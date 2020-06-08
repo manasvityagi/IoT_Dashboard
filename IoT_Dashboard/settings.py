@@ -20,8 +20,6 @@ config.encoding = 'cp1251'
 from django.contrib import staticfiles
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
-from decouple import Config
-
 
 sentry_sdk.init(
     dsn="https://ac79066fe3fa4a879f56f0e5b6eaf2a3@o399169.ingest.sentry.io/5255899",
@@ -169,6 +167,6 @@ LOGOUT_REDIRECT_URL = 'login'
 
 
 
-CELERY_BROKER_URL = str(config('CELERY_BROKER_URL'))
-CELERY_ACCEPT_CONTENT = ['json', 'application/text']
-CELERY_TASK_SERIALIZER = 'json'
+# CELERY_BROKER_URL = str(config('CELERY_BROKER_URL'))
+# CELERY_ACCEPT_CONTENT = ['json', 'application/text']
+# CELERY_TASK_SERIALIZER = 'json'
