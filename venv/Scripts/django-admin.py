@@ -1,4 +1,4 @@
-#!w:\workspace\webdev_ds\django\iot_dashboard\venv\scripts\python.exe
+#!W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\Scripts\python.exe
 from django.core import management
 
 if __name__ == "__main__":
