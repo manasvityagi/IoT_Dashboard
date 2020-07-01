@@ -1,4 +1,4 @@
-#!w:\workspace\webdev_ds\django\iot_dashboard\venv\scripts\python.exe
+#!W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\Scripts\python.exe
 
 # $Id: rstpep2html.py 4564 2006-05-21 20:44:42Z wiemann $
 # Author: David Goodger <goodger@python.org>

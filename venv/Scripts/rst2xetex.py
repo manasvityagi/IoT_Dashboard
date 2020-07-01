@@ -1,4 +1,4 @@
-#!w:\workspace\webdev_ds\django\iot_dashboard\venv\scripts\python.exe
+#!W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\Scripts\python.exe
 
 # $Id: rst2xetex.py 7847 2015-03-17 17:30:47Z milde $
 # Author: Guenter Milde

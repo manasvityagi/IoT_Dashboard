@@ -1,4 +1,4 @@
-#!w:\workspace\webdev_ds\django\iot_dashboard\venv\scripts\python.exe
+#!W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\Scripts\python.exe
 
 # $Id: rst2latex.py 5905 2009-04-16 12:04:49Z milde $
 # Author: David Goodger <goodger@python.org>
