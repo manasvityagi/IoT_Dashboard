@@ -40,7 +40,7 @@ class SubscriberSerializer(serializers.ModelSerializer):
 
 
 # 5
-class SellerSerializer(serializers.HyperlinkedModelSerializer):
+class SellerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seller
         fields = ['name', 'address', 'phone_number', 'type_of_device_sold']

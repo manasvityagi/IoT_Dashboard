@@ -10,4 +10,3 @@ urlpatterns = [
     # path('', views.not_found, name='404')
 
 ]
-

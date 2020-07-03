@@ -13,10 +13,45 @@ from .models import *
 from django.views.decorators.cache import cache_page
 
 # Todo, should be better If I add the views in logical order, for better readability
-########## REST APIS################
+
+########## REST APIS Start################
+
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from .serializers import UserSerializer, GroupSerializer
+from .serializers import UserSerializer, GroupSerializer, ThingSerializer, ManufacturerSerializer, \
+    DeviceModelsSerializer, DeviceModelsSerializer, SellerSerializer, SubscriberSerializer
+
+
+# Installed Device/ Thing Serializer
+# Manufacturer List serializer
+# DeviceModels Serializer
+# SubscribersList Serializer
+# Sellers Serializer
+
+
+class ThingViewSet(viewsets.ModelViewSet):
+    queryset = Thing.objects.order_by('-life_used')
+    serializer_class = ThingSerializer
+
+
+class ManufacturerViewSet(viewsets.ModelViewSet):
+    queryset = Manufacturer.objects.all()
+    serializer_class = ManufacturerSerializer
+
+
+class DeviceModelsViewSet(viewsets.ModelViewSet):
+    queryset = DeviceModels.objects.all()
+    serializer_class = DeviceModelsSerializer
+
+
+class SubscribersListViewSet(viewsets.ModelViewSet):
+    queryset = SubscribersList.objects.all()
+    serializer_class = SubscriberSerializer
+
+
+class SellerViewSet(viewsets.ModelViewSet):
+    queryset = Seller.objects.all()
+    serializer_class = SellerSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -35,6 +70,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
 
+####################### APIs End ##########################
 # function based view
 @login_required
 def home_view(request):

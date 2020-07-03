@@ -12,6 +12,13 @@ router = routers.DefaultRouter()
 router.register(r'users', dashboard_view.UserViewSet)
 router.register(r'groups', dashboard_view.GroupViewSet)
 
+
+router.register(r'devices', dashboard_view.ThingViewSet)
+router.register(r'manufacturer', dashboard_view.ManufacturerViewSet)
+router.register(r'device_models', dashboard_view.DeviceModelsViewSet)
+router.register(r'subscribers', dashboard_view.SubscribersListViewSet)
+router.register(r'sellers', dashboard_view.SellerViewSet)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('test_celery/', admin.site.urls),
