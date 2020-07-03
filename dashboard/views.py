@@ -5,6 +5,8 @@ from django.forms import modelformset_factory
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, DetailView
+from rest_framework import routers, serializers, viewsets
+
 
 from IoT_Dashboard import settings
 from .forms import *
