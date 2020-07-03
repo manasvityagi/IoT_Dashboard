@@ -36,8 +36,7 @@ app = Celery('IoT_Dashboard')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
-# Making Redis as application cache
-redis_url = urllib.parse.urlparse(os.environ.get('REDISTOGO_URL', 'redis://localhost:6959'))
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -70,6 +69,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django-dia',
+    'rest_framework',
 
 ]
 
@@ -108,27 +108,12 @@ WSGI_APPLICATION = 'IoT_Dashboard.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'iot_dashboard',
-        'USER': 'iot_dashboard_user',
-        'PASSWORD': 'iot_dashboard',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-# Redis Cache
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://h:p6452d5fb2034a401086dd618b54de391fa4ba2b6935aea45592125bcb3741d6c@ec2-52-70-215-224.compute-1.amazonaws.com:31309",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient"
-        },
-        "KEY_PREFIX": "example"
-    }
-}
-# 15 seconds
-CACHE_TTL = 1 * 15
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -202,3 +187,8 @@ django_heroku.settings(locals())
 CELERY_BROKER_URL = str(config('CELERY_BROKER_URL'))
 CELERY_ACCEPT_CONTENT = ['json', 'application/text']
 CELERY_TASK_SERIALIZER = 'json'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 15
+}

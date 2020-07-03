@@ -6,9 +6,15 @@ from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
 from dashboard import views as dashboard_view
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'users', dashboard_view.UserViewSet)
+router.register(r'groups', dashboard_view.GroupViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('test_celery/', admin.site.urls),
     path('signup/', user_views.registration, name="signup"),
     # class based views with login required
     path('profile/', login_required(user_views.OwnerView.as_view()), name="profile"),
@@ -27,6 +33,8 @@ urlpatterns = [
     path('password_reset/', user_views.PasswordResetView.as_view(template_name='users/passwordReset.html'),
          name="password_reset"),
     path('', include('dashboard.urls')),
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 
 ]
 

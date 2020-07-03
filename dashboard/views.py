@@ -13,20 +13,32 @@ from .forms import *
 from .models import *
 from django.views.decorators.cache import cache_page
 
-CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
-
 
 # Todo, should be better If I add the views in logical order, for better readability
+########## REST APIS################
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from .serializers import UserSerializer, GroupSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
 
 
 # function based view
-# This also serves as a demo of redis cache
-# this view has the maximum probability of having lot of requests,
-# after each logon, this view is sure to be called.
-# Therefore, it becomes the best candidate for caching in this application
-
 @login_required
-@cache_page(CACHE_TTL)
 def home_view(request):
     logged_in_user = request.user
     x = Thing.objects.filter(owner=logged_in_user).order_by('-life_used')
