@@ -7,12 +7,10 @@ from django.shortcuts import render, redirect
 from django.views.generic import CreateView, DetailView
 from rest_framework import routers, serializers, viewsets
 
-
 from IoT_Dashboard import settings
 from .forms import *
 from .models import *
 from django.views.decorators.cache import cache_page
-
 
 # Todo, should be better If I add the views in logical order, for better readability
 ########## REST APIS################
