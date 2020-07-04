@@ -5,7 +5,7 @@ from django.forms import modelformset_factory
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, DetailView
-from rest_framework import routers, serializers, viewsets
+from rest_framework import routers, serializers, viewsets, renderers
 
 from IoT_Dashboard import settings
 from .forms import *
@@ -32,6 +32,7 @@ from .serializers import UserSerializer, GroupSerializer, ThingSerializer, Manuf
 class ThingViewSet(viewsets.ModelViewSet):
     queryset = Thing.objects.order_by('-life_used')
     serializer_class = ThingSerializer
+    renderer_classes = [renderers.JSONRenderer]
 
 
 class ManufacturerViewSet(viewsets.ModelViewSet):

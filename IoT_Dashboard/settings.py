@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'django-dia',
     'rest_framework',
+    'corsheaders',
 
 ]
 
@@ -81,6 +82,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'IoT_Dashboard.urls'
@@ -189,6 +191,16 @@ CELERY_ACCEPT_CONTENT = ['json', 'application/text']
 CELERY_TASK_SERIALIZER = 'json'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 15
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+
+
 }
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
+]

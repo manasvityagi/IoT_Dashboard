@@ -21,7 +21,7 @@ router.register(r'sellers', dashboard_view.SellerViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('test_celery/', admin.site.urls),
+
     path('signup/', user_views.registration, name="signup"),
     # class based views with login required
     path('profile/', login_required(user_views.OwnerView.as_view()), name="profile"),
