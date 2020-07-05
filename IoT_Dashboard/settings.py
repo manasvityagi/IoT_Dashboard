@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'django-dia',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
 
 ]

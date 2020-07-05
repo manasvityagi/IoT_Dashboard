@@ -6,7 +6,7 @@ from rest_framework import serializers
 # DeviceModels Serializer
 # SubscribersList Serializer
 # Sellers Serializer
-from dashboard.models import Thing, Manufacturer, DeviceModels, SubscribersList, Seller
+from dashboard.models import Thing, Manufacturer, DeviceModels, SubscribersList, Seller, Address
 
 
 # 1
@@ -45,6 +45,13 @@ class SellerSerializer(serializers.ModelSerializer):
         fields = ['name', 'address', 'phone_number', 'type_of_device_sold']
 
 
+# 6
+class AddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = '__all__'
+
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
@@ -55,3 +62,5 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ['url', 'name']
+
+

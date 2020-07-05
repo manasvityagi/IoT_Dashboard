@@ -7,7 +7,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from dashboard import views as dashboard_view
 from rest_framework import routers
-
+from rest_framework.authtoken.views import obtain_auth_token
 router = routers.DefaultRouter()
 router.register(r'users', dashboard_view.UserViewSet)
 router.register(r'groups', dashboard_view.GroupViewSet)
@@ -15,6 +15,7 @@ router.register(r'groups', dashboard_view.GroupViewSet)
 
 router.register(r'devices', dashboard_view.ThingViewSet)
 router.register(r'manufacturer', dashboard_view.ManufacturerViewSet)
+router.register(r'address', dashboard_view.AddressViewSet)
 router.register(r'device_models', dashboard_view.DeviceModelsViewSet)
 router.register(r'subscribers', dashboard_view.SubscribersListViewSet)
 router.register(r'sellers', dashboard_view.SellerViewSet)
@@ -41,7 +42,8 @@ urlpatterns = [
          name="password_reset"),
     path('', include('dashboard.urls')),
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('auth/', obtain_auth_token)
 
 ]
 

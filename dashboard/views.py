@@ -19,7 +19,7 @@ from django.views.decorators.cache import cache_page
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from .serializers import UserSerializer, GroupSerializer, ThingSerializer, ManufacturerSerializer, \
-    DeviceModelsSerializer, DeviceModelsSerializer, SellerSerializer, SubscriberSerializer
+    DeviceModelsSerializer, DeviceModelsSerializer, SellerSerializer, SubscriberSerializer, AddressSerializer
 
 
 # Installed Device/ Thing Serializer
@@ -30,29 +30,39 @@ from .serializers import UserSerializer, GroupSerializer, ThingSerializer, Manuf
 
 
 class ThingViewSet(viewsets.ModelViewSet):
+    renderer_classes = [renderers.JSONRenderer]
     queryset = Thing.objects.order_by('-life_used')
     serializer_class = ThingSerializer
-    renderer_classes = [renderers.JSONRenderer]
 
 
 class ManufacturerViewSet(viewsets.ModelViewSet):
+    renderer_classes = [renderers.JSONRenderer]
     queryset = Manufacturer.objects.all()
     serializer_class = ManufacturerSerializer
 
 
 class DeviceModelsViewSet(viewsets.ModelViewSet):
+    renderer_classes = [renderers.JSONRenderer]
     queryset = DeviceModels.objects.all()
     serializer_class = DeviceModelsSerializer
 
 
 class SubscribersListViewSet(viewsets.ModelViewSet):
+    renderer_classes = [renderers.JSONRenderer]
     queryset = SubscribersList.objects.all()
     serializer_class = SubscriberSerializer
 
 
 class SellerViewSet(viewsets.ModelViewSet):
+    renderer_classes = [renderers.JSONRenderer]
     queryset = Seller.objects.all()
     serializer_class = SellerSerializer
+
+
+class AddressViewSet(viewsets.ModelViewSet):
+    renderer_classes = [renderers.JSONRenderer]
+    queryset = Address.objects.all()
+    serializer_class = AddressSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
