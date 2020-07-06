@@ -163,6 +163,8 @@ WSGI provided a standard for synchronous Python apps, whereas ASGI provides one 
 Performance wise according to async version is more stable in case of failures ([https://arunrocks.com/a-guide-to-asgi-in-django-30-and-its-performance/](https://arunrocks.com/a-guide-to-asgi-in-django-30-and-its-performance/))
 
 **What is celery and what are task queues used for?**
+It is like outsourcing a task in async manner. What it means is , that a task is queued in a buffer(for example in Redis, could be RabbitMQ), and
+the executer will complete the task, out of context of the outsourcer. In assignment 1's case, django outsources a task, by placing the task in Redis queue.
 
 Databases **:** -
 
