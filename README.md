@@ -1,3 +1,7 @@
+# This is the Branch for Assignment 1
+# Assignment 2 Branch is /reac_drf
+
+
 www.tyagi.tech  |  www.thingsboard.herokuapp.com
 
 **For all the features to be used, it is necessary to have admin rights.**
