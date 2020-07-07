@@ -8,4 +8,4 @@ else
     echo "you did NOT provided any arguments"
 fi
 
-python manage.py runserver --noreload
+python manage.py runserver 0.0.0.0:8000 --noreload
