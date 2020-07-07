@@ -10,7 +10,6 @@ __pycache__/
 .idea/
 .vscode/
 local_settings.py
-db.sqlite3
 db.sqlite3-journal
 ~$Tracker.xlsx
 *.env
