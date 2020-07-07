@@ -1,5 +1,5 @@
 # This is the Branch for Assignment 1
-# Assignment 2 Branch is /reac_drf
+# Assignment 2 Branch is /react_drf
 
 
 www.tyagi.tech  |  www.thingsboard.herokuapp.com
