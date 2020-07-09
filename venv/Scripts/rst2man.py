@@ -1,6 +1,6 @@
 #!W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\Scripts\python.exe
 
-# Author:
+# Author: 
 # Contact: grubert@users.sf.net
 # Copyright: This module has been placed in the public domain.
 

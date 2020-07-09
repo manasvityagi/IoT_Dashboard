@@ -12,7 +12,7 @@ def send_email(email_add):
     sleep(30)
     print('Sending emails, asynchronously, but applications dont suffer, because of celery!')
     sg = sendgrid.SendGridAPIClient(config('SENDGRID_API_KEY'))
-    user_from_email = Email("manas@thingsboard.com")
+    user_from_email = sEmail("manas@thingsboard.com")
     user_to_email = To(email_add)
     user_subject = "Your are registered!"
     user_content = Content("text/plain", "You are on boarded, Now login and enjoy a simpler life!")
