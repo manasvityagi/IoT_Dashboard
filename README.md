@@ -1,6 +1,6 @@
 # This is the Branch for Assignment 1
 # Assignment 2 Branch is /react_drf for django app
-# For react app/SPA there ie separate repository https://github.com/manasvityagi/react_iot
+# For react app/SPA there is a separate repository https://github.com/manasvityagi/react_iot
 
 
 www.tyagi.tech  |  www.thingsboard.herokuapp.com
