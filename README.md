@@ -1,11 +1,14 @@
+# This is the Branch for Assignment 1
+# Assignment 2 Branch is /react_drf for django app
+# For react app/SPA there is a separate repository https://github.com/manasvityagi/react_iot
+
+
 www.tyagi.tech  |  www.thingsboard.herokuapp.com
 
 **For all the features to be used, it is necessary to have admin rights.**
 
 ### **Admin Credentials provided separately.**
-
-
-
+u:admin:pTesting three two one as number
 IoT Dashboard for devices in a Premises  :
 ----------------------------------------------------
 

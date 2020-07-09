@@ -127,8 +127,8 @@ CACHES = {
         "KEY_PREFIX": "example"
     }
 }
-
-CACHE_TTL = 60 * 15
+# 15 seconds
+CACHE_TTL = 1 * 15
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
