@@ -4,7 +4,30 @@
 
 Before starting I felt the need of frontend development knowledge,
  Hence did majority of chapters of freecodecamp's frontend development stream
+ 
+##Entry 1
+-[x] Setup Project with correct repository
 
+Start Commit: b6f036455dc56705f02d40e9b904068ab09367c4 [b6f0364]
+End Commit: Commit: f36ab2d86718d6e2ffbc1208c268cdd993464911 [f36ab2d]
+
+     Started at : 19/03/2020 11:22 AM
+     Estimated Time: 60 mins
+     Finished at: 11/04/2020 20:24 PM
+
+​
+​    
+##Entry 2
+-[x] Learn to execute merge and pull request
+
+
+     Started at : 11/04/2020 20:00
+     Estimated Time: 
+     Finished at: 12/04/2020 15:37
+
+
+​    
+##Entry 3
 -[x] Make Class Diagram for Devices, Users and Household
 
 
@@ -15,18 +38,32 @@ Before starting I felt the need of frontend development knowledge,
      as I move along
 
 ​    
+##Entry 4 
+-[x] Familiarize with UI development
 
-**23/05**
+
+     Started at : 23/05/2020 11:22 AM
+     Estimated Time: 60 mins
+     Finished at: 23/05/2020 20:24 PM
+
 
 Before Login and Logout feature I am working on Bootstrap. Tried Bootstrap studio, I feel it is 
 not that great, so plain CSS file editing is better. Used some examples from Bootstrap site.
 I also wanted to make a grid of cards. Which is what I am working on at the moment.
 
-24/05 OK, so I need to make signup view/functionality before,  login or logout.
+##Entry 5
 
-Problem 1: Somehow, I am able to register the same user twice, even though I have put registration_form.is_valid() condition
+     Started at : 24/05/2020 
+     Estimated Time: 60 mins
+     Finished at: 23/05/2020 
 
-Problem 2: When I try to debug (For problem 1), I am getting following error 
+Realized that I need to make signup view/functionality before,  login or logout.
+
+*Problem 1*: Somehow, I am able to register the same user twice, even though I have put registration_form.is_valid() condition
+
+##Entry 6 
+-[x] Problem 2: When I try to debug (For problem 1),
+ I am getting following error 
 (apparently, I can't put image in markdown, can link to local filesystem, but on GitHub, that would be a problem)
 
 ```
@@ -36,18 +73,45 @@ Requested setting INSTALLED_APPS, but settings are not configured"
 Solution to Problem 2: I had selected a particular view, for debugging, which does not runs the 'manage.py', which is responsible
 for configuring the setting, particularly this extended line in the error message
 
-Solution to Problem 1: I assumed that is_valid function will check for validity. It does, but not if you have have already saved the form.
+##Entry 7 : 22/05/2020
+Added/downloaded Icons and styling css and added them to correct path for reference within the pages
+Also, worked on base and derived templates
+
+
+##Entry 8 : 23/05/2020
+Worked on creating the first model of the 'thing' i.e.  a smart device
+
+
+##Entry 9 : 23/05/2020
+Worked on creating the sidebar and learned about styling using css
+
+##Entry 10 : 24/05/2020
+Worked on creating views
+
+Updated Models
+
+Worked on registration page/ template/ html file
+
+
+##Entry 11 : 25/05/2020
+Faced this problem: Data was not being saved via forms
+ 
+Solution, I assumed that is_valid function will check for validity. It does, but not if you have have already saved the form.
 I missed the .form_save() fx and hence I was able to 'register' with same username twice. 
+
+##Entry 12 : 26/05/2020
+*problem*
 ```
 '*You must either define the environment variable DJANGO_SETTINGS_MODULE...*
 ```
 
-manage.py sets this env var.
+solution : manage.py sets this env var.
 
-problem 3 and its solution: In case, a custom registration form is required. We need to override the default
+*Problem* and its solution: In case, a custom registration form is required. We need to override the default
 contrib form. I assumed that, the name that appears in the form has to given in meta class.
 The reality is, that Django makes up the word itself. For example house_id will show up as House id.
-Problem 4: I overloaded a function, instead of a class when I wanted to make a  custome form. That was silly.
+
+*Problem* I overloaded a function, instead of a class when I wanted to make a  custom form. That was silly.
 
 Spend too much time, theming the IDE. Plus considered about switching to VS Code, in case I get used to
 professional version of Pycharm, but turns out most of the features that I use are in community version as well. 
@@ -55,7 +119,7 @@ In reality, I am investing on learning the shortcuts, which are available in the
 
 
 
-
+##Entry 6
 -[x] Make Login/Logout Feature
 
 
@@ -73,6 +137,7 @@ In reality, I am investing on learning the shortcuts, which are available in the
 ​     Currently Imgur is working fine, but I need to use S3 at later point.
 ​     Also, Must remember to attribute the photographer of the image [Photo by NeONBRAND on Unsplash]
 
+##Entry 7
 -[ ] Add Device Page
 
 
@@ -90,9 +155,11 @@ In reality, I am investing on learning the shortcuts, which are available in the
  push the code to github, that file should NOT be included. Hence I updated the .gitignore. Trying to make it work.
  There must be a way.
 ```
+##Entry  : 29/05/2020
+Made a favicon[TB -> thingsbaord] using online tool favicon.io
 
+##Entry : 2/06/2020
 
-​     
 ​     Problem 5: Tried to solve the above problem by using pyhton decouple, as soon as I get the variable, set by .env file
 ​     using config('SECRET_KEY') I get an exception
 ​     
@@ -116,15 +183,16 @@ but something made me recall the conversation on discord regarding AWS key, so I
 Moved away from is_authenticated and then redirect, to decorators, since they are more concise, and easy to understand (not the actual mechanism of decorators,
 which seems a bit of mystery). But it the disadvantage is that the redirect URL is not visible in the same file.
 
+##Entry 9
 Problem 6: Forgot to add form.save() after validation. Hence could not locate the database entry.
      
 
      Estimated Time: 2 hours
      Finished at: Actually took whole working day, because of intermediate steps. 
-     Remarks:
 
-<br>
 
+
+##Entry 10
 -[ ] Configure Postgres
 
 
@@ -133,7 +201,7 @@ Problem 6: Forgot to add form.save() after validation. Hence could not locate th
      Finished at: 21:24 PM
      Remarks: Also, migrate the data using dumpdata command
 
-<br>
+
 Problem 7: While switching from sqlite to postgres, I first need to apply the existing migrations(?)
 While, Migrating, i.e. makemigrations, and then migrate. I get the following error.
 
@@ -148,7 +216,7 @@ Please select a fix:
  2) Quit, and let me add a default in models.py
 
 https://stackoverflow.com/questions/16046478/django-model-nullable-field
-
+##Entry 11
 then new error
 
 `    return '<%s: %s>' % (self.__class__.__name__, self)
@@ -193,7 +261,7 @@ Solution
 ```
 pip install psycopg2
 ```
-
+##Entry 12
 Another issue, 
 
 ```
@@ -227,7 +295,7 @@ ITS DONE!
 
 ------
 
-## 
+##Entry 13
 
 -[ ] Remodeling
 
@@ -262,11 +330,11 @@ Solution: 18:20 PM, after 2 hours of despair. Dropping the table, delete the mig
 Forgot to add {% load crispy_forms_tags %} at the start, the error is not helpful, but it mentions crispy casually.
 
 
-
+##Entry 14
 Problem X: I spent some time fixing a problem that was not a problem, django was invalidating a form, because of duplicate value on pk.
 
 30/05/2020 6:48 PM : Wanted to show a clear message to a user why their form was rejected. In a way it is shown, but not formatted.
-
+##Entry 15
 Problem: When uploading a picture I get this error, I provided a valid image while uploading via form, though.
 
 ```
@@ -296,7 +364,7 @@ Side Note: It seems the darkness of the cell in my git contribution graph seems 
 -----------------
 
 
-
+##Entry 16
 -[ ] Change The Date input on UI to datepicker
 
 It can be done via overriding the widget, in case of ModelForms, it is slightly different
@@ -312,16 +380,14 @@ https://stackoverflow.com/questions/49440853/django-2-0-modelform-datefield-not-
      Remarks: 
 
 ---------------------
-
--[ ] Deployement to heroku  31/05/2020
-
-
+##Entry 17
+-[X] Deployment to heroku  31/05/2020
 
 
      Started at : 31/05/2020 03:15 AM
      Estimated Time: 180 mins
-     Finished at: 
-     Remarks: 
+     Finished at: 31/06/2020 06:31 AM
+     Remarks: Followed a video plus documentation
 
 Problem  X:
 
@@ -353,7 +419,7 @@ Solution: In the settings.py file add
 ```
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ```
-
+##Entry 18
 Problem next: on accessing the site, i get error that i need to see the logs via
 
 ```
@@ -386,10 +452,8 @@ I get the following logs
 I did not configured postgres, so that was expected.
 
 Solution: Add a  Procfile in the project root.
-
-Problem Next: The {Page is all messed up. Probably because the static files contain the css, and I need to host it somewhere.
-
-
+##Entry 19
+Problem Next: The {UI/Page is all messed up. Probably because the static files contain the css, and I need to host it somewhere.
 
 -------------
 
@@ -410,6 +474,7 @@ Setup S3
 
 Commented out line does not works
 
+
 ```
 # AWS_ACCESS_KEY_ID = Config('AWS_ACCESS_KEY_ID')
 # AWS_SECRET_ACCESS_KEY = Config('AWS_SECRET_ACCESS_KEY')
@@ -422,7 +487,7 @@ AWS_DEFAULT_ACL = None
 # DEFAULT_FILE_STORAGE = Config('DEFAULT_FILE_STORAGE')
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 ```
-
+##Entry 20
 -[ ] Create Entity Relationship Diagram
 
 Since I changed the modeled a lot, i need to recreate it. Because of lack of time, i need to automate it, via library that I found, graphviz
@@ -495,7 +560,7 @@ Apparently graphiviz had the following problem in windows, it needs additional n
 So I switched to github -> django-dia which creates a .dia file, for which  I had to install a tool to open it and the final diagram is not that great because internal models are now visible, and the resolution is not great, so not really readable. That is the reason I have kept the previous model in readme as well to present the idea. I could have created the diagram manually much faster, as I did with version 1.
 
 python manage.py graph_models dashboard users -o EntityRelationshipDiagramSelective.png 
-
+##Entry 21
 
      Started at : 8:19 PM
      Estimated Time: 15 mins
@@ -545,8 +610,8 @@ Sentry is attempting to send 0 pending error messages
 Waiting up to 2 seconds
 Press Ctrl-Break to quit
 ```
-
--[ ] Unit Testing
+##Entry 22
+-[x] Unit Testing
 
 Test Fixtures: The preparation/ setup for the test to execute
 
@@ -555,11 +620,11 @@ Tear Down or cleanup: Removing the side effects of the test execution.
 Both of these are handled by django test library, it creates the temporary database in case the test is related to models, and destroys it , when test is completed.
 
 
+##Entry 23
 
-
-     Started at : 
-     Estimated Time:
-     Finished at:
+     Started at :  11:19 PM
+     Estimated Time: 45 mins
+     Finished at: 12:54 AM
      Remarks:
 
 ------
@@ -579,9 +644,6 @@ https://stackoverflow.com/questions/38970832/session-data-corrupted-in-django
 
 heroku restart; heroku pg:reset DATABASE --confirm thingboard; heroku run rake db:migrate
 
-tyagi.tech does not work, but www.tyagi.tech does ! Something to do with dns configuration, but could not find anything on the controlpanel of domain provider.
-
-
 
 `heroku pg:psql`.
 
@@ -593,10 +655,15 @@ Received invalid task message: Refusing to deserialize untrusted content of type
 
 
 
+##Entry 24
+tyagi.tech does not work, but www.tyagi.tech does ! Something to do with dns configuration, but could not find anything on the controlpanel of domain provider.
 
 
+##Entry 25 : Note
+tyagi.tech does not work, but www.tyagi.tech does ! Something to do with dns configuration, but could not find anything on the controlpanel of domain provider.
+
+##Entry 26 : Note
 application cache on redis
-
 Read cache can help in minimizing the db reads.  So the idea is that, the bottleneck in some application performance is hard disk read and write. And thats the DB operations in web apps mostly(?) To solve this, redis helps , because it is faster, because it works in memory, i.e. RAM. But I do not know how to us in my application. 
 
 But, when I make writing to IoT devices feature. And my application can can receive million of data points, this will be very suitable.
@@ -609,6 +676,7 @@ https://devcenter.heroku.com/articles/celery-heroku
 
 https://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
 
+##Entry 26 : Note
 Extremely misleading error
 
 |  Exception Type: | InvalidCacheBackendError                                     |
@@ -619,9 +687,8 @@ not really misleading, but the rest of therror is, I just forgot to put pip free
 
 heroku run python manage.py migrate       || Saved a of of time
 
-
-
 So the problem I faced is that after adding a smart device, I am unable to see the device, immediately, and this has caused like lot of loss of confidence and therefore distraction. The thing is, the cache is not returning from permanent db., it is for fast response and may not reflect the true state. The variable that i mindlessely pasted from page, CACHE_TTL, stands for time to live, which I am guessing is the time after it will sync with postgres, where the accurate data is present. So the caches should not be used where absolute truth depends on the order of operation.
+
 
 ## Journal entry  template
 
