@@ -299,7 +299,7 @@ Updated models for nullable values
 
 ### Entry 30:  5/06/2020
 
-Worked Redis Caching issue. Newly created device will not appear because of time to life. So If I install a device it will appear after max of TTL
+Worked on Redis Caching issue. Newly created device will not appear because of time to life. So If I install a device it will appear after max of TTL
 
 ---------------------------------
 
