@@ -88,26 +88,31 @@ Also, worked on base and derived templates
 
 Worked on creating the first model of the 'thing' i.e.  a smart device
 
+Entry 9 : 23/05/2020
 
-##Entry 9 : 23/05/2020
-Worked on creating the sidebar and learned about styling using css
+Worked on creating the sidebar and learned about styling using css and bootstrap
 
-##Entry 10 : 24/05/2020
+### Entry 10 : 24/05/2020
+
 Worked on creating views
 
 Updated Models
 
 Worked on registration page/ template/ html file
 
+### Entry 11 : 25/05/2020
 
-##Entry 11 : 25/05/2020
 Faced this problem: Data was not being saved via forms
 
 Solution, I assumed that is_valid function will check for validity. It does, but not if you have have already saved the form.
 I missed the .form_save() fx and hence I was able to 'register' with same username twice. 
 
-##Entry 12 : 26/05/2020
+
+
+### Entry 12 : 26/05/2020
+
 *problem*
+
 ```
 '*You must either define the environment variable DJANGO_SETTINGS_MODULE...*
 ```
@@ -126,17 +131,7 @@ In reality, I am investing on learning the shortcuts, which are available in the
 
 
 
-##Entry 6
--[x] Make Login/Logout Feature
-
-
-     Started at : 20/05/2020 10:29 PM
-     Estimated Time: 90
-     Finished at: 26/05/2020
-     Remarks: Took way too long, not because it was difficult, but because, I did not planned in between steps. Plus
-     I was too slow.
-
-​          
+### Entry 13 [ Missing date]
 
 ​     Inconvenience: The background page some times loads, and doesn't the other times. I guess it may be because the
 ​     source file is being protected from being used as CDN.
@@ -144,63 +139,33 @@ In reality, I am investing on learning the shortcuts, which are available in the
 ​     Currently Imgur is working fine, but I need to use S3 at later point.
 ​     Also, Must remember to attribute the photographer of the image [Photo by NeONBRAND on Unsplash]
 
-##Entry 7
--[ ] Add Device Page
+### Entry  14 :  27/05/2020
 
+Add Device Page
 
-```
- Started at : 2:15 PM
  Want to first format the date in DD MM YYY on the device card page.
  Looked up document at  https://docs.djangoproject.com/en/3.0/ref/templates/builtins/#date
  and the the format in the tenplate |"d M, Y" Does not seems to work. It works now, was a typo.
- 
+
  Also, I think in order to use celery, and sendgrid. I need to reopen issue, user registration feature on github.
  So I am working on that now. Removed from done to in progress.
- 
+
  Send grid is working, but I am not sure how to set the env variables for the secret key, in such a way, that it works
  on heroku as well. I can set the envvars in .bashrc file and run the file before the project starts. But, when I will
  push the code to github, that file should NOT be included. Hence I updated the .gitignore. Trying to make it work.
  There must be a way.
-```
-##Entry  : 29/05/2020
+
+
+
+### Entry  15: 29/05/2020
+
 Made a favicon[TB -> thingsbaord] using online tool favicon.io
 
-##Entry : 2/06/2020
-
-​     Problem 5: Tried to solve the above problem by using pyhton decouple, as soon as I get the variable, set by .env file
-​     using config('SECRET_KEY') I get an exception
-​     
-​      print(config('SENDGRID_API_KEY'))
-​      
-​        File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\decouple.py", line 124, in __init__
-​    for line in file_:
-
-`  File "C:\Python38\lib\codecs.py", line 322, in decode
-    (result, consumed) = self._buffer_decode(data, self.errors, final)
-UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
-`
-Solution to Problem 5: It was encoded as utf-16, changed it to utf-8.
-OK, so this was something, I never noticed, i.e. the encoding of the file(it matters!).
-I did not paid any special attention to the encoding when I created the .env file, it was in utf-16(?) format.
-I referred stackoverflow, in fact the error ITSELF says that. "utf-8' codec can't decode ". 
-I opened the file in notepad and save as, and then chose utf-8 encoding, and it worked! Also, here I found the discussion on
-discord useful, because, I initially put the value of secret key in quotes, 
-but something made me recall the conversation on discord regarding AWS key, so I avoided that mistake.
-     
-Moved away from is_authenticated and then redirect, to decorators, since they are more concise, and easy to understand (not the actual mechanism of decorators,
-which seems a bit of mystery). But it the disadvantage is that the redirect URL is not visible in the same file.
-
-##Entry 9
-Problem 6: Forgot to add form.save() after validation. Hence could not locate the database entry.
-     
-
-     Estimated Time: 2 hours
-     Finished at: Actually took whole working day, because of intermediate steps. 
 
 
+### Entry 17: 28/05/2020
 
-##Entry 10
--[ ] Configure Postgres
+Configure Postgres
 
 
      Started at : 18:59
@@ -208,8 +173,7 @@ Problem 6: Forgot to add form.save() after validation. Hence could not locate th
      Finished at: 21:24 PM
      Remarks: Also, migrate the data using dumpdata command
 
-
-Problem 7: While switching from sqlite to postgres, I first need to apply the existing migrations(?)
+*Problem*: While switching from sqlite to postgres, I first need to apply the existing migrations(?)
 While, Migrating, i.e. makemigrations, and then migrate. I get the following error.
 
 `TypeError: __str__ returned non-string (type Address)`
@@ -223,8 +187,141 @@ Please select a fix:
  2) Quit, and let me add a default in models.py
 
 https://stackoverflow.com/questions/16046478/django-model-nullable-field
-##Entry 11
-then new error
+
+### Entry 18: 28/05/2020
+
+Worked on Manufacturer ,device and address template
+
+Worked on their models ,views
+
+### Entry 18: 30/05/2020
+
+Completed the work on forms
+
+### Entry 19: 30/05/2020
+
+User's image was not being uploaded correctly, resolved that
+
+\Wanted to show a clear message to a user why their form was rejected. In a way it is shown, but not formatted for easy reading
+
+wanted to create a shortcut for git add ., commit and push, like in class. But found a npm package git-upload, npm install git-update.
+
+Usage: gitu COMMIT MSG
+
+### Entry 20 : 2/06/2020
+
+​     *Problem* Tried to solve the above problem by using pyhton decouple, as soon as I get the variable, set by .env file
+​     using config('SECRET_KEY') I get an exception
+​     
+​      print(config('SENDGRID_API_KEY'))
+​      
+​        File "W:\workspace\WebDev_DS\django\IoT_Dashboard\venv\lib\site-packages\decouple.py", line 124, in __init__
+​    for line in file_:
+
+`  File "C:\Python38\lib\codecs.py", line 322, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+`
+*Solution*  It was encoded as utf-16, changed it to utf-8.
+OK, so this was something, I never noticed, i.e. the encoding of the file(it matters!).
+I did not paid any special attention to the encoding when I created the .env file, it was in utf-16(?) format.
+I referred stackoverflow, in fact the error ITSELF says that. "utf-8' codec can't decode ". 
+I opened the file in notepad and save as, and then chose utf-8 encoding, and it worked! Also, here I found the discussion on
+discord useful, because, I initially put the value of secret key in quotes, 
+but something made me recall the conversation on discord regarding AWS key, so I avoided that mistake.
+     
+Moved away from is_authenticated and then redirect, to decorators, since they are more concise, and easy to understand (not the actual mechanism of decorators,
+which seems a bit of mystery). But it the disadvantage is that the redirect URL is not visible in the same file.
+
+### Entry 21 : 31/05/2020
+
+Worked on using date picker for selecting dates in forms
+
+
+
+### Entry 22 : 31/05/2020
+
+Worked on sentry for logging and notifying errors in the application
+
+### Entry 23 : 31/05/2020
+
+Worked on decouple library for securing secret key, instead of environment variables
+
+Created procfile for heroku deployement
+
+### Entry 24 : 1/06/2020
+
+Unit Testing: used django test library, tests.py
+
+Checks for whether more than one email can exists etc
+
+Test Fixtures: The preparation/ setup for the test to execute
+
+Tear Down or cleanup: Removing the side effects of the test execution.
+
+Both of these are handled by django test library, it creates the temporary database in case the test is related to models, and destroys it , when test is completed.
+
+### Entry 25 :  1/06/2020
+
+Created Entity relationship diagram with graphviz
+
+### Entry 26 :  2/06/2020
+
+Worked on registration ,profile and base template
+
+Made the UI look better using bootstrap classes
+
+Made First page load faster by compressing the background image
+
+### Entry 27 :  3/06/2020
+
+Heroku deployment, migrations and testing
+
+### Entry 28 :  4/06/2020
+
+Refactored,made the notification as separate app. so that this notifications service can be resued later on for example sms and push notfications can be added
+
+Celery
+
+ERD Update
+
+Password reset
+
+### Entry 29 :  1/06/2020
+
+json table dumps
+
+Updated Readme
+
+Updated models for nullable values
+
+
+
+### Entry 30:  5/06/2020
+
+Worked Redis Caching issue. Newly created device will not appear because of time to life. So If I install a device it will appear after max of TTL
+
+---------------------------------
+
+
+
+## Todo Future:
+
+1. GeoDjango and maps
+2. Attribute photos
+3. Change The image background on the login page to css pattern so it loads faster
+4. Change the form input field style, should not span the whole width
+5. Add the 
+
+
+
+-----------------------------------
+
+# Error Logs
+
+## These are error notes and could be ignored
+
+
 
 `    return '<%s: %s>' % (self.__class__.__name__, self)
 TypeError: __str__ returned non-string (type NoneType)
@@ -268,7 +365,7 @@ Solution
 ```
 pip install psycopg2
 ```
-##Entry 12
+
 Another issue, 
 
 ```
@@ -281,7 +378,7 @@ Well, I forgot to migrate the actual data, so the job is not done.
 
 
 
-UTF-8 Error again-changed to UTF-8, as earlier.
+UTF-8 Errr again-changed to UTF-8, as earlier.
 
 loadata json command **error**:
 
@@ -312,9 +409,7 @@ ITS DONE!
      Finished at:
      Remarks:
 
-wanted to create a shortcut for git add ., commit and push, like in class. But found a npm package git-upload, npm install git-update.
 
-Usage: gitu COMMIT MSG
 
 Create User -> Using Registration Forms
 
@@ -337,11 +432,10 @@ Solution: 18:20 PM, after 2 hours of despair. Dropping the table, delete the mig
 Forgot to add {% load crispy_forms_tags %} at the start, the error is not helpful, but it mentions crispy casually.
 
 
-##Entry 14
 Problem X: I spent some time fixing a problem that was not a problem, django was invalidating a form, because of duplicate value on pk.
 
 30/05/2020 6:48 PM : Wanted to show a clear message to a user why their form was rejected. In a way it is shown, but not formatted.
-##Entry 15
+
 Problem: When uploading a picture I get this error, I provided a valid image while uploading via form, though.
 
 ```
@@ -371,7 +465,6 @@ Side Note: It seems the darkness of the cell in my git contribution graph seems 
 -----------------
 
 
-##Entry 16
 -[ ] Change The Date input on UI to datepicker
 
 It can be done via overriding the widget, in case of ModelForms, it is slightly different
@@ -386,17 +479,7 @@ https://stackoverflow.com/questions/49440853/django-2-0-modelform-datefield-not-
      Finished at: 2:31 AM
      Remarks: 
 
----------------------
-##Entry 17
--[X] Deployment to heroku  31/05/2020
 
-
-     Started at : 31/05/2020 03:15 AM
-     Estimated Time: 180 mins
-     Finished at: 31/06/2020 06:31 AM
-     Remarks: Followed a video plus documentation
-
-Problem  X:
 
 ```
 remote: -----> $ python manage.py collectstatic --noinput
@@ -459,7 +542,7 @@ I get the following logs
 I did not configured postgres, so that was expected.
 
 Solution: Add a  Procfile in the project root.
-##Entry 19
+
 Problem Next: The {UI/Page is all messed up. Probably because the static files contain the css, and I need to host it somewhere.
 
 -------------
@@ -494,7 +577,7 @@ AWS_DEFAULT_ACL = None
 # DEFAULT_FILE_STORAGE = Config('DEFAULT_FILE_STORAGE')
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 ```
-##Entry 20
+
 -[ ] Create Entity Relationship Diagram
 
 Since I changed the modeled a lot, i need to recreate it. Because of lack of time, i need to automate it, via library that I found, graphviz
@@ -505,51 +588,6 @@ Apparently graphiviz had the following problem in windows, it needs additional n
     graphviz_wrap.obj : error LNK2001: unresolved external symbol agisdirected
     graphviz_wrap.obj : error LNK2001: unresolved external symbol agopen
     graphviz_wrap.obj : error LNK2001: unresolved external symbol agraphof
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtin
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol aglstnode
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agedge
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsubedge
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agisundirected
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtnode
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agidnode
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtsubg
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agisstrict
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agattrsym
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstin
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agattr
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agstrdup_html
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol Agdirected
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnameof
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstnode
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agget
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdegree
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstedge
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdelsubg
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdelnode
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtattr
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agread
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agparent
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agxset
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agclose
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agidedge
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agroot
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstsubg
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agdeledge
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnnodes
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol Agundirected
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agxget
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsubnode
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtedge
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsubg
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnedges
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agset
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agfstout
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnode
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agsafeset
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agprvnode
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol Agstrictundirected
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol PyIOBase_Type
-    graphviz_wrap.obj : error LNK2001: unresolved external symbol agnxtout
     graphviz_wrap.obj : error LNK2001: unresolved external symbol Agstrictdirected
     build\lib.win-amd64-3.8\pygraphviz\_graphviz.cp38-win_amd64.pyd : fatal error LNK1120: 50 unresolved externals
         error: command 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.24.2
@@ -567,7 +605,7 @@ Apparently graphiviz had the following problem in windows, it needs additional n
 So I switched to github -> django-dia which creates a .dia file, for which  I had to install a tool to open it and the final diagram is not that great because internal models are now visible, and the resolution is not great, so not really readable. That is the reason I have kept the previous model in readme as well to present the idea. I could have created the diagram manually much faster, as I did with version 1.
 
 python manage.py graph_models dashboard users -o EntityRelationshipDiagramSelective.png 
-##Entry 21
+
 
      Started at : 8:19 PM
      Estimated Time: 15 mins
@@ -617,24 +655,9 @@ Sentry is attempting to send 0 pending error messages
 Waiting up to 2 seconds
 Press Ctrl-Break to quit
 ```
-##Entry 22
--[x] Unit Testing
-
-Test Fixtures: The preparation/ setup for the test to execute
-
-Tear Down or cleanup: Removing the side effects of the test execution.
-
-Both of these are handled by django test library, it creates the temporary database in case the test is related to models, and destroys it , when test is completed.
 
 
-##Entry 23
 
-     Started at :  11:19 PM
-     Estimated Time: 45 mins
-     Finished at: 12:54 AM
-     Remarks:
-
-------
 
 Create User -> Using Registration Forms
 
@@ -662,11 +685,7 @@ Received invalid task message: Refusing to deserialize untrusted content of type
 
 
 
-##Entry 24
-tyagi.tech does not work, but www.tyagi.tech does ! Something to do with dns configuration, but could not find anything on the controlpanel of domain provider.
-
-
-##Entry 25 : Note
+ Note
 tyagi.tech does not work, but www.tyagi.tech does ! Something to do with dns configuration, but could not find anything on the controlpanel of domain provider.
 
 ##Entry 26 : Note
@@ -697,34 +716,4 @@ heroku run python manage.py migrate       || Saved a of of time
 So the problem I faced is that after adding a smart device, I am unable to see the device, immediately, and this has caused like lot of loss of confidence and therefore distraction. The thing is, the cache is not returning from permanent db., it is for fast response and may not reflect the true state. The variable that i mindlessely pasted from page, CACHE_TTL, stands for time to live, which I am guessing is the time after it will sync with postgres, where the accurate data is present. So the caches should not be used where absolute truth depends on the order of operation.
 
 
-## Journal entry  template
-
--[ ] What needs to be done
-
-
-
-
-     Started at : 
-     Estimated Time:
-     Finished at:
-     Remarks:
-
-------
-
-
-Create User -> Using Registration Forms
-
-Create Manufacturer -> Only Admin Can Do this
-
-Create Device Types -> Only Admin Can Do this
-
-Add Device -> From The List of Device Types
-
-Todo:
-
-1. GeoDjango and maps
-2. Attribute photos
-3. Change The image background on the login page to css pattern so it loads faster
-4. Change the form input field style, should not span the whole width
-5. Add the 
 
