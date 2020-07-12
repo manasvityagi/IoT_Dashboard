@@ -4,8 +4,9 @@
 
 Before starting I felt the need of frontend development knowledge,
  Hence did majority of chapters of freecodecamp's frontend development stream
- 
-##Entry 1
+
+### Entry 1
+
 -[x] Setup Project with correct repository
 
 Start Commit: b6f036455dc56705f02d40e9b904068ab09367c4 [b6f0364]
@@ -15,9 +16,11 @@ End Commit: Commit: f36ab2d86718d6e2ffbc1208c268cdd993464911 [f36ab2d]
      Estimated Time: 60 mins
      Finished at: 11/04/2020 20:24 PM
 
-​
+
 ​    
-##Entry 2
+
+### Entry 2
+
 -[x] Learn to execute merge and pull request
 
 
@@ -25,9 +28,10 @@ End Commit: Commit: f36ab2d86718d6e2ffbc1208c268cdd993464911 [f36ab2d]
      Estimated Time: 
      Finished at: 12/04/2020 15:37
 
-
 ​    
-##Entry 3
+
+### Entry 3
+
 -[x] Make Class Diagram for Devices, Users and Household
 
 
@@ -38,7 +42,9 @@ End Commit: Commit: f36ab2d86718d6e2ffbc1208c268cdd993464911 [f36ab2d]
      as I move along
 
 ​    
-##Entry 4 
+
+### Entry 4 
+
 -[x] Familiarize with UI development
 
 
@@ -46,12 +52,11 @@ End Commit: Commit: f36ab2d86718d6e2ffbc1208c268cdd993464911 [f36ab2d]
      Estimated Time: 60 mins
      Finished at: 23/05/2020 20:24 PM
 
-
 Before Login and Logout feature I am working on Bootstrap. Tried Bootstrap studio, I feel it is 
 not that great, so plain CSS file editing is better. Used some examples from Bootstrap site.
 I also wanted to make a grid of cards. Which is what I am working on at the moment.
 
-##Entry 5
+### Entry 5
 
      Started at : 24/05/2020 
      Estimated Time: 60 mins
@@ -61,7 +66,8 @@ Realized that I need to make signup view/functionality before,  login or logout.
 
 *Problem 1*: Somehow, I am able to register the same user twice, even though I have put registration_form.is_valid() condition
 
-##Entry 6 
+### Entry 6 
+
 -[x] Problem 2: When I try to debug (For problem 1),
  I am getting following error 
 (apparently, I can't put image in markdown, can link to local filesystem, but on GitHub, that would be a problem)
@@ -73,12 +79,13 @@ Requested setting INSTALLED_APPS, but settings are not configured"
 Solution to Problem 2: I had selected a particular view, for debugging, which does not runs the 'manage.py', which is responsible
 for configuring the setting, particularly this extended line in the error message
 
-##Entry 7 : 22/05/2020
+### Entry 7 : 22/05/2020
+
 Added/downloaded Icons and styling css and added them to correct path for reference within the pages
 Also, worked on base and derived templates
 
+### Entry 8 : 23/05/2020
 
-##Entry 8 : 23/05/2020
 Worked on creating the first model of the 'thing' i.e.  a smart device
 
 
@@ -95,7 +102,7 @@ Worked on registration page/ template/ html file
 
 ##Entry 11 : 25/05/2020
 Faced this problem: Data was not being saved via forms
- 
+
 Solution, I assumed that is_valid function will check for validity. It does, but not if you have have already saved the form.
 I missed the .form_save() fx and hence I was able to 'register' with same username twice. 
 
